@@ -2,6 +2,12 @@
   <li><a href="/"><img src="/global/images/rose.svg" alt="Home", width="20"></a></li>
   <li><a href="news.asp">Projects</a></li>
   <li><a href="https://github.com/coffandro">GitHub</a></li>
-  <button onclick="darkmode()">dark mode</button>
-  <li style="float:right"><a href="/global/Pages/about.html">About</a></li>
+  <li style="float:right; border-left: 1px solid #bbb;"><a href="/global/Pages/about.html">About</a></li>
+  
+  <!-- Rectangular Dark mode switch -->
+  <label class="switch" style="float: right;">
+    <input type="checkbox" id="darkmodeCheck" onclick="darkmode()">
+    <span class="slider"></span>
+  </label>
+  <li style="float: right"><a>Dark Mode</a></li>
 </ul> 
