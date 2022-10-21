@@ -6,11 +6,9 @@ window.onload=function() {
     if (darkmode == true){
         var element = document.body;
         element.classList.toggle("dark-mode");
-        localStorage.setItem('darkMode', 'true');
     } else {
         var element = document.body;
         element.classList.toggle("dark-mode");
-        localStorage.setItem('darkMode', 'false');
     }
 } 
 
