@@ -1,17 +1,18 @@
 window.onload=function() {
-    if(localStorage.darkMode=="true") {
-      document.body.classList.toggle('dark');
-      document.getElementById("chk").checked=true;
+    var darkMode = localStorage.getItem('darkMode');
+    var checkBox = document.getElementById("darkmodeCheck");
+
+    // If the checkbox is checked, turns on dark mode
+    if (darkmode == true){
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+        localStorage.setItem('darkMode', 'true');
+    } else {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+        localStorage.setItem('darkMode', 'false');
     }
-    else {
-      document.body.classList.toggle('light');
-    }
-  };
-  document.getElementById("chk").addEventListener('change', () => {
-    document.body.classList.toggle('dark');
-    document.body.classList.toggle('light');
-    localStorage.darkMode=(localStorage.darkMode=="true")?"false":"true";
-  });
+} 
 
 function darkmode() {
     // Get the checkbox
@@ -21,8 +22,10 @@ function darkmode() {
     if (checkBox.checked == true){
         var element = document.body;
         element.classList.toggle("dark-mode");
+        localStorage.setItem('darkMode', 'true');
     } else {
         var element = document.body;
         element.classList.toggle("dark-mode");
+        localStorage.setItem('darkMode', 'false');
     }
 } 
