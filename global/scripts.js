@@ -1,6 +1,5 @@
 window.onload=function() {
-    var darkMode = localStorage.getItem('darkMode');
-    var checkBox = document.getElementById("darkmodeCheck");
+    var darkMode = localStorage.getItem.darkMode;
 
     // If the checkbox is checked, turns on dark mode
     if (darkmode == true){
@@ -20,10 +19,10 @@ function darkmode() {
     if (checkBox.checked == true){
         var element = document.body;
         element.classList.toggle("dark-mode");
-        localStorage.setItem('darkMode', 'true');
+        localStorage.darkMode=true;
     } else {
         var element = document.body;
         element.classList.toggle("dark-mode");
-        localStorage.setItem('darkMode', 'false');
+        localStorage.darkMode=false;
     }
 } 
