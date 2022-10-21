@@ -43,6 +43,6 @@ li:last-child {
 } 
 
 .dark-mode {
-  background-color: #444444;
+  background-color: black;
   color: white;
 }
