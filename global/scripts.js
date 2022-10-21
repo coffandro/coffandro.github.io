@@ -19,7 +19,7 @@ function darkmode() {
     if (checkBox.checked == true){
         var element = document.body;
         element.classList.toggle("dark-mode");
-        localStorage.darkMode=true;
+        localStorage.setItem(darkMode=true);
     } else {
         var element = document.body;
         element.classList.toggle("dark-mode");
