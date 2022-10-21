@@ -1,6 +1,11 @@
 body {
-  background-color: white;
+  background-color:white;
   color: black;
+}
+
+.dark-mode {
+  background-color: #444;
+  color: white;
 }
 
 ul {
@@ -41,8 +46,3 @@ li a:hover {
 li:last-child {
   border-right: none;
 } 
-
-.dark-mode {
-  background-color: black;
-  color: white;
-}
