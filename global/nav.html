@@ -1,6 +1,21 @@
 <ul>
-  <li><a href="/"><img src="/global/images/rose.svg" alt="Home", width="20"></a></li>
-  <li><a href="news.asp">Projects</a></li>
+  <li><a href="/"><img src="/global/images/rose.svg" alt="Home", width="15", style=" margin: 0px;"></a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Projects</a>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Guides</a>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </li>
   <li><a href="https://github.com/coffandro">GitHub</a></li>
   <li style="float:right; border-left: 1px solid #bbb;"><a href="/global/Pages/about.html">About</a></li>
   
@@ -9,5 +24,5 @@
     <input type="checkbox" id="darkmodeCheck" onclick="darkmode()" checked>
     <span class="slider"></span>
   </label>
-  <li style="float: right"><a>Dark Mode</a></li>
+  <li style="float: right; border-right: 0px solid #bbb;"><a>Dark Mode</a></li>
 </ul> 
