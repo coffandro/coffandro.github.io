@@ -8,6 +8,10 @@ body {
   color: white;
 }
 
+.DarkModeSwitchIcon {
+  margin: 10px;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -41,7 +45,7 @@ li.dropdown {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -117,4 +121,24 @@ input:checked + .slider:before {
 
 body.dark-theme {
   background: #121212;
+}
+
+.DarkModeSwitchIcon ~ label::before {
+  content: '\f186';
+}
+
+.DarkModeSwitchIcon:checked ~ label::before {
+  content: '\f185';
+}
+
+#darkmodeCheck ~ label::before {
+  content: url(/global/images/sun.png);
+  width: 10px;
+  height: 10px;
+}
+
+#darkmodeCheck:checked ~ label::before {
+  content: url(/global/images/moon.png);
+  width: 100px;
+  height: 100px;
 }

@@ -25,20 +25,21 @@
     </div>
   </li>
 
-  <li class="dropdown" style="float:right; text-align: right;">
+  <!-- Rectangular Dark mode switch -->
+  <label class="switch" style="float: right;">
+    <input type="checkbox" id="darkmodeCheck" onclick="darkmode()">
+    <span class="slider"></span>
+  </label>
+  <!--<li style="float: right; border-right: 0px solid #bbb;"><img class="DarkModeSwitchIcon" src="/global/images/moon.png" width="25" alt="Dark mode"></li> -->
+  <label for="button" class="DarkModeSwitchIcon"></label>
+  
+  <li class="dropdown" style="float: right;">
     <a href="javascript:void(0)" class="dropbtn">About</a>
-    <div class="dropdown-content">
+    <div class="dropdown-content" style="float: left;">
       <a href="/global/Pages/about.html">About me</a>
       <a href="/global/Pages/WishList.html">Wish List</a>
       <a href="/global/Pages/Accounts.html">Accounts</a>
     </div>
   </li>
 
-
-  <!-- Rectangular Dark mode switch -->
-  <label class="switch" style="float: right;">
-    <input type="checkbox" id="darkmodeCheck" onclick="darkmode()" checked>
-    <span class="slider"></span>
-  </label>
-  <li style="float: right; border-right: 0px solid #bbb;"><a>Dark Mode</a></li>
 </ul> 
