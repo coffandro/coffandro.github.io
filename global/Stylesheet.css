@@ -122,23 +122,3 @@ input:checked + .slider:before {
 body.dark-theme {
   background: #121212;
 }
-
-.DarkModeSwitchIcon ~ label::before {
-  content: '\f186';
-}
-
-.DarkModeSwitchIcon:checked ~ label::before {
-  content: '\f185';
-}
-
-#darkmodeCheck ~ label::before {
-  content: url(/global/images/sun.png);
-  width: 10px;
-  height: 10px;
-}
-
-#darkmodeCheck:checked ~ label::before {
-  content: url(/global/images/moon.png);
-  width: 100px;
-  height: 100px;
-}
