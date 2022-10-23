@@ -1,6 +1,9 @@
 body {
-  background-color:white;
+  background-image: url(/global/images/System76-Chainlink-by_Kate_Hazen_of_System76.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
   color: black;
+  transition: background-color 1s ease;
 }
 
 .dark-mode {
@@ -121,4 +124,13 @@ input:checked + .slider:before {
 
 body.dark-theme {
   background: #121212;
+}
+
+.CV_Grid {
+  width: 660px; 
+  margin: 10px; 
+  padding: 10px; 
+  border-width:3px; 
+  border-style:solid; 
+  border-color:green
 }
