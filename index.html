@@ -1,20 +1,26 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <link rel="stylesheet" href="/global/Stylesheet.css">
+    <link rel="stylesheet" href="/css/stylesheet.css">
     <title>Home page</title>
-    <link rel="icon" type="image/x-icon" href="/global/images/rose.svg">
-    <script src="/global/scripts.js"></script> 
+    <link rel="icon" type="image/x-icon" href="/images/rose.svg">
 </head>
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="/js/scripts.js"></script> 
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <body>
-    <!--Navigation bar-->
+<!--Navigation bar-->
 <div id="nav-placeholder">
 </div>
 <script>
 $(function(){
-  $("#nav-placeholder").load("/global/nav.html");
+  $("#nav-placeholder").load("/navbar.html");
 });
 </script>
 <!--end of Navigation bar-->
 
+<script>
+  feather.replace()
+</script>
 </body>
+</html>
