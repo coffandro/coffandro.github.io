@@ -58,11 +58,19 @@ li a:hover, .dropdown:hover .dropbtn {
   display: block;
 }
 
-.giftlistborder {
+.content {
   padding: 10px;
   border: 2px;
   border-style: solid;
   font-family: 'Courier New', Courier, monospace;
   background-color: white;
+  margin: 5px;
+}
+
+.button {
+  background-color: lightgray;
+  padding: 10px;
+  border: 2px;
+  border-style: solid;
   margin: 5px;
 }
