@@ -1,6 +1,24 @@
 body {
   font-family: 'Courier New', Courier, monospace;
   margin:0;
+  --main-bg-color: white;
+  --main-color: black;
+  --link-color: purple;
+  --alt-color: #f9f9f9;
+  background-color: white;
+  color: black;
+}
+.dark-mode body{
+--main-bg-color: #333;
+--main-color: white;
+--link-color: aqua;
+--alt-color: rgb(55, 55, 55);
+background-color: #333;
+color: white;
+}
+
+.HomeBTN {
+  background-color: #333;
 }
 
 .feather-navbar {
@@ -15,7 +33,7 @@ body {
   overflow: hidden;
   border: 2px;
   border-style: solid;
-  border-color: #333;
+  border-color: var(--main-color);
 }
 
 li {
@@ -25,7 +43,7 @@ li {
 
 li a, .dropbtn {
   display: inline-block;
-  color: #333;
+  color: var(--main-color);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -38,14 +56,14 @@ li a:hover, .dropdown:hover .dropbtn {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: var(--alt-color);
   min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
 .dropdown-content a {
-  color: black;
+  color: var(--main-color);
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -59,18 +77,18 @@ li a:hover, .dropdown:hover .dropbtn {
 }
 
 .content {
+  display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: var(--main-bg-color);
+  /*Border info*/
   padding: 10px;
   border: 2px;
   border-style: solid;
   font-family: 'Courier New', Courier, monospace;
-  background-color: white;
   margin: 5px;
+  overflow: hidden;
 }
 
-.button {
-  background-color: lightgray;
-  padding: 10px;
-  border: 2px;
-  border-style: solid;
-  margin: 5px;
+.content a {
+  color: var(--link-color);
 }

@@ -19,6 +19,14 @@ $(function(){
   $("#nav-placeholder").load("/navbar.html");
 });
 </script>
+<li class="dropdown" style="float: right;">
+  <a href="about.html" class="dropbtn"><i class="feather-navbar" data-feather="globe"></i></a>
+  <div class="dropdown-content">
+    <a href="#" onclick="setLanguage('en')"><img src="/images/UnionJack.svg" alt="" width="20%"> English</a>
+    <a href="#" onclick="setLanguage('da')"><img src="/images/Dannebrog.svg" alt="" width="20%"> Danish</a>
+    <a href="#" onclick="setLanguage('de')"><img src="/images/Bundesflagge.svg" alt="" width="20%"> German(WIP)</a>
+  </div>
+</li>
 <!--end of Navigation bar-->
 
 <div class="content">
