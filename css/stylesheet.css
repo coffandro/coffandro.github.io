@@ -70,25 +70,36 @@ li a:hover, .dropdown:hover .dropbtn {
   text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown-content a:hover {background-color: #555}
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
 .content {
-  display: inline-block;
+  display: block;
   font-family: 'Courier New', Courier, monospace;
   background-color: var(--main-bg-color);
+  overflow: hidden;
   /*Border info*/
   padding: 10px;
   border: 2px;
   border-style: solid;
   font-family: 'Courier New', Courier, monospace;
   margin: 5px;
-  overflow: hidden;
 }
 
 .content a {
   color: var(--link-color);
+}
+
+.grid {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+div > div {
+  padding: 10px;
+  margin: 10px;
 }
