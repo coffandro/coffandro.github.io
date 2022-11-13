@@ -12,12 +12,23 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <style>
 .AccountButtons {
+  border-bottom: 3px solid #ffa093;
+  box-shadow: inset 0 -4px 0 #ffa093;
+  border-radius: 25px;
+  border: 2px solid #ffa093;
+  background-color: #ffa093;
   /*Border info*/
   padding: 10px;
   border: 2px;
   border-style: solid;
   font-family: 'Courier New', Courier, monospace;
-  margin: 10%;
+}
+.AccountPic {
+  /*Border info*/
+  padding: 10px;
+  border: 2px;
+  border-style: solid;
+  font-family: 'Courier New', Courier, monospace;
 }
 </style>
 <body>
@@ -32,17 +43,19 @@ $(function(){
 <!--end of Navigation bar-->
 
 <div class="content" style="text-align: center;">
-  <img src="/images/Cornelius.jpg" class="w3-margin" alt="image" style="border-radius: 50%;" width="224px" height="336px">
+  <img src="/images/Cornelius.jpg" alt="image" class="AccountPic" width="224px" height="336px">
+  <p>Hello, im Cornelius!</p>
+  <p>here are some account links</p>
   <div class="grid">
-    <div>item</div>
-    <div>item</div>
-    <div>item</div>
-    <div>item</div>
-    <div>item</div>
-    <div>item</div>
-    <div>item</div>
-    <div>item</div>
-    <div>item</div>  
+    <div class="AccountButtons"><a href="https://github.com/coffandro"><img src="/images/github.svg" alt="" width="15px"> Github</a></div>
+    <div class="AccountButtons">item</div>
+    <div class="AccountButtons">item</div>
+    <div class="AccountButtons">item</div>
+    <div class="AccountButtons">item</div>
+    <div class="AccountButtons">item</div>
+    <div class="AccountButtons">item</div>
+    <div class="AccountButtons">item</div>
+    <div class="AccountButtons">item</div>
   </div>
 </div>
 
