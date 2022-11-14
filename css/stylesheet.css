@@ -86,8 +86,16 @@ li a:hover, .dropdown:hover .dropbtn {
 }
 
 .content a {
-  color: var(--link-color);
   text-decoration: none;
+}
+
+.AccountButtons {
+  display: block;
+  border: 2px;
+  border-style: solid;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 10px;
+  color: var(--main-color);
 }
 
 .grid {
