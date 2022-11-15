@@ -87,6 +87,7 @@ li a:hover, .dropdown:hover .dropbtn {
 
 .content a {
   text-decoration: none;
+  color: var(--link-color);
 }
 
 .AccountButtons {
@@ -95,7 +96,6 @@ li a:hover, .dropdown:hover .dropbtn {
   border-style: solid;
   font-family: 'Courier New', Courier, monospace;
   padding: 10px;
-  color: var(--main-color);
 }
 
 .grid {
