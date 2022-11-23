@@ -9,12 +9,12 @@ body {
   color: black;
 }
 .dark-mode body{
---main-bg-color: #333;
---main-color: white;
---link-color: aqua;
---alt-color: rgb(55, 55, 55);
-background-color: #333;
-color: white;
+  --main-bg-color: #333;
+  --main-color: white;
+  --link-color: aqua;
+  --alt-color: rgb(55, 55, 55);
+  background-color: #333;
+  color: white;
 }
 
 .feather-navbar {
@@ -77,11 +77,10 @@ li a:hover, .dropdown:hover .dropbtn {
   font-family: 'Courier New', Courier, monospace;
   background-color: var(--main-bg-color);
   overflow: hidden;
+  font-family: 'Courier New', Courier, monospace;
   /*Border info*/
   padding: 10px;
-  border: 2px;
-  border-style: solid;
-  font-family: 'Courier New', Courier, monospace;
+  border: 2px solid;
   margin: 5px;
 }
 
