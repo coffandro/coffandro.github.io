@@ -32,7 +32,7 @@ body {
   border-color: var(--main-color);
 }
 
-li {
+li{
   float: left;
   border-right: 1px solid #bbb;
 }
