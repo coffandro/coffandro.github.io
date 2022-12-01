@@ -1,6 +1,78 @@
-<ul class="navbar">
-  <li><a href="/"><img src="/images/rose.svg" alt="Home" width="15px"></a></li>
-  <li class="dropdown">
+<style>
+.feather-navbar {
+  width: 15px;
+  height: 15px;
+}
+
+.navbar{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 2px;
+  border-style: solid;
+  border-color: var(--main-color);
+}
+
+.navbar li{
+  float: left;
+  border-right: 1px solid #bbb;
+}
+
+li a, .dropbtn .dropdown{
+  display: inline-block;
+  color: var(--main-color);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar li a:hover, .dropdown:hover .dropbtn{
+  background-color: gray;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--alt-color);
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: var(--main-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #555}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.content {
+  display: block;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: var(--main-bg-color);
+  overflow: hidden;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 10px;
+  border: 2px solid;
+  margin: 5px;
+}
+
+.content a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+</style>
+<nav class="navbar">
+  <li class="navitem"><a href="/"><img src="/images/rose.svg" alt="Home" width="15px"></a></li>
+  <li class="dropdown navitem">
     <a href="javascript:void(0)" class="dropbtn"> Projects</a>
     <div class="dropdown-content">
       <a href="#">CoffKeys</a>
@@ -30,8 +102,9 @@
       <a href="/global/Pages/CV.html">CV</a>
     </div>
   </li>
+
   
-</ul>
+</nav>
 
 <script>
   feather.replace()
