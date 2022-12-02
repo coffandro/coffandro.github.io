@@ -1,8 +1,11 @@
 <style>
 .navbar {
   overflow: hidden;
-  background-color: #333;
+  background-color: var(--main-bg-color);
   position: relative;
+  border: 2px;
+  border-style: solid;
+  border-color: var(--main-color);
 }
 
 .navbar #myLinks {
@@ -10,7 +13,7 @@
 }
 
 .navbar a {
-  color: white;
+  color: var(--main-color);
   padding: 14px 16px;
   text-decoration: none;
   display: block;
@@ -26,8 +29,8 @@
 }
 
 .navbar a:hover {
-  background-color: #ddd;
-  color: black;
+  background-color: var(--alt-color);
+  color: var(--main-color);
 }
 
 .sidenav {
@@ -37,7 +40,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: var(--main-bg-color);
   overflow-x: hidden;
   padding-top: 20px;
 }
@@ -47,7 +50,7 @@
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
-  color: white;
+  color: var(--main-color);
   display: block;
   background: none;
   width: 100%;

@@ -15,20 +15,21 @@
 <div id="nav-placeholder">
 </div>
 <script>
-if ("ontouchstart" in document.documentElement)
-{
-  $(function(){
+    $(function(){
   $("#nav-placeholder").load("/mobile-navbar.html");
 });
+//if ("ontouchstart" in document.documentElement)
+//{
+
   // content for touch-screen (mobile) devices
-}
-else
-{
-  $(function(){
-  $("#nav-placeholder").load("/navbar.html");
-});
+//}
+//else
+//{
+//  $(function(){
+//  $("#nav-placeholder").load("/navbar.html");
+//});
   // everything else (desktop)
-}
+//}
 </script>
 <!--end of Navigation bar-->
 
