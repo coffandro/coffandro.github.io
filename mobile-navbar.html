@@ -1,8 +1,4 @@
 <style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .navbar {
   overflow: hidden;
   background-color: #333;
@@ -18,7 +14,7 @@ body {
   padding: 14px 16px;
   text-decoration: none;
   display: block;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .navbar a.icon {
@@ -83,24 +79,29 @@ body {
   float: right;
   padding-right: 8%;
 }
+
+.feather-mnavbar{
+  width: 15px;
+  height: 15px;
+}
 </style>
 <div class="navbar">
-  <a href="/"><img src="/images/rose.svg" alt="" width="5%"> Home</a>
+  <a href="/"><img src="/images/rose.svg" alt="" width="20px"> Home</a>
   <div id="myLinks">
     <li class="dropdown navitem">
-    <button class="dropdown-btn">Projects
+    <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="archive"></i> Projects
       <i class="fa fa-caret-down"></i>
     </button>
       <div class="dropdown-content">
         <a href="#">CoffKeys</a>
       </div>
-    <button class="dropdown-btn">Guides
+    <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="book"></i> Guides
       <i class="fa fa-caret-down"></i>
     </button>
       <div class="dropdown-content">
         <a href="#">PixelmonPack</a>
       </div>
-    <button class="dropdown-btn">Coding
+    <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="terminal"></i> Coding
       <i class="fa fa-caret-down"></i>
     </button>
       <div class="dropdown-content">
@@ -108,9 +109,9 @@ body {
         <a href="https://github.com/coffandro">GitHub</a>
       </div>
 
-    <li><a href="/art.html">Art</a></li>
+    <li><a href="/art.html"><i class="feather-mnavbar" data-feather="heart"></i> Art</a></li>
   
-    <button class="dropdown-btn">About Me
+    <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="help-circle"></i> About Me
       <i class="fa fa-caret-down"></i>
     </button>
       <div class="dropdown-content">
