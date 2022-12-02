@@ -60,6 +60,10 @@
   border: none;
 }
 
+.sidenav a, .dropdown-btn:hover {
+background-color: var(--hover-bg-color);
+}
+
 /* On mouse-over */
 .sidenav a:hover, .dropdown-btn:hover {
   color: var(--main-color);
@@ -95,23 +99,22 @@
 <div class="mnavbar">
   <a href="/"><img src="/images/rose.svg" alt="" width="15px"> Home</a>
   <nav id="myLinks">
-    <li class="dropdown navitem">
+
     <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="archive"></i> Projects
       <i class="fa fa-caret-down"></i>
     </button>
-    </li>
-    <li class="dropdown navitem">
+
       <div class="dropdown-content">
         <a href="#">CoffKeys</a>
       </div>
+
     <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="book"></i> Guides
       <i class="fa fa-caret-down"></i>
     </button>
       <div class="dropdown-content">
         <a href="#">PixelmonPack</a>
       </div>
-    </li>
-    <li class="dropdown navitem">
+
     <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="terminal"></i> Coding
       <i class="fa fa-caret-down"></i>
     </button>
@@ -119,10 +122,9 @@
         <a href="/test.html">test side</a>
         <a href="https://github.com/coffandro">GitHub</a>
       </div>
-    </li>
 
-    <li><a href="/art.html"><i class="feather-mnavbar" data-feather="heart"></i> Art</a></li>
-    <li class="dropdown navitem">
+    <a href="/art.html"><i class="feather-mnavbar" data-feather="heart"></i> Art</a>
+
     <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="help-circle"></i> About Me
     <i class="fa fa-caret-down"></i>
     </button>
@@ -132,7 +134,7 @@
         <a href="/about.html#Socials">Socials</a>
         <a href="/global/Pages/CV.html">CV</a>
       </div>
-    </li>
+
   </nav>
   <a href="javascript:void(0);" class="icon" onclick="Menu()">
     <i class="feather-mnavbar" data-feather="menu"></i>
