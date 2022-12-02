@@ -64,8 +64,8 @@
 
 /* Add an active class to the active dropdown button */
 .active {
-  background-color: green;
-  color: white;
+  background-color: var(--active-bg-color);
+  color: var(--main-color);
 }
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
@@ -86,7 +86,7 @@
 }
 </style>
 <div class="navbar">
-  <a href="/"><img src="/images/rose.svg" alt="" width="20px"> Home</a>
+  <a href="/"><img src="/images/rose.svg" alt="" width="15px"> Home</a>
   <div id="myLinks">
     <li class="dropdown navitem">
     <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="archive"></i> Projects
@@ -112,7 +112,7 @@
     <li><a href="/art.html"><i class="feather-mnavbar" data-feather="heart"></i> Art</a></li>
   
     <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="help-circle"></i> About Me
-      <i class="fa fa-caret-down"></i>
+    <i class="fa fa-caret-down"></i>
     </button>
       <div class="dropdown-content">
         <a href="/about.html">About Me</a>
