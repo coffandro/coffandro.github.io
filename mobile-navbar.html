@@ -75,6 +75,19 @@ background-color: var(--hover-bg-color);
   color: var(--main-color);
 }
 
+/* Optional: Style the caret down icon */
+.arrow {
+  width: 5px;
+  height: 5px;
+  float: right;
+  transition-duration: 0.5s;
+}
+
+.active .arrow{
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
 .mnavbar li:hover{
   background-color: var(--hover-bg-color);
 }
@@ -85,37 +98,32 @@ background-color: var(--hover-bg-color);
   padding-left: 8%;
 }
 
-/* Optional: Style the caret down icon */
-.arrow {
-  float: right;
-  padding-right: 8%;
-}
-
 .feather-mnavbar{
   width: 15px;
   height: 15px;
 }
 </style>
+
 <div class="mnavbar">
   <a href="/"><img src="/images/rose.svg" alt="" width="15px"> Home</a>
   <nav id="myLinks">
 
     <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="archive"></i> Projects
-      <i class="feather-mnavbar arrow" data-feather="arrow-down"></i>
+      <i class="arrow down"></i>
     </button>
       <div class="dropdown-content">
         <a href="#">CoffKeys</a>
       </div>
 
     <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="book"></i> Guides
-      <i class="feather-mnavbar arrow" data-feather="arrow-down"></i>
+      <i class="arrow down"></i>
     </button>
       <div class="dropdown-content">
         <a href="#">PixelmonPack</a>
       </div>
 
     <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="terminal"></i> Coding
-      <i class="feather-mnavbar arrow" data-feather="arrow-down"></i>
+      <i class="arrow down"></i>
     </button>
       <div class="dropdown-content">
         <a href="/test.html">test side</a>
@@ -125,8 +133,8 @@ background-color: var(--hover-bg-color);
     <a href="/art.html"><i class="feather-mnavbar" data-feather="heart"></i> Art</a>
 
     <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="help-circle"></i> About Me
-      <i class="feather-mnavbar arrow" data-feather="arrow-down"></i>
-    </button>
+        <i class="arrow down"></i>
+      </button>
       <div class="dropdown-content">
         <a href="/about.html">About Me</a>
         <a href="/WishList.html">Wish List</a>
@@ -135,10 +143,13 @@ background-color: var(--hover-bg-color);
       </div>
 
   </nav>
+
   <a href="javascript:void(0);" class="icon" onclick="Menu()">
     <i class="feather-mnavbar" data-feather="menu"></i>
   </a>
+
 </div>
+
 <script>
 feather.replace()
 
