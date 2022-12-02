@@ -51,6 +51,7 @@ body {
 }
 
 .arrow {
+  transition-duration: 0.5s;
   margin: 1%;
   border: solid var(--main-color);
   border-width: 0 2px 2px 0;
