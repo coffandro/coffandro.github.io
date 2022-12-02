@@ -1,5 +1,5 @@
 <style>
-.navbar {
+.mnavbar {
   overflow: hidden;
   background-color: var(--main-bg-color);
   position: relative;
@@ -8,11 +8,11 @@
   border-color: var(--main-color);
 }
 
-.navbar #myLinks {
+.mnavbar #myLinks {
   display: none;
 }
 
-.navbar a {
+.mnavbar a {
   color: var(--main-color);
   padding: 14px 16px;
   text-decoration: none;
@@ -20,7 +20,7 @@
   font-size: 20px;
 }
 
-.navbar a.icon {
+.mnavbar a.icon {
   background: var(--op-color);
   display: block;
   position: absolute;
@@ -28,8 +28,8 @@
   top: 0;
 }
 
-.navbar a:hover {
-  background-color: var(--alt-color);
+.mnavbar a:hover {
+  background-color: var(--hover-bg-color);
   color: var(--main-color);
 }
 
@@ -71,6 +71,10 @@
   color: var(--main-color);
 }
 
+.mnavbar li:hover{
+  background-color: var(--hover-bg-color);
+}
+
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-content {
   display: none;
@@ -88,13 +92,15 @@
   height: 15px;
 }
 </style>
-<div class="navbar">
+<div class="mnavbar">
   <a href="/"><img src="/images/rose.svg" alt="" width="15px"> Home</a>
-  <div id="myLinks">
+  <nav id="myLinks">
     <li class="dropdown navitem">
     <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="archive"></i> Projects
       <i class="fa fa-caret-down"></i>
     </button>
+    </li>
+    <li class="dropdown navitem">
       <div class="dropdown-content">
         <a href="#">CoffKeys</a>
       </div>
@@ -104,6 +110,8 @@
       <div class="dropdown-content">
         <a href="#">PixelmonPack</a>
       </div>
+    </li>
+    <li class="dropdown navitem">
     <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="terminal"></i> Coding
       <i class="fa fa-caret-down"></i>
     </button>
@@ -111,9 +119,10 @@
         <a href="/test.html">test side</a>
         <a href="https://github.com/coffandro">GitHub</a>
       </div>
+    </li>
 
     <li><a href="/art.html"><i class="feather-mnavbar" data-feather="heart"></i> Art</a></li>
-  
+    <li class="dropdown navitem">
     <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="help-circle"></i> About Me
     <i class="fa fa-caret-down"></i>
     </button>
@@ -123,11 +132,12 @@
         <a href="/about.html#Socials">Socials</a>
         <a href="/global/Pages/CV.html">CV</a>
       </div>
-  </div>
+    </li>
+  </nav>
   <a href="javascript:void(0);" class="icon" onclick="Menu()">
     <i class="feather-mnavbar" data-feather="menu"></i>
   </a>
-</div>    
+</div>
 <script>
 feather.replace()
 
