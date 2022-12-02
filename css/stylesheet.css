@@ -51,9 +51,10 @@ body {
 }
 
 .arrow {
+  margin: 1%;
   border: solid var(--main-color);
   border-width: 0 2px 2px 0;
-  display: inline-block;
+  display: block;
   padding: 2px;
 }
 
