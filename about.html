@@ -27,9 +27,21 @@
 <div id="nav-placeholder">
 </div>
 <script>
-$(function(){
+// loading a different nav bar depending on phone type
+if ("ontouchstart" in document.documentElement)
+{
+  $(function(){
+  $("#nav-placeholder").load("/mobile-navbar.html");
+});
+  // nav bar for touch-screen (mobile) devices
+}
+else
+{
+  $(function(){
   $("#nav-placeholder").load("/navbar.html");
 });
+  // nav bar for everything else (desktop)
+}
 </script>
 <!--end of Navigation bar-->
 
