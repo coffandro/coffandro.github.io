@@ -10,12 +10,3 @@ useDark.addListener((evt) => toggleDarkMode(evt.matches));
 function DarkBTN() {
     document.documentElement.classList.toggle("dark-mode");
 }
-// touch navbar detection
-if ("ontouchstart" in document.documentElement)
-{
-  // content for touch-screen (mobile) devices
-}
-else
-{
-  // everything else (desktop)
-}

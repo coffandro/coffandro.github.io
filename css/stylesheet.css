@@ -34,6 +34,11 @@ body {
   padding: 10px;
 }
 
+.content {
+  border: 2px solid;
+  border-color: var(--main-color);
+}
+
 .content li{
   border: 2px;
   border-style: solid;
