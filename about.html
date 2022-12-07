@@ -1,27 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
   <link rel="stylesheet" href="/css/stylesheet.css">
-  <title>About</title>
+  <title>Home page</title>
   <link rel="icon" type="image/x-icon" href="/images/rose.svg">
-  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 </head>
 <script src="https://unpkg.com/feather-icons"></script>
 <script src="/js/scripts.js"></script> 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<style>
-.AboutPic {
-  display: block;
-  width: 15%;
-  padding: 10px;
-  border: 2px;
-  border-style: solid;
-  margin: 5px;
-  float: left;    
-  margin: 0 15px 0 0;
-}
-</style>
+
 <body>
 <!--Navigation bar-->
 <div id="nav-placeholder">
@@ -30,6 +18,7 @@
 // loading a different nav bar depending on phone type
 if ("ontouchstart" in document.documentElement)
 {
+  document.documentElement.classList.toggle("mobile");
   $(function(){
   $("#nav-placeholder").load("/mobile-navbar.html");
 });
@@ -46,11 +35,11 @@ else
 <!--end of Navigation bar-->
 
 <div class="content">
-  <img class="AboutPic" src="/images/Cornelius1k.jpg" alt="" width="500px">
-  <h1 lang="en">Cornelius Andreas Rosenaa</h1>
-  <p lang="en">Hello, my name is Cornelius im an amateur programmer and student at Skolen ved nordens plads with a side job at Menu.</p>
-  <p lang="en">i also hold a position in the school board as a student counsil representative</p>
-  <p lang="en">on the side i work on many projects like wood working bits and bobs and electrical engineering projects like <a href="/Coffkeys.html">my Coffkeys project</a> or my programming projects found all over this website</p>
+  <img class="AboutPic" src="/images/Cornelius1k.jpg" alt="" width="15%">
+  <h1>Cornelius Andreas Rosenaa</h1>
+  <p>Hello, my name is Cornelius im an amateur programmer and student at Skolen ved nordens plads with a side job at Menu.</p>
+  <p>i also hold a position in the school board as a student counsil representative</p>
+  <p> the side i work on many projects like wood working bits and bobs and electrical engineering projects like <a href="/Coffkeys.html">my Coffkeys project</a> or my programming projects found all over this website</p>
 </div>
 
 <div id="Socials" class="content" style="text-align: center;">

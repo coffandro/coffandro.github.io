@@ -27,6 +27,11 @@ body {
   color: white;
 }
 
+.AboutPic {
+  padding: 10px;
+  float: left;
+}
+
 .AccountButtons {
   display: block;
   border: 2px;
@@ -54,6 +59,17 @@ body {
   gap: 1px;
   grid-template-columns: repeat(3, 1fr);
 }
+
+.mobile a, .mobile p{
+  padding: 10px;
+  font-size: 25px;
+}
+
+hr {
+  color: var(--main-color);
+}
+
+/* Arrow */
 
 .arrow {
   transition-duration: 0.5s;
