@@ -27,9 +27,16 @@ body {
   color: white;
 }
 
-.AboutPic {
+#AboutPic {
+  width: 15%;
   padding: 10px;
   float: left;
+  border: 2px solid var(--main-color);
+  margin: 5px;
+}
+
+.mobile #AboutPic {
+  width: 20%;
 }
 
 .AccountButtons {
