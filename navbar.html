@@ -19,7 +19,7 @@
   border-right: 1px solid #bbb;
 }
 
-li a, .dropbtn .dropdown{
+li a, .dropdown .dropbtn{
   display: inline-block;
   color: var(--main-color);
   text-align: center;
@@ -69,21 +69,57 @@ li a, .dropbtn .dropdown{
   text-decoration: none;
   color: var(--link-color);
 }
+
+.dark-modebtn{
+  background-color: var(--main-bg-color);
+  position: relative;
+  text-decoration: none;
+  border: none;
+  padding: 0;
+  height: 48px;
+  width: 48px;
+  color: var(--main-color);
+}
+.dark-modebtn:hover {
+  background-color: gray;
+}
+.sun {
+  opacity: 100%;
+  height: 50%;
+  width: 50%;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.moon {
+  opacity: 0%;
+  height: 50%;
+  width: 50%;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 </style>
-<nav class="navbar">
-  <li class="navitem"><a href="/"><img src="/images/rose.svg" alt="Home" width="15px"></a></li>
-  <li class="dropdown navitem">
+
+<div class="navbar">
+  <li><a href="/"><img src="/images/rose.svg" alt="Home" width="15px"></a></li>
+  <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn"> Projects</a>
     <div class="dropdown-content">
       <a href="/Coffkeys.html">CoffKeys</a>
+      <a href="/VMacro.html">Volume Controller</a>
     </div>
   </li>
+
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn"> Guides</a>
     <div class="dropdown-content">
       <a href="#">PixelmonPack</a>
     </div>
   </li>
+
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">Codning</a>
     <div class="dropdown-content">
@@ -91,6 +127,7 @@ li a, .dropbtn .dropdown{
       <a href="https://github.com/coffandro">GitHub</a>
     </div>
   </li>
+
   <li><a href="/art.html">Art</a></li>
 
   <li class="dropdown" style="float: right;">
@@ -102,9 +139,39 @@ li a, .dropbtn .dropdown{
       <a href="/global/Pages/CV.html">CV</a>
     </div>
   </li>
-  
-</nav>
+
+  <li style="float: right;"><button class="dark-modebtn darkMode">
+    <i class="sun" data-feather="sun"></i>
+    <i class="moon" data-feather="moon"></i>
+  </button></li>
+</div>
 
 <script>
-  feather.replace()
+// Select the button
+const btn = document.querySelector(".darkMode");
+// Select the theme preference from localStorage
+const currentTheme = localStorage.getItem("theme");
+
+// If the current theme in localStorage is "dark"...
+if (currentTheme == "dark") {
+  // ...then use the .dark-theme class
+  document.body.classList.add("dark-theme");
+}
+
+// Listen for a click on the button 
+btn.addEventListener("click", function() {
+  // Toggle the .dark-theme class on each click
+  document.body.classList.toggle("dark-theme");
+  
+  // Let's say the theme is equal to light
+  let theme = "light";
+  // If the body contains the .dark-theme class...
+  if (document.body.classList.contains("dark-theme")) {
+    // ...then let's make the theme dark
+    theme = "dark";
+  }
+  // Then save the choice in localStorage
+  localStorage.setItem("theme", theme);
+});
+feather.replace()
 </script>

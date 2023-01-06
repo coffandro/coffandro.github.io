@@ -1,56 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-  <link rel="stylesheet" href="/css/stylesheet.css">
-  <title>Home page</title>
-  <link rel="icon" type="image/x-icon" href="/images/rose.svg">
+  <link rel="stylesheet" href="/css/test.css">
 </head>
-
-<script src="https://unpkg.com/feather-icons"></script>
-<script src="/js/scripts.js"></script> 
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
+<script src="/js/test.js"></script>
 <body>
-<!--Navigation bar-->
-<div id="nav-placeholder">
-</div>
-<script>
-// loading a different nav bar depending on phone type
-//if ("ontouchstart" in document.documentElement)
-//{
-  document.documentElement.classList.toggle("mobile");
-  $(function(){
-  $("#nav-placeholder").load("/mobile-navbar.html");
-});
-  // nav bar for touch-screen (mobile) devices
-//}
-//else
-//{
-//  $(function(){
-//  $("#nav-placeholder").load("/navbar.html");
-//});
-  // nav bar for everything else (desktop)
-//}
-</script>
-<!--end of Navigation bar-->
-
-<style>
-  .circle {
-  height: 35px;
-  width: 35px;
-  background-color: var(--main-bg-color);
-  border-radius: 50%;
-}
-</style>
-
-<div class="container icon">
-  <div class="circle"></div>
-</div>
-
-<script>
-  feather.replace()
-</script>
-</body>
+  <button id="hellobutton">Hello</button>
+  <button class="darkMode">Darkmode</button>
+  <h1>Hey there! This is just a title</h2>
+    <p>I am just a boring text, existing here solely for the purpose of this demo</p>
+    <p>And I am just another one like the one above me, because two is better than having only one</p>
+  </body>
 </html>

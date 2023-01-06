@@ -15,16 +15,28 @@ body {
   color: black;
 }
 
-.dark-mode body{
+body.dark-theme{
   --active-bg-color: #555;
   --main-bg-color: #333;
   --main-color: white;
-  --link-color: aqua;
+  --link-color: rgb(255, 0, 0);
   --alt-color: rgb(55, 55, 55);
   --op-color: black;
   --hover-bg-color: gray;
   background-color: #333;
   color: white;
+}
+
+.dark-mode .sun {
+  opacity: 0%;
+}
+.dark-mode .moon {
+  opacity: 100%;
+}
+
+
+a {
+  color: var(--link-color);
 }
 
 #AboutPic {

@@ -1,200 +1,275 @@
 <style>
-.mnavbar {
-  overflow: hidden;
-  background-color: var(--main-bg-color);
-  position: relative;
-  border: 2px;
-  border-style: solid;
-  border-color: var(--main-color);
-}
-
-.mnavbar #myLinks {
-  display: none;
-}
-
-.mnavbar a {
-  color: var(--main-color);
-  padding: 14px 16px;
-  text-decoration: none;
-  display: block;
-  font-size: 20px;
-}
-
-.sidenav {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: var(--main-bg-color);
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-/* Style the sidenav links and the dropdown button */
-.sidenav a, .dropdown-btn {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  color: var(--main-color);
-  display: block;
-  background: none;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  outline: none;
-  border: none;
-}
-
-.sidenav a, .dropdown-btn:hover {
-background-color: var(--hover-bg-color);
-}
-
-/* Add an active class to the active dropdown button */
-.active {
-  background-color: var(--active-bg-color);
-  color: var(--main-color);
-}
-
-/* Optional: Style the caret down icon */
-.arrow {
-  width: 5px;
-  height: 5px;
-  float: right;
-  transition-duration: 0.4s;
-}
-
-.active .arrow{
-  transform: rotate(225deg);
-  -webkit-transform: rotate(225deg);
-}
-
-.mnavbar li:hover{
-  background-color: var(--hover-bg-color);
-}
-
-/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-.dropdown-content {
-  display: none;
-  padding-left: 8%;
-}
-
-.feather-mnavbar{
-  width: 15px;
-  height: 15px;
-}
-
-.container {
-  float: right;
-  cursor: pointer;
-  padding: 7px;
-  background-color: var(--active-bg-color);
-  transition: 0.4s;
-}
-
-.bar1, .bar2, .bar3 {
-  width: 35px;
-  height: 2px;
-  background-color: var(--main-color);
-  margin: 8px 0;
-  transition: 0.4s;
-}
-
-.mchange .bar1 {
-  transform: translate(0, 11px) rotate(-45deg);
-}
-
-.mchange .bar2 {opacity: 0;}
-
-.mchange .bar3 {
-  transform: translate(0, -11px) rotate(45deg);
-}
-
-.mnavbar .icon {
-  display: inline-block;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-</style>
-
-<div class="mnavbar">
-<a id="home" href="/"><img src="/images/rose.svg" alt="" width="15px"> Home</a>
-<nav id="myLinks">
-
-  <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="archive"></i> Projects
-    <i class="arrow down"></i>
-  </button>
-    <div class="dropdown-content">
-      <a href="/Coffkeys.html">CoffKeys</a>
-    </div>
-
-  <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="book"></i> Guides
-    <i class="arrow down"></i>
-  </button>
-    <div class="dropdown-content">
-      <a href="#">PixelmonPack</a>
-    </div>
-
-  <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="terminal"></i> Coding
-    <i class="arrow down"></i>
-  </button>
-    <div class="dropdown-content">
-      <a href="/test.html">test side</a>
-      <a href="https://github.com/coffandro">GitHub</a>
-    </div>
-
-  <a href="/art.html"><i class="feather-mnavbar" data-feather="heart"></i> Art</a>
-
-  <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="help-circle"></i> About Me
-    <i class="arrow down"></i>
-  </button>
-    <div class="dropdown-content">
-      <a href="/about.html">About Me</a>
-      <a href="/WishList.html">Wish List</a>
-      <a href="/about.html#Socials">Socials</a>
-      <a href="/global/Pages/CV.html">CV</a>
-    </div>
-
-  </nav>
-
-  <div class="container icon" onclick="Burger(this);Menu()">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
-  </div>
-</div>
-
-<script>
-feather.replace()
-/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
-
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var dropdownContent = this.nextElementSibling;
-    if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } else {
-      dropdownContent.style.display = "block";
-    }
-  });
-}
-
-
-function Burger(x) {
-  x.classList.toggle("mchange");
+  .mnavbar {
+    overflow: hidden;
+    background-color: var(--main-bg-color);
+    position: relative;
+    border: 2px;
+    border-style: solid;
+    border-color: var(--main-color);
   }
+  
+  .mnavbar #myLinks {
+    display: none;
+  }
+  
+  .mnavbar a {
+    color: var(--main-color);
+    padding: 14px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 20px;
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: var(--main-bg-color);
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  /* Style the sidenav links and the dropdown button */
+  .sidenav a, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: var(--main-color);
+    display: block;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    border: none;
+  }
+  
+  .sidenav a, .dropdown-btn:hover {
+  background-color: var(--hover-bg-color);
+  }
+  
+  /* Add an active class to the active dropdown button */
+  .active {
+    background-color: var(--active-bg-color);
+    color: var(--main-color);
+  }
+  
+  /* Optional: Style the caret down icon */
+  .arrow {
+    width: 5px;
+    height: 5px;
+    float: right;
+    transition-duration: 0.4s;
+  }
+  
+  .active .arrow{
+    transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+  }
+  
+  .mnavbar li:hover{
+    background-color: var(--hover-bg-color);
+  }
+  
+  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+  .dropdown-content {
+    display: none;
+    padding-left: 8%;
+  }
+  
+  .feather-mnavbar{
+    width: 15px;
+    height: 15px;
+  }
+  
+  .mnavbarbtns{
+    display: inline;
+  }
+  
+  .container {
+    float: right;
+    cursor: pointer;
+    padding: 7px;
+    background-color: var(--active-bg-color);
+    transition: 0.2s;
+  }
+  
+  .bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 2px;
+    background-color: var(--main-color);
+    margin: 8px 0;
+    transition: 0.2s ease-in-out;
+  }
+  
+  .mnavbar .icon {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .mnavbar .icon2 {
+    display: inline-block;
+    position: absolute;
+    right: 49px;
+    top: 0;
+  }
+  .dark-modebtn{
+    background-color: var(--active-bg-color);
+    position: relative;
+    border: none;
+    text-decoration: none;
+    padding: 0;
+    height: 52px;
+    width: 52px;
+    color: var(--main-color);
+    border-radius: 0 0 0 0;
+    transition: 0.1s;
+  }
+  .sun {
+    opacity: 100%;
+    height: 50%;
+    width: 50%;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .moon {
+    opacity: 0%;
+    height: 50%;
+    width: 50%;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .mchange .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+  }
+  
+  .mchange .bar2 {transform: scaleY(0);}
+  
+  .mchange .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+  }
+  </style>
+  
+  <div class="mnavbar">
+  <a id="home" href="/"><img src="/images/rose.svg" alt="" width="15px"> Home</a>
+  <nav id="myLinks">
+  
+    <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="archive"></i> Projects
+      <i class="arrow down"></i>
+    </button>
+      <div class="dropdown-content">
+        <a href="/Coffkeys.html">CoffKeys</a>
+      </div>
+  
+    <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="book"></i> Guides
+      <i class="arrow down"></i>
+    </button>
+      <div class="dropdown-content">
+        <a href="#">PixelmonPack</a>
+      </div>
+  
+    <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="terminal"></i> Coding
+      <i class="arrow down"></i>
+    </button>
+      <div class="dropdown-content">
+        <a href="/test.html">test side</a>
+        <a href="https://github.com/coffandro">GitHub</a>
+      </div>
+  
+    <a href="/art.html"><i class="feather-mnavbar" data-feather="heart"></i> Art</a>
+  
+    <button class="dropdown-btn"><i class="feather-mnavbar" data-feather="help-circle"></i> About Me
+      <i class="arrow down"></i>
+    </button>
+      <div class="dropdown-content">
+        <a href="/about.html">About Me</a>
+        <a href="/WishList.html">Wish List</a>
+        <a href="/about.html#Socials">Socials</a>
+        <a href="/global/Pages/CV.html">CV</a>
+      </div>
+  
+    </nav>
+  
+    <button id="darkBTN" class="dark-modebtn container icon2 darkMode" onclick="DarkBTN()">
+      <i class="sun" data-feather="sun"></i>
+      <i class="moon" data-feather="moon"></i>
+    </button>
+  
+    <div id="Burger" class="container icon" onclick="Burger();Menu()">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+  </div>
+  </div>
+  
+  <script>
+  feather.replace()
+  /* Loop through all dropdown buttons to toggle between 
+  hiding and showing its dropdown content - This allows the 
+  user to have multiple dropdowns without any conflict */
+  var dropdown = document.getElementsByClassName("dropdown-btn");
+  var i;
+  
+  for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
+      } else {
+        dropdownContent.style.display = "block";
+      }
+    });
+  }
+  /*this allows the hamburger menu to collapse or extend*/
+  function Burger() {
+    var x = document.getElementById("Burger")
+    x.classList.toggle("mchange");
+    }
+  
+  /*this plays the animation for the hamburger menu*/
+  function Menu() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+  x.style.display = "none";
+  } else {
+  x.style.display = "block";
+  }}
+  
+  /*this makes the dark mode button work*/
+// Select the button
+const btn = document.querySelector(".darkMode");
+// Select the theme preference from localStorage
+const currentTheme = localStorage.getItem("theme");
 
-function Menu() {
-var x = document.getElementById("myLinks");
-if (x.style.display === "block") {
-x.style.display = "none";
-} else {
-x.style.display = "block";
+// If the current theme in localStorage is "dark"...
+if (currentTheme == "dark") {
+  // ...then use the .dark-theme class
+  document.body.classList.add("dark-theme");
 }
-}
-</script>
+
+// Listen for a click on the button 
+btn.addEventListener("click", function() {
+  // Toggle the .dark-theme class on each click
+  document.body.classList.toggle("dark-theme");
+  
+  // Let's say the theme is equal to light
+  let theme = "light";
+  // If the body contains the .dark-theme class...
+  if (document.body.classList.contains("dark-theme")) {
+    // ...then let's make the theme dark
+    theme = "dark";
+  }
+  // Then save the choice in localStorage
+  localStorage.setItem("theme", theme);
+});
+  </script>
