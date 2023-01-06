@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <link rel="stylesheet" href="/css/stylesheet.css">
+  <title>Pixelmon modpack</title>
+  <link rel="icon" type="image/x-icon" href="/images/rose.svg">
+</head>
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="/js/scripts.js"></script> 
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<body>
+<!--Navigation bar-->
+<div id="nav-placeholder">
+</div>
+<script>
+// loading a different nav bar depending on phone type
+if ("ontouchstart" in document.documentElement)
+{
+  document.documentElement.classList.toggle("mobile");
+  $(function(){
+  $("#nav-placeholder").load("/mobile-navbar.html");
+});
+  // nav bar for touch-screen (mobile) devices
+}
+else
+{
+  $(function(){
+  $("#nav-placeholder").load("/navbar.html");
+});
+  // nav bar for everything else (desktop)
+}
+</script>
+<!--end of Navigation bar-->
+
+<div class="content">
+    <h1>Pixelmon modpack install guide</h1>
+</div>
+<div class="content">
+    <h2>Contents:</h2>
+    <li><a href="#Requirements"><i class="feather-navbar" data-feather="help-circle"></i> Requirements</a></li>
+    <li><a href="#MInstall"><i class="feather-navbar" data-feather="download"></i> Minecraft installation</a><ul>
+    <li><a href="#Windows"><img src="/images/WindowsLogo.svg" class="feather-navbar Linksvg"> Windows</a></li>
+    <li><a href="#Linux"><img src="/images/Ubuntu.svg" class="feather-navbar Linksvg"> Linux(Ubuntu based)</a></li>
+    </ul></li>
+    <li><a href="#Installation">Modpack installation</a></li>
+    <li><a href="#PostSetup">Post installation setup</a></li>
+</div>
+<div class="content" id="Requirements">
+    <h2><i class="feather-navbar" data-feather="help-circle"></i> Requirements</h2>
+    <h3>For this guide you <b>need</b> the following</h3> 
+    <li><p>A <b>legal</b> license to Minecraft java edition which can be bought <a href="https://www.minecraft.net/store/minecraft-java-bedrock-edition-pc">here</a></p></li>
+    <li><p>A 64-bit build of Java 8, or a launcher that has a copy of Java bundled in up to java 11 may be used.</p></li>
+    <li><p><a href="https://minecraft.fandom.com/wiki/Java_Edition_hardware_requirements"> recommended requirements of minecraft</a> exept for the storage</p></li>
+    <li><p>10 GB on ssd</p></li>
+</div>
+
+<div class="content" id="MInstall">
+<div class="content" id="Windows">
+    <h2><img src="/images/WindowsLogo.svg" class="feather-navbar Linksvg"> Windows installation</h2>
+</div>
+<div class="content" id="Linux">
+    <h2><img src="/images/Ubuntu.svg" class="feather-navbar Linksvg"> Linux installation</h2>
+
+</div>
+</div>
+<div class="content" id="Installation">
+
+</div>
+<div class="content" id=PostSetup></div>
+
+<script>
+  feather.replace()
+</script>
+</body>
+</html>

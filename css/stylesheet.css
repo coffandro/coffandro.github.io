@@ -7,10 +7,11 @@ body {
   --active-bg-color: lightgray;
   --main-bg-color: white;
   --main-color: black;
-  --link-color: purple;
+  --link-color: blue;
   --alt-color: #f9f9f9;
   --op-color: lightgray;
   --hover-bg-color: gray;
+  --linksvg: invert(7%) sepia(100%) saturate(7364%) hue-rotate(248deg) brightness(109%) contrast(144%);
   background-color: white;
   color: black;
 }
@@ -23,14 +24,15 @@ body.dark-theme{
   --alt-color: rgb(55, 55, 55);
   --op-color: black;
   --hover-bg-color: gray;
+  --linksvg: invert(22%) sepia(100%) saturate(7449%) hue-rotate(355deg) brightness(87%) contrast(136%);
   background-color: #333;
   color: white;
 }
 
-.dark-mode .sun {
+.dark-theme .sun {
   opacity: 0%;
 }
-.dark-mode .moon {
+.dark-theme .moon {
   opacity: 100%;
 }
 
@@ -63,13 +65,16 @@ a {
   border-color: var(--main-color);
 }
 
-.content li{
-  border: 2px;
-  border-style: solid;
-  padding: 5px;
+.content li, .content a{
+  padding: 0px;
+  margin: 0px;
 }
 
-.content li:hover{
+.content a{
+  padding: 10px;
+}
+
+.content a:hover{
   background-color: gray;
 }
 
@@ -86,6 +91,10 @@ a {
 
 hr {
   color: var(--main-color);
+}
+
+.Linksvg{
+  filter: var(--linksvg);
 }
 
 /* Arrow */

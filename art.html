@@ -8,20 +8,44 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 
 </head>
+<script src="./js/intense.js"></script>
 <script src="https://unpkg.com/feather-icons"></script>
 <script src="/js/scripts.js"></script> 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <style>
-.art{
-  text-align: center;
+.art p{
   margin: 25px;
 }
 .art img{
+  cursor:zoom-in;
   display: block;
-  margin-left: auto;
+  margin-left: 0px;
   margin-right: auto;
-  width: 75%;
+  width: 85%;
 }
+
+.artContainer {
+  border: 2px solid;
+  display:relative;
+}
+
+.artMax {
+  opacity: 0%;
+  pointer-events: none;
+  position:absolute;
+  font-size: 10%;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border: 2px solid;
+  margin: 5px;
+  border-radius: 15%;
+}
+
+.mobile .artMax {
+  opacity: 100%;
+}
+
 </style>
 
 <body>
@@ -49,17 +73,29 @@ else
 <!--end of Navigation bar-->
 
 <div class="content art">
-  <h1>someone forgot their plushie in a cave :(</h1>
-  <img src="/images/monkey_art.png" alt="a monkey sitting by a lamp over a small river">
+  <h1>Someone forgot their plushie in a cave :(</h1>
+  <div class="artContainer">
+    <i class="artMax" data-feather="maximize-2"></i>
+    <img class="intense" src="/images/monkey_art.png" alt="a monkey sitting by a lamp over a small river">
+  </div>
 </div>
 
 <div class="content art">
   <h1>Remember your god damned space suit!</h1>
-  <img src="/images/SpaceSuit_art.png" alt="a man floating in front of the sun without a suit on. probably suffaceted">
+  <div class="artContainer">
+  <i class="artMax" data-feather="maximize-2"></i>
+  <img class="intense" src="/images/SpaceSuit_art.png" alt="a man floating in front of the sun without a suit on. probably suffaceted">
+  </div>
 </div>
 
 <script>
   feather.replace()
+
+  window.onload = function() {
+	// Intensify all images with the 'intense' classname.
+    var elements = document.querySelectorAll( '.intense' );
+	Intense( elements );
+}
 </script>
 </body>
 </html>
