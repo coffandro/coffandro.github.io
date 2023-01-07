@@ -36,6 +36,10 @@ body.dark-theme{
   opacity: 100%;
 }
 
+.feather-navbar {
+  width: 15px;
+  height: 15px;
+}
 
 a {
   color: var(--link-color);
@@ -87,6 +91,14 @@ a {
 .mobile a, .mobile p{
   padding: 10px;
   font-size: 25px;
+}
+
+.mobile .articleImg{
+  width: 100%;
+}
+
+.mobile a {
+  text-decoration: none;
 }
 
 hr {
