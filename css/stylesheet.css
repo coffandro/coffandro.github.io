@@ -64,6 +64,16 @@ a {
   padding: 10px;
 }
 
+.calendarwrap {
+  display: absolute;
+  width: 50%;
+  float: right;
+}
+.mobile .calendarwrap {
+  width: 100%;
+  float: none;
+}
+
 .content {
   border: 2px solid;
   border-color: var(--main-color);
@@ -89,8 +99,12 @@ a {
 }
 
 .mobile a, .mobile p{
-  padding: 10px;
+  padding: 5px;
   font-size: 25px;
+}
+.mobile h3, .mobile h2{
+  padding: 2px;
+  font-size: 150%;
 }
 
 .mobile .articleImg{
