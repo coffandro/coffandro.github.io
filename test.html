@@ -1,22 +1,40 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="/css/test.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <link rel="stylesheet" href="/css/stylesheet.css">
+  <title>Home page</title>
+  <link rel="icon" type="image/x-icon" href="/images/rose.svg">
 </head>
-<script src="/js/test.js"></script>
-<style>
-.GumroadContainer {
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  padding: 10px;
-  background: #fff;
-  border: 2px solid var(--link-color);
-  text-align: center;
-  font: 15px Arial, sans-serif;
-}
-
-</style>
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="/js/scripts.js"></script> 
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <body>
-  <div class="GumroadContainer">G</div>
-  </body>
+<!--Navigation bar-->
+<div id="nav-placeholder">
+</div>
+<script>
+// loading a different nav bar depending on phone type
+if ("ontouchstart" in document.documentElement)
+{
+  document.documentElement.classList.toggle("mobile");
+  $(function(){
+  $("#nav-placeholder").load("/mobile-navbar.html");
+});
+  // nav bar for touch-screen (mobile) devices
+}
+else
+{
+  $(function(){
+  $("#nav-placeholder").load("/navbar.html");
+});
+  // nav bar for everything else (desktop)
+}
+</script>
+<!--end of Navigation bar-->
+
+<script>
+  feather.replace()
+</script>
+</body>
 </html>

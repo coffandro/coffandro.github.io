@@ -14,18 +14,6 @@
 <!--Navigation bar-->
 <div id="nav-placeholder">
 </div>
-
-<!-- Include the library. -->
-<script
-  src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js">
-</script>
-
-<!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
-/>
-
 <script>
 // loading a different nav bar depending on phone type
 if ("ontouchstart" in document.documentElement)
@@ -52,13 +40,6 @@ else
   <p>Hello, my name is Cornelius im an amateur programmer and student at Skolen ved nordens plads with a side job at Menu.</p>
   <p>i also hold a position in the school board as a student counsil representative</p>
   <p> on the side i work on many projects like wood working bits and bobs and electrical engineering projects like <a href="/Coffkeys.html">my Coffkeys project</a> or my programming projects found all over this website</p>
-  <div class="content calendarwrap">
-    <!--Github calendar loader-->
-    <div class="calendar">
-      <!-- Loading stuff -->
-      Loading the data just for you.
-    </div>
-  </div>
 </div>
 
 <div id="Socials" class="content" style="text-align: center;">
@@ -72,8 +53,6 @@ else
 
 <script>
   feather.replace()
-  // or enable responsive functionality:
-  GitHubCalendar(".calendar", "coffandro", { responsive: true, tooltips: true });
 </script>
 </body>
 </html>
