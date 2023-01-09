@@ -4,19 +4,6 @@
 
 body {
   margin: 0;
-  --active-bg-color: lightgray;
-  --main-bg-color: white;
-  --main-color: black;
-  --link-color: blue;
-  --alt-color: #f9f9f9;
-  --op-color: lightgray;
-  --hover-bg-color: gray;
-  --linksvg: invert(7%) sepia(100%) saturate(7364%) hue-rotate(248deg) brightness(109%) contrast(144%);
-  background-color: white;
-  color: black;
-}
-
-body.dark-theme{
   --active-bg-color: #555;
   --main-bg-color: #333;
   --main-color: white;
@@ -29,10 +16,23 @@ body.dark-theme{
   color: white;
 }
 
-.dark-theme .sun {
+body.light-theme{
+  --active-bg-color: lightgray;
+  --main-bg-color: white;
+  --main-color: black;
+  --link-color: blue;
+  --alt-color: #f9f9f9;
+  --op-color: lightgray;
+  --hover-bg-color: gray;
+  --linksvg: invert(7%) sepia(100%) saturate(7364%) hue-rotate(248deg) brightness(109%) contrast(144%);
+  background-color: white;
+  color: black;
+}
+
+.light-theme .sun {
   opacity: 0%;
 }
-.dark-theme .moon {
+.light-theme .moon {
   opacity: 100%;
 }
 
