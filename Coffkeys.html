@@ -5,9 +5,9 @@
   <link rel="stylesheet" href="/css/stylesheet.css">
   <title>Coffkeys</title>
   <link rel="icon" type="image/x-icon" href="/images/rose.svg">
-  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 </head>
 
+<script src="./js/intense.js"></script>
 <script src="https://unpkg.com/feather-icons"></script>
 <script src="/js/scripts.js"></script> 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -49,12 +49,21 @@ else
   <br>
   <p>and the first version was just an old Dell SK-8115 keyboard which i had bought for 100 Danish crowns(i got ripped off)</p>
   <p>i remember it being...</p>
-  <img src="/Projects/Images/DellSK8115.png" class="articleImg">
+  <div class="artContainer">
+    <i class="imgMax" data-feather="maximize-2"></i>
+    <img class="articleImg intense" src="/Projects/Images/DellSK8115.png">
+  </div>
   <p>i'll continue writing this whenever i get the time, sorry to cut it off</p>
 </div>
 
 <script>
   feather.replace()
+
+  window.onload = function() {
+	// Intensify all images with the 'intense' classname.
+    var elements = document.querySelectorAll( '.intense' );
+	Intense( elements );
+}
 </script>
 </body>
 </html>

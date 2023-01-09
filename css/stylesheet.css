@@ -64,16 +64,6 @@ a {
   padding: 10px;
 }
 
-.calendarwrap {
-  display: absolute;
-  width: 50%;
-  float: right;
-}
-.mobile .calendarwrap {
-  width: 100%;
-  float: none;
-}
-
 .content {
   border: 2px solid;
   border-color: var(--main-color);
@@ -107,7 +97,12 @@ a {
   font-size: 150%;
 }
 
+.articleImg {
+  cursor: zoom-in;
+}
+
 .mobile .articleImg{
+  cursor:zoom-in;
   width: 100%;
 }
 
@@ -121,6 +116,28 @@ hr {
 
 .Linksvg{
   filter: var(--linksvg);
+}
+
+.imgContainer {
+  border: 2px solid;
+  display:relative;
+}
+
+.imgMax {
+  opacity: 0%;
+  pointer-events: none;
+  position:absolute;
+  font-size: 10%;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border: 2px solid;
+  margin: 5px;
+  border-radius: 15%;
+}
+
+.mobile .imgMax {
+  opacity: 100%;
 }
 
 /* Arrow */
