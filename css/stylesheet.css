@@ -57,7 +57,7 @@ a {
   width: 20%;
 }
 
-.AccountButtons {
+.gridButtons {
   display: block;
   border: 2px;
   border-style: solid;
@@ -140,6 +140,24 @@ hr {
   opacity: 100%;
 }
 
+ /* Style the button that is used to open and close the collapsible content */
+ .collapsible {
+  border: 2px solid;
+  background-color: var(--main-bg-color);
+  color: var(--main-color);
+  cursor: pointer;
+  padding: 18px;
+  margin: 5px;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: gray;
+}
 /* Arrow */
 
 .arrow {
