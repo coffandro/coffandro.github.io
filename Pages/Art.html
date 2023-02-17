@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport">
+  <meta name="og:url" content="coffandro.github.io">
+
+  <title>PAGE NAME</title>
+  <meta property="og:title" content="PAGE NAME">
+  <meta name="twitter:title" content="PAGE NAME">
+
+  <meta name="description" content="PAGE DESCRIPTION">
+  <meta property="og:description" content="PAGE DESCRIPTION">
+  <meta name="twitter:description" content="PAGE DESCRIPTION">
+
+  <link rel="icon" type="image/x-icon" href="/Images/Xicon.svg">
+  <meta property="og:image" content="/Images/Xicon.svg">
+  <meta name="twitter:image" content="/Images/Xicon.svg">
+
+  <link rel="stylesheet" href="/css/stylesheet.css">
+  <link id="nav" rel="stylesheet" href="/css/navbar.css" disabled>
+  <link id="mnav" rel="stylesheet" href="/css/mnavbar.css" disabled>
+
+
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script id="Font-Awesome" src="https://kit.fontawesome.com/5c072ddc8a.js" crossorigin="anonymous"></script>
+  <script id="Feather-Icons" src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+<!--Navigation bar-->
+<div id="nav-placeholder">
+</div>
+<script>
+// loading a different nav bar depending on phone type
+if ("ontouchstart" in document.documentElement)
+{
+  document.documentElement.classList.toggle("mobile");
+  document.getElementById('mnav').removeAttribute('disabled');
+  $(function(){
+    $("#nav-placeholder").load("/mobile-navbar.html");
+});
+  // nav bar for touch-screen (mobile) devices
+}
+else
+{
+  document.getElementById('nav').removeAttribute('disabled');
+  $(function(){
+  $("#nav-placeholder").load("/navbar.html");
+});
+  // nav bar for everything else (desktop)
+}
+</script>
+<!--end of Navigation bar-->
+
+<div class="content">
+<h1>Art</h1>
+<h2>Please feel free to look around at the different pieces of "art" i've made</h2>
+<h3>(if you are on mobile i suggest putting the phone in landscape mode)</h3>
+<div class="grid">
+  <a href="/Images/Art/monkey_art.png"><img src="/Images/Art/monkey_art.png" width="90%" alt="A monkey sitting by a lamp over a small river">
+  <p><b>Someone forgot their plushie in a cave :(</b></p></a>
+  <a href="/Images/Art/SpaceSuit_art.png"><img src="/Images/Art/SpaceSuit_art.png" width="90%" alt="A man floating in front of the sun without a suit on. probably suffaceted">
+  <p><b>Remember your god damned space suit!</b></p></a>
+</div>
+</div>
+
+</body>
+</html>

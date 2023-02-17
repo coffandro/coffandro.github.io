@@ -1,139 +1,48 @@
-<style>
-.navbar{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  border: 2px;
-  border-style: solid;
-  border-color: var(--main-color);
-}
+<nav>
+<!-- The rose home pag -->
+<li><a href="/"><img id="Rose" src="/Images/Rose.svg" alt="Home" width="15px"></a></li>
 
-.navbar li{
-  float: left;
-  border-right: 1px solid #bbb;
-}
+<!-- Coding dropdown -->
+<li class="dropdown">
+  <a href="javascript:void(0)" class="dropbtn">
+    <i class="fa-solid fa-code"></i> 
+    Coding 
+    <i class="fa fa-caret-down"></i>
+  </a>
+  <div class="dropdown-content">
+    <a href="https://github.com/coffandro/coffandro.github.io">This websites source</a>
+    <a href="https://github.com/coffandro">GitHub</a>
+  </div>
+</li>
 
-li a, .dropdown .dropbtn{
-  display: inline-block;
-  color: var(--main-color);
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
+<!-- Art page -->
+<li><a href="/Pages/Art.html"><i class="fa-regular fa-image"></i> Art</a></li>
 
-.navbar li a:hover, .dropdown:hover .dropbtn{
-  background-color: gray;
-}
+<!-- About me dropdown -->
+<li id="About" class="dropdown" style="float: right;">
+    <a href="/Pages/About/About.html" class="dropbtn">
+      <i class="fa-regular fa-address-card"></i>
+      About Me
+      <i class="fa fa-caret-down"></i>
+    </a>
+  <div class="dropdown-content">
+    <a href="/Pages/About/About.html">About Me</a>
+    <a href="/Pages/About/WishList.html">Wish List</a>
+    <a href="/Pages/About/About.html#Socials">Socials</a>
+    <!-- <a href="/Pages/About/CV.html">CV</a> -->
+  </div>
+</li>
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: var(--alt-color);
-  min-width: 120px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  border: 2px solid;
-  border-color: var(--main-color);
-}
-
-.dropdown-content a {
-  color: var(--main-color);
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {background-color: #555}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.content {
-  display: block;
-  background-color: var(--main-bg-color);
-  overflow: hidden;
-  padding: 10px;
-  border: 2px solid;
-  margin: 5px;
-}
-
-.content a {
-  text-decoration: none;
-  color: var(--link-color);
-}
-
-.dark-modebtn{
-  background-color: var(--main-bg-color);
-  position: relative;
-  text-decoration: none;
-  border: none;
-  padding: 0;
-  height: 48px;
-  width: 48px;
-  color: var(--main-color);
-}
-.dark-modebtn:hover {
-  background-color: gray;
-}
-.sun {
-  opacity: 100%;
-  height: 50%;
-  width: 50%;
-  padding: 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.moon {
-  opacity: 0%;
-  height: 50%;
-  width: 50%;
-  padding: 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-</style>
-
-<div class="navbar">
-  <li><a href="/"><img src="/images/rose.svg" alt="Home" width="15px"></a></li>
-  <li class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn"> Projects</a>
-    <div class="dropdown-content">
-      <a href="/Coffkeys.html">CoffKeys</a>
-      <a href="/VMacro.html">Volume Controller</a>
-    </div>
-  </li>
-
-  <li class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn">Codning</a>
-    <div class="dropdown-content">
-      <a href="/test.html">test side</a>
-      <a href="https://github.com/coffandro">GitHub</a>
-    </div>
-  </li>
-
-  <li><a href="/art.html">Art</a></li>
-
-  <li class="dropdown" style="float: right;">
-    <a href="about.html" class="dropbtn"><i class="feather-navbar" data-feather="help-circle"></i> About Me</a>
-    <div class="dropdown-content">
-      <a href="/about.html">About Me</a>
-      <a href="/WishList.html">Wish List</a>
-      <a href="/about.html#Socials">Socials</a>
-      <a href="/global/Pages/CV.html">CV</a>
-    </div>
-  </li>
-
-  <li style="float: right;"><button class="dark-modebtn lightMode">
-    <i class="sun" data-feather="sun"></i>
-    <i class="moon" data-feather="moon"></i>
-  </button></li>
+<!-- Theme switch button -->
+<li style="float: right;"><button class="dark-modebtn lightMode">
+  <i class="sun" data-feather="sun"></i>
+  <i class="moon" data-feather="moon"></i>
+</button></li>
 </div>
 
+</nav>
+
+<!-- this makes the light mode work -->
 <script>
 // Select the button
 const btn = document.querySelector(".lightMode");
@@ -142,21 +51,26 @@ const currentTheme = localStorage.getItem("theme");
 
 // If the current theme in localStorage is "light"...
 if (currentTheme == "light") {
+  document.getElementById("Rose").src = "/Images/BlackRose.svg";
   // ...then use the .dark-theme class
   document.body.classList.add("light-theme");
 }
-
+// The collabsible
 // Listen for a click on the button 
 btn.addEventListener("click", function() {
   // Toggle the .dark-theme class on each click
   document.body.classList.toggle("light-theme");
-  
+
   // Let's say the theme is equal to dark
   let theme = "dark";
   // If the body contains the .dark-theme class...
   if (document.body.classList.contains("light-theme")) {
     // ...then let's make the theme light
+    document.getElementById("Rose").src = "/Images/BlackRose.svg";
     theme = "light";
+  }
+  else {
+    document.getElementById("Rose").src = "/Images/Rose.svg";
   }
   // Then save the choice in localStorage
   localStorage.setItem("theme", theme);

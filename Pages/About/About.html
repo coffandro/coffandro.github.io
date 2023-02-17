@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport">
+  <meta name="og:url" content="coffandro.github.io">
+
+  <title>About Me</title>
+  <meta property="og:title" content="About Me">
+  <meta name="twitter:title" content="About Me">
+
+  <meta name="description" content="Hello, my name is Cornelius and this is the page about me">
+  <meta property="og:description" content="Hello, my name is Cornelius and this is the page about me">
+  <meta name="twitter:description" content="Hello, my name is Cornelius and this is the page about me">
+
+  <link rel="icon" type="image/x-icon" href="/Images/Xicon.svg">
+  <meta property="og:image" content="/Images/Xicon.svg">
+  <meta name="twitter:image" content="/Images/Xicon.svg">
+
+  <link rel="stylesheet" href="/css/stylesheet.css">
+  <link id="nav" rel="stylesheet" href="/css/navbar.css" disabled>
+  <link id="mnav" rel="stylesheet" href="/css/mnavbar.css" disabled>
+
+
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script id="Font-Awesome" src="https://kit.fontawesome.com/5c072ddc8a.js" crossorigin="anonymous"></script>
+  <script id="Feather-Icons" src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+<!--Navigation bar-->
+<div id="nav-placeholder">
+</div>
+<script>
+// loading a different nav bar depending on phone type
+if ("ontouchstart" in document.documentElement)
+{
+document.documentElement.classList.toggle("mobile");
+  document.getElementById('mnav').removeAttribute('disabled');
+  $(function(){
+    $("#nav-placeholder").load("/mobile-navbar.html");
+});
+  // nav bar for touch-screen (mobile) devices
+}
+else
+{
+  document.getElementById('nav').removeAttribute('disabled');
+  $(function(){
+  $("#nav-placeholder").load("/navbar.html");
+});
+  // nav bar for everything else (desktop)
+}
+</script>
+<!--end of Navigation bar-->
+
+<div class="content">
+  <img id="AboutPic" src="/Images/About/Cornelius1k.jpg" alt="">
+  <h1>Cornelius Andreas Rosenaa</h1>
+  <p>Hello, my name is Cornelius im an amateur programmer and student at Skolen ved nordens plads with a side job at Menu.</p>
+  <p>i also <b>held</b> a position in the school board as a student counsil representative for half a year before nearly going down with stress.</p>
+  <p>on the side i work on many projects like wood working bits and bobs and electrical engineering projects</p>
+</div>
+  
+<div id="Socials" class="content">
+  <p>here are some account links</p>
+  <div class="grid">
+  <a href="https://github.com/coffandro"><img src="https://github.com/fluidicon.png" width="25%">
+    <p><b>GitHub</b></p>
+    <p>GitHub is where people build software. More than 100 million people use GitHub to discover, fork, and contribute to over 330 million projects.</p></a>
+  <a href="https://coffandro.gumroad.com/"><img src="https://assets-global.website-files.com/6171b265e5c8aa59b42c3472/6202f6a901b39b4ce6060602_ccb4f82b5fdc7a3a910fc8df3e49297a-32bits-256.png" width="25%">
+    <p><b>Gumroad</b></p>
+    <p>Gumroad is a powerful, but simple, e-commerce platform. We make it easy to earn your first dollar online by selling digital products, memberships and more.</p></a>
+  <a href="https://www.instagram.com/"><img src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png" width="25%">
+    <p><b>Instagram</b></p>
+    <p>Instagram is a simple, fun & creative way to capture, edit & share photos, videos & messages with friends & family.</p></a>
+</div>
+</div>
+
+</body>
+</html>

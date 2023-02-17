@@ -1,0 +1,39 @@
+.mnav-bar {
+    background-color: var(--main-bg-color);
+    border-top: 5px solid var(--main-color);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.nav-wrap {
+    overflow: unset;
+}
+/* styling for the rose/home button */
+#MRose {
+    fill: var(--main-color);
+    width: calc(var(--MFontSize) + 10px);
+}
+
+.mnav-bar a.MRoseContainer {
+    width: 23%;
+    background-color: var(--alt-bg-color);
+    border-radius: 15% 15% 0 0;
+}
+.mnav-bar a, .mnav-bar .popup{
+    background-color: var(--main-bg-color);
+    float: left;
+    width: 19%;
+    text-align: center;
+    padding: 12px 0;
+    color: var(--main-color);
+    font-size: var(--MFontSize);
+}
+
+.themeWraper {
+    float: left;
+    width: 20%;
+    text-align: center;
+    padding: 12px 0;
+    color: var(--main-color);
+    font-size: var(--MFontSize);
+}
