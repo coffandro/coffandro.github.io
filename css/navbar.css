@@ -15,6 +15,8 @@ nav li{
 
 nav li a:hover, .dropdown:hover .dropbtn{
     background-color: gray;
+    transform: translate( 0 ,.25rem);
+    box-shadow: 0 -.25rem 0 black;
 }
 
 nav li a, .dropdown .dropbtn{
@@ -23,6 +25,7 @@ nav li a, .dropdown .dropbtn{
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    transition: all .1s ease-out;
 }
   
 nav .dropdown {
@@ -63,6 +66,8 @@ nav .dropdown-content a {
 
 nav .dropdown-content a:hover {
     background-color: gray;
+    transform: translate( -.25rem ,-.25rem);
+    box-shadow: .25rem .25rem 0 black;
 }
 
 nav .dropdown:hover .dropdown-content {
@@ -70,6 +75,7 @@ nav .dropdown:hover .dropdown-content {
 }
 
 .dark-modebtn{
+    cursor: pointer;
     background-color: var(--main-bg-color);
     position: relative;
     text-decoration: none;
@@ -78,7 +84,10 @@ nav .dropdown:hover .dropdown-content {
     height: 48px;
     width: 48px;
     color: var(--main-color);
+    transition: all .1s ease-out;
 }
 .dark-modebtn:hover {
     background-color: gray;
+    transform: translate( 0 ,.25rem);
+    box-shadow: 0 -.25rem 0 black;
 }
