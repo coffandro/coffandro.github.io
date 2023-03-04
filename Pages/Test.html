@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport">
-    <meta name="og:url" content="rosenaa.github.io">
+    <meta name="og:url" content="coffandro.github.io">
   
-    <title>Rosenaa</title>
-    <meta property="og:title" content="Rosenaa">
-    <meta name="twitter:title" content="Rosenaa">
+    <title>Test Site</title>
+    <meta property="og:title" content="Test Site">
+    <meta name="twitter:title" content="Test Site">
 
     <link rel="icon" type="image/x-icon" href="/Img/Rose.svg">
     <meta property="og:image" content="/Img/Rose.svg">
@@ -21,6 +21,10 @@
 <div id="nav-placeholder">
 </div>
 <script>
+if ("ontouchstart" in document.documentElement)
+{
+  document.documentElement.classList.toggle("mobile");
+}
 $(function(){
     $("#nav-placeholder").load("/TestNav.html");
 });

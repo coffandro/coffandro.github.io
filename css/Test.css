@@ -12,17 +12,16 @@ body {
   padding: 0px;
 }
 
-body.About {
-  text-align: center;
-  display: block;
-}
-
 .cards {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  max-width: 1250px;
+  max-width: 71%;
   width: calc(100% - 10px);
+}
+.mobile .cards {
+  justify-content: right;
+  max-width: 100%;
 }
 
 .card {

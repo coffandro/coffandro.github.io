@@ -74,6 +74,13 @@ nav .dropdown-content a:hover {
 nav .dropdown:hover .dropdown-content {
     display: block;
 }
+nav #Rose {
+    width: 25px;
+}
+nav #RoseContainer {
+    margin: 0;
+    padding: 10px;
+}
 
 .dark-modebtn{
     cursor: pointer;
@@ -85,6 +92,7 @@ nav .dropdown:hover .dropdown-content {
     height: 48px;
     width: 48px;
     color: var(--main-color);
+    font-size: var(--FontSize);
     transition: all .1s ease-out;
 }
 .dark-modebtn:hover {

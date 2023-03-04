@@ -19,6 +19,15 @@
   margin: 6px 0;
 }
 
+.mobile .Hamburger {
+  padding: 20px;
+}
+.mobile .bar1,.mobile .bar2,.mobile .bar3 {
+  width: 70px;
+  height: 10px;
+  margin: 12px 0;
+}
+
 /* The sidebar menu */
 .sidebar {
   height: 100%; /* 100% Full-height */
@@ -42,6 +51,12 @@
   display: block;
   transition: 0.3s;
 }
+.mobile .sidebar a {
+  font-size: 50px;
+}
+.mobile #return {
+  margin-top: 100px;
+}
 
 /* When you mouse over the navigation links, change their color */
 .sidebar a:hover {
@@ -57,6 +72,9 @@
   font-size: 36px;
   margin-left: 50px;
 }
+.mobile .sidebar .closebtn {
+  font-size: 108px;
+}
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
@@ -71,7 +89,7 @@
 </div>
 <div id="mySidebar" class="sidebar">
   <a class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="/">Return to main</a>
+  <a id="return" href="/">Return to main</a>
   <a href="#">About</a>
   <a href="#">Services</a>
   <a href="#">Clients</a>

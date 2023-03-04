@@ -1,13 +1,13 @@
 <nav>
 <!-- The rose home pag -->
-<li><a href="/"><img id="Rose" src="/Images/Rose.svg" alt="Home" width="15px"></a></li>
+<li><a id="RoseContainer" href="/"><img id="Rose" src="/Images/Rose.svg" alt="Home"></a></li>
 
 <!-- Coding dropdown -->
 <li class="dropdown">
   <a href="javascript:void(0)" class="dropbtn">
     <i class="fa-solid fa-code"></i> 
     Coding 
-    <i class="fa fa-caret-down"></i>
+    <i class="fa-solid fa-caret-down"></i>
   </a>
   <div class="dropdown-content">
     <a href="https://github.com/coffandro/coffandro.github.io">This Websites Source</a>
@@ -17,14 +17,14 @@
 </li>
 
 <!-- Art page -->
-<li><a href="/Pages/Art.html"><i class="fa-regular fa-image"></i> Art</a></li>
+<li><a href="/Pages/Art.html"><i class="fa-solid fa-image"></i> Art</a></li>
 
 <!-- About me dropdown -->
 <li id="About" class="dropdown" style="float: right;">
     <a href="/Pages/About/About.html" class="dropbtn">
-      <i class="fa-regular fa-address-card"></i>
+      <i class="fa-solid fa-address-card"></i>
       About Me
-      <i class="fa fa-caret-down"></i>
+      <i class="fa-solid fa-caret-down"></i>
     </a>
   <div class="dropdown-content">
     <a href="/Pages/About/About.html">About Me</a>
@@ -36,8 +36,7 @@
 
 <!-- Theme switch button -->
 <li style="float: right;"><button class="dark-modebtn lightMode">
-  <i class="sun" data-feather="sun"></i>
-  <i class="moon" data-feather="moon"></i>
+  <i id="ThemeButton" class="fa-solid fa-sun"></i>
 </button></li>
 </div>
 
@@ -54,6 +53,8 @@ const currentTheme = localStorage.getItem("theme");
 if (currentTheme == "light") {
   document.getElementById("Rose").src = "/Images/BlackRose.svg";
   // ...then use the .dark-theme class
+  document.getElementById("ThemeButton").classList.toggle("fa-moon");
+  document.getElementById("ThemeButton").classList.remove("fa-sun");
   document.body.classList.add("light-theme");
 }
 // The collabsible
@@ -64,6 +65,8 @@ btn.addEventListener("click", function() {
 
   // Let's say the theme is equal to dark
   let theme = "dark";
+  document.getElementById("ThemeButton").classList.toggle("fa-moon");
+  document.getElementById("ThemeButton").classList.toggle("fa-sun");
   // If the body contains the .dark-theme class...
   if (document.body.classList.contains("light-theme")) {
     // ...then let's make the theme light
