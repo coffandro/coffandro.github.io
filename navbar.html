@@ -35,7 +35,7 @@
 </li>
 
 <!-- Theme switch button -->
-<li style="float: right;"><button class="dark-modebtn lightMode">
+<li style="float: right;"><button class="dark-modebtn lightMode" onclick="themeswitch()">
   <i id="ThemeButton" class="fa-solid fa-sun"></i>
 </button></li>
 </div>
@@ -59,7 +59,7 @@ if (currentTheme == "light") {
 }
 // The collabsible
 // Listen for a click on the button 
-btn.addEventListener("click", function() {
+function themeswitch() {
   // Toggle the .dark-theme class on each click
   document.body.classList.toggle("light-theme");
 
@@ -78,5 +78,5 @@ btn.addEventListener("click", function() {
   }
   // Then save the choice in localStorage
   localStorage.setItem("theme", theme);
-});
+};
 </script>
