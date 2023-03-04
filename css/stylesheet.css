@@ -71,10 +71,16 @@ p {
 }
 .grid a {
     text-decoration: none;
+    border-top: 1px solid var(--main-color);
 }
 .grid img {
+    width: 50%;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+.grid a p b {
     padding: 20px;
-    border-bottom: 1px solid var(--main-color);
+    border-top: 1px solid var(--main-color);
 }
 
 /* Content */
