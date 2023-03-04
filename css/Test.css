@@ -1,0 +1,47 @@
+body {
+  --color: white;
+  --bg-color: palevioletred;
+  --alt-color: pink;
+  background-color: var(--alt-color);
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0px;
+  overflow: hidden;
+  padding: 0px;
+}
+
+body.About {
+  text-align: center;
+  display: block;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 1250px;
+  width: calc(100% - 10px);
+}
+
+.card {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.cards img {
+  -webkit-transform: scale(1);
+	transform: scale(1);
+  -webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.cards img:hover {
+  -webkit-transform: scale(1.3);
+	transform: scale(1.3);
+  -webkit-filter: grayscale(0);
+	filter: grayscale(0);
+}
