@@ -6,10 +6,11 @@ body {
     --hover-color: gray;
     /* Theme colours */
     --main-color: white;
-    --main-bg-color: #333;
-    --alt-bg-color: #444;
+    --main-bg-color: black;
+    --alt-bg-color: #333;
     --link-color: lightblue;
-    background-color: #333;
+    --shadow: white;
+    background-color: black;
     color: white;
 }
 
@@ -19,6 +20,7 @@ body.light-theme{
     --main-bg-color: white;
     --alt-bg-color: lightgray;
     --link-color: blue;
+    --shadow: black;
     background: white;
     color: black;
 }
@@ -56,6 +58,8 @@ p {
 
 /* Content */
 .content {
+    margin: 10px;
+    border-radius: 15px;
     overflow: hidden;
     text-align: center;
     border: 2px solid;
@@ -79,7 +83,7 @@ button {
 
 }
 .content a{
-    color: var(--link-color);
+    color: var(--main-color);
     margin: 10px;
     padding: 10px;
     border: 1px solid;
@@ -91,7 +95,7 @@ button {
     color: var(--main-color);
     background-color: var(--hover-color);
     transform: translate(-.5rem ,-.5rem);
-    box-shadow: .5rem .5rem 0 black;
+    box-shadow: .5rem .5rem 0 var(--shadow);
 }
 
 .imgContainer {
@@ -110,24 +114,43 @@ button {
 
 #AboutPic {
   border-radius: 25px;
-  width: 15%;
-  padding: 10px;
-  float: left;
-  border: 2px solid var(--main-color);
-  margin: 5px;
+  padding: 0;
+  margin: 0;
+}
+
+#AboutPicContainer {
+    border: 2px solid var(--main-color);
+    float: right;
+    margin: 10px;
+    padding: 10px;
+}
+
+#AboutPicContainer:hover {
+    transform: translate(-.5rem ,-.5rem);
+    box-shadow: .5rem .5rem 0 var(--shadow);
 }
 
 /* Mobile */
+.mobile #AboutPicContainer{
+    margin: 0;
+    padding: 0;
+}
+
 .mobile #AboutPic {
-    width: 45%;
+    width: 100%;
+    height: 45%;
 }
 .mobile a, .mobile p{
   padding: 5px;
   font-size: 35px;
 }
-.mobile h1, .mobile h2, .mobile h3, .mobile h4, .mobile h5{
+.mobile h1, .mobile h2{
   padding: 2px;
   font-size: 350%;
+}
+.mobile h3, .mobile h4, .mobile h5{
+    padding: 2px;
+    font-size: 250%;
 }
 
 .mobile .content a {
