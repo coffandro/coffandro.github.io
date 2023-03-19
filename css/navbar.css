@@ -95,7 +95,7 @@ nav #About-Content {
 
 .dark-modebtn{
     cursor: pointer;
-    background-color: var(--main-bg-color);
+    background-color: inherit;
     position: relative;
     text-decoration: none;
     border: none;

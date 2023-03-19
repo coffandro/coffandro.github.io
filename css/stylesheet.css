@@ -27,9 +27,12 @@ body.light-theme{
 /* End of global theming */
 
 /* Global objects */
+
 p {
     font-size: var(--FontSize);
 }
+
+/* Grid */
 
 .grid {
     text-align: center;
@@ -40,6 +43,7 @@ p {
 }
 .grid a {
     text-decoration: none;
+    cursor: pointer;
 }
 .grid img {
     width: 50%;
@@ -70,7 +74,7 @@ p {
     margin: 15px;
 }
 
-.content li, .content a{
+.content li{
     padding: 0px;
     margin: 0px;
 }
@@ -82,36 +86,41 @@ button {
     color: black;
 
 }
-.content a{
+.content a, .content div .a{
     color: var(--main-color);
     margin: 10px;
     padding: 10px;
-    border: 1px solid;
+    border: 2px solid;
     border-radius: 10px;
     transition: all .1s ease-out;
 }
 
-.content a:hover{
-    color: var(--main-color);
+.content a:hover, .content div.a:hover{
     background-color: var(--hover-color);
     transform: translate(-.5rem ,-.5rem);
     box-shadow: .5rem .5rem 0 var(--shadow);
+}
+.content a.mails{
+    transform: none;
+    box-shadow: none;
 }
 
 .imgContainer {
     border: 2px solid;
     display:relative;
 }
-#Discord {
-    color: var(--main-color);
-}
-#Discord:hover {
-    background-color: var(--main-bg-color);
-}
 /* End of content */
 
 /* End of global objects */
-
+#Discord {
+    cursor: auto;
+}
+#Discord:hover, #Mail:hover {
+    background-color: var(--main-bg-color);
+}
+#Mail i {
+    font-size: 200px;
+}
 #AboutPic {
   border-radius: 25px;
   padding: 0;
@@ -131,6 +140,9 @@ button {
 }
 
 /* Mobile */
+.mobile body {
+    margin-bottom: 200px;
+}
 .mobile #AboutPicContainer{
     margin: 0;
     padding: 0;
@@ -152,8 +164,7 @@ button {
     padding: 2px;
     font-size: 250%;
 }
-
-.mobile .content a {
+.mobile .content, .mobile .content a, .mobile .content div.a{
   text-decoration: none;
   border: 5px solid;
 }
@@ -179,7 +190,7 @@ details[open]:hover {
 
 details:hover {
     transform: translate(-.5rem ,-.5rem);
-    box-shadow: .5rem .5rem 0 black;
+    box-shadow: .5rem .5rem 0 var(--shadow);
 }
 
 details>summary i.icon {

@@ -58,7 +58,7 @@ else
   <h1>Cornelius Andreas Rosenaa</h1>
   <p>Hello, my name is Cornelius im an amateur programmer and student at Skolen ved nordens plads with a side job at Menu.</p>
   <p>I also <b>held</b> a position in the school board as a student counsil representative for half a year before nearly going down with stress.</p>
-  <p>on the side I work on many projects like wood working bits and bobs and electrical engineering projects</p>
+  <p>On the side I work on many projects like wood working bits and bobs and electrical engineering projects</p>
   <br><br><br><br><br><br><br><br><br>
   <h2>
     <i class="fa-solid fa-caret-down"></i>
@@ -78,14 +78,30 @@ else
   <a href="https://www.instagram.com/"><img src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png">
     <p><b>Instagram</b></p>
     <p>Instagram is a simple, fun & creative way to capture, edit & share photos, videos & messages with friends & family.</p></a>
-  <a id="Discord"><img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a69f118df70ad7828d4_icon_clyde_blurple_RGB.svg">
+  <div class="a" id="Discord"><img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a69f118df70ad7828d4_icon_clyde_blurple_RGB.svg">
     <p><b>Discord</b></p>
     <p>coffandro#5443</p>
-    <p>Discord is the easiest way to talk over voice, video, and text. Talk, chat, hang out, and stay close with your friends and communities.</p></a>
+    <a class="mails" onclick="Copy('coffandro#5443')">Copy</a>
+    <p>Discord is the easiest way to talk over voice, video, and text. Talk, chat, hang out, and stay close with your friends and communities.</p></div>
   <a href="https://www.facebook.com/coandro.macrosedk.5/"><img src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg">
     <p>Log into Facebook to start sharing and connecting with your friends, family, and people you know.</p></a>
+  <div class="a" id="Mail"><i class="fa-regular fa-envelope"></i>
+    <p><b>Mail</b></p>
+    <p>Here are some options for contacting my mail</p>
+    <p>macrosedk@gmail.com</p>
+  <a class="mails" href="mailto:macrosedk@gmail.com">Link</a>
+  <a class="mails" onclick="Copy('macrosedk@gmail.com')">Copy</a>
+  </div>
   </div>
 </div>
+
+<script>
+function Copy(copyText) {
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText);
+  alert("Copied " + copyText + " to clipboard!")
+} 
+</script>
 
 </body>
 </html>
