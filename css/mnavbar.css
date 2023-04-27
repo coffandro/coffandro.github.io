@@ -23,12 +23,12 @@
     position: absolute;
     left: 0;
     padding: 10px 0 0 10px;
-    width: 50px;
+    width: 75px;
 }
 
 /* Style navigation menu links */
 .topnav a {
-  color: white;
+  color: var(--main-color);
   padding: 14px 16px;
   text-decoration: none;
   display: block;
@@ -53,7 +53,7 @@
 
 /* Style the hamburger menu */
 .topnav a.icon {
-  font-size: var(--MFontSize);
+  font-size: calc(var(--MFontSize)+15px);
   border: 0;
   border-left: 3px;
   border-bottom: 3px;

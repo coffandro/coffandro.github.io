@@ -82,8 +82,8 @@ p {
 button {
     height: 50px;
     width: 100px;
-    background-color: white;
-    color: black;
+    background-color: var(--main-bg-color);
+    color: var(--main-color);
 
 }
 .content a, .content div .a{
