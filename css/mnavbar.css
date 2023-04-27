@@ -2,7 +2,7 @@
 .topnav {
   margin: 10px;
   border: 5px solid;
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
   position: relative;
 }
@@ -16,14 +16,14 @@
     text-align: center;
     padding: 6px 10px 10px 10px;
     margin: 0;
-    font-size: calc(var(--MFontSize) + 15px);
+    font-size: calc(var(--MFontSize) + 35px);
 }
 
 .topnav #Rose {
     position: absolute;
     left: 0;
     padding: 10px 0 0 10px;
-    width: 75px;
+    width: 95px;
 }
 
 /* Style navigation menu links */
@@ -33,11 +33,17 @@
   text-decoration: none;
   display: block;
   margin: 0;
+  font-size: 45px
 }
 .topnav details {
     border: 3px solid;
-    font-size: 35px;
+    font-size: 45px;
     padding: 14px 16px;
+    margin: 5px;
+}
+.topnav #Art {
+    border: 3px solid;
+    border-radius: 10px;
     margin: 5px;
 }
 
@@ -53,7 +59,7 @@
 
 /* Style the hamburger menu */
 .topnav a.icon {
-  font-size: calc(var(--MFontSize) + 15px);
+  font-size: calc(var(--MFontSize) + 35px);
   border: 0;
   border-left: 3px;
   border-bottom: 3px;
