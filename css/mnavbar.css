@@ -16,7 +16,7 @@
     text-align: center;
     padding: 6px 10px 10px 10px;
     margin: 0;
-    font-size: var(--MFontSize);
+    font-size: calc(var(--MFontSize) + 15px);
 }
 
 .topnav #Rose {
@@ -53,7 +53,7 @@
 
 /* Style the hamburger menu */
 .topnav a.icon {
-  font-size: calc(var(--MFontSize)+15px);
+  font-size: calc(var(--MFontSize) + 15px);
   border: 0;
   border-left: 3px;
   border-bottom: 3px;
