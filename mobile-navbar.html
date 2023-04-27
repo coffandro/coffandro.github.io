@@ -1,16 +1,55 @@
-<div class="mnav-bar">
-  <div class="nav-wrap">
-    <div id="darkBTN" class="themeWraper lightMode" onclick="DarkBTN()">
-      <i id="ThemeButton" class="fa-regular fa-sun"></i>
-    </div>
-    <a href="/Mobile/MCoding.html"><i class="fa-solid fa-code"></i></a>
-    <a class="MRoseContainer" href="/"><img id="MRose" src="/Images/Rose.svg" alt=""></a>
-    <a href="/Pages/Art.html"><i class="fa-regular fa-image"></i></a>
-    <a href="/Mobile/MAbout.html"><i class="fa-regular fa-address-card"></i></a>
+<nav class="topnav">
+  <a href="/" id="Home"><img id="Rose" src="/Images/Rose.svg"> Home</a>
+  <div id="myLinks">
+    <details id="Coding">
+      <summary>
+        Coding
+        <i class="fa fa-caret-down"></i>
+      </summary>
+      <a href="https://github.com/coffandro/coffandro.github.io">This websites source</a>
+      <a href="https://github.com/coffandro">Github</a>
+      <a href="https://coffandro.github.io/Pages/Test.html">Test page(for debugging)</a>
+    </details>
+    <details id="Projects">
+      <summary>
+        Projects
+        <i class="fa fa-caret-down"></i>
+      </summary>
+      <a href="/Pages/Projects/Gallery/Gallery.html">Gallery</a>
+      <a href="/Pages/Projects/Fishies/Fishies.html">Fishies</a>
+    </details>
+    <a id="Art" href="/Pages/Art.html">Art</a>
+    <details id="About">
+      <summary>
+        About
+        <i class="fa fa-caret-down"></i>
+      </summary>
+      <a href="/Pages/About/About.html">About Me</a>
+      <a href="https://coffandro.github.io/Pages/About/WishList.html">Wish List</a>
+      <a href="https://coffandro.github.io/Pages/About/About.html#Socials">Socials</a>
+    </details>
+    
   </div>
+  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
 </div>
-<!-- this makes the light mode button work -->
 <script>
+// Changes the name of the page the user's on
+var image = '<img id="Rose" src="/Images/Rose.svg"> '
+var title = document.title ;
+document.getElementById('Home').innerHTML = image.concat(title)
+/* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+} 
+// Handles the theme
 // Select the button
 const btn = document.querySelector(".lightMode");
 // Select the theme preference from localStorage

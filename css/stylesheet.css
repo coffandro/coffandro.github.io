@@ -2,7 +2,7 @@ body {
     margin:0;
     font-family: 'Courier New', Courier, monospace;
     --FontSize:25px;
-    --MFontSize:75px;
+    --MFontSize:60px;
     --hover-color: gray;
     /* Theme colours */
     --main-color: white;
