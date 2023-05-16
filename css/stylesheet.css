@@ -213,3 +213,11 @@ summary {
 summary::-webkit-details-marker {
     display: none;
 }
+
+/*Language changing*/
+.Lang-DA .en {
+    display: none;
+}
+.Lang-EN .da {
+    display: none;
+}

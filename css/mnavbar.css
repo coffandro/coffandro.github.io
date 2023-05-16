@@ -50,7 +50,7 @@
     border-style: solid;
 }
 
-.topnav details summary i {
+.topnav details summary i.arrow {
     align-items: center;
     transition: all 0.3s;
     margin-right: 10px;
@@ -80,7 +80,22 @@
 .topnav a.icon.dark-modebtn {
   right: calc(var(--MFontSize) + 55px);
   top: 0;
+}
+.topnav a.icon.lang-modebtn {
+  right: calc(var(--MFontSize) + 180px);
+  top: 0;
   border-radius: 0 0 0 5px;
+}
+
+.topnav details a i {
+  float: right;
+}
+.topnav i.navIcon {
+  float: left;
+  padding-right: 10px;
+}
+.topnav details[open] summary i.navIcon {
+  transform: none;
 }
 
 .topnav a.icon {

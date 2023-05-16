@@ -10,21 +10,20 @@
     <i class="fa-solid fa-caret-down"></i>
   </a>
   <div class="dropdown-content">
-    <a href="https://github.com/coffandro/coffandro.github.io">This Websites Source</a>
-    <a href="https://github.com/coffandro">GitHub</a>
-    <a href="/Pages/Test.html">Test Page</a>
+    <a href="https://github.com/coffandro/coffandro.github.io">This Websites Source <i class="fa-brands fa-github"></i></a>
+    <a href="https://github.com/coffandro">GitHub <i class="fa-brands fa-github"></i></a>
   </div>
 </li>
 
 <li class="dropdown">
   <a href="javascript:void(0)" class="dropbtn">
-    <i class="fa-solid fa-code"></i> 
+    <i class="fa-solid fa-box"></i> 
     Projects
     <i class="fa-solid fa-caret-down"></i>
   </a>
   <div class="dropdown-content">
-    <a href="/Pages/Projects/Gallery/Gallery.html">Gallery</a>
-    <a href="/Pages/Projects/Fishies/Fishies.html">Fishies</a>
+    <a href="/Pages/Projects/Gallery/Gallery.html">Gallery <i class="fa-solid fa-image"></i></a>
+    <a href="/Pages/Projects/Fishies/Fishies.html">Fishies <i class="fa-solid fa-gamepad"></i></a>
   </div>
 </li>
 
@@ -39,37 +38,64 @@
       <i class="fa-solid fa-caret-down"></i>
     </a>
   <div class="dropdown-content" id="About-Content">
-    <a href="/Pages/About/About.html">About Me</a>
-    <a href="/Pages/About/WishList.html">Wish List</a>
-    <a href="/Pages/About/About.html#Socials">Socials</a>
+    <a href="/Pages/About/About.html">About Me <i class="fa-solid fa-address-card"></i></a>
+    <a href="/Pages/About/WishList.html">Wish List <i class="fa-solid fa-image"></i></a>
+    <a href="/Pages/About/About.html#Socials">Socials <i class="fa-solid fa-handshake"></i></a>
     <!-- <a href="/Pages/About/CV.html">CV</a> -->
   </div>
 </li>
 
 <!-- Theme switch button -->
-<li style="float: right;"><button class="dark-modebtn lightMode" onclick="themeswitch()">
+<li style="float: right;"><button class="nav-btn" onclick="themeswitch()">
   <i id="ThemeButton" class="fa-solid fa-sun"></i>
 </button></li>
-</div>
+
+<li style="float: right; border-right: none;"><button class="nav-btn" onclick="Langswitch()">
+  <i class="fa-solid fa-globe"></i>
+</button></li>
 
 </nav>
 
-<!-- this makes the light mode work -->
 <script>
-// Select the button
-const btn = document.querySelector(".lightMode");
 // Select the theme preference from localStorage
 const currentTheme = localStorage.getItem("theme");
+const currentLanguage = localStorage.getItem("Language");
 
 // If the current theme in localStorage is "light"...
 if (currentTheme == "light") {
   document.getElementById("Rose").src = "/Images/BlackRose.svg";
-  // ...then use the .dark-theme class
   document.getElementById("ThemeButton").classList.toggle("fa-moon");
   document.getElementById("ThemeButton").classList.remove("fa-sun");
   document.body.classList.add("light-theme");
 }
-// Listen for a click on the button 
+
+// If the current Language in localStorage is "Danish"...
+if (currentLanguage == "Danish") {
+  document.body.classList.add("Lang-DA");
+}
+else {
+  document.body.classList.add("Lang-EN");
+}
+
+// The Language switch function
+function Langswitch() {
+  // Toggle the .Lang-XX classes on each click
+  document.body.classList.toggle("Lang-DA");
+  document.body.classList.toggle("Lang-EN");
+
+  let Language = "English";
+  if (document.body.classList.contains("Lang-DA")) {
+    Language = "Danish";
+    
+  }
+  else {
+    Language = "English";
+  }
+  // Then save the choice in localStorage
+  localStorage.setItem("Language", Language);
+};
+ 
+// The Theme switch function
 function themeswitch() {
   // Toggle the .dark-theme class on each click
   document.body.classList.toggle("light-theme");

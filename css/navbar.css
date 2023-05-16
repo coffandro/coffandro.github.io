@@ -74,6 +74,19 @@ nav .dropdown-content a:hover {
     box-shadow: 0 .25rem 0 var(--shadow);
 }
 
+nav .dropdown-content i {
+    float: right;
+    padding-left: 10px;
+}
+
+nav #LangButton {
+    width: calc(var(--FontSize) + 10px);
+}
+
+nav .LangImg {
+    width: var(--FontSize);
+}
+
 nav .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -93,7 +106,7 @@ nav #About-Content {
     transform: translateX(-5px);
 }
 
-.dark-modebtn{
+.nav-btn{
     cursor: pointer;
     background-color: inherit;
     position: relative;
@@ -106,7 +119,7 @@ nav #About-Content {
     font-size: var(--FontSize);
     transition: all .1s ease-out;
 }
-.dark-modebtn:hover {
+.nav-btn:hover {
     border: 1px solid;
     transform: translate( -.25rem ,-.25rem);
     box-shadow: .25rem .25rem 0 var(--shadow);
