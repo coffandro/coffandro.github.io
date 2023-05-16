@@ -69,7 +69,7 @@ nav .dropdown-content a {
 }
 
 nav .dropdown-content a:hover {
-    border-radius: 10px;
+    border-radius: 5px;
     transform: translate( 0 ,-.25rem);
     box-shadow: 0 .25rem 0 var(--shadow);
 }
