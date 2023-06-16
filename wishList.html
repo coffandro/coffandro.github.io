@@ -53,10 +53,13 @@ else
 </script>
 <!--end of Navigation bar-->
 
-<script>
-fetch('./wishlist.json')
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+<script type="module">
+import dict from './wishList.json';
+console.log(dict);
+for(var key in dict) {
+    var value = dict[key];
+    console.log(value);
+}
 </script>
 
 <div class="content">
