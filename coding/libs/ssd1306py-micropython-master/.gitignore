@@ -1,7 +1,0 @@
-.idea/
-.pytest_cache
-*.log
-build/
-*.egg-info/
-dist/
-ssd1306/__pycache__/
