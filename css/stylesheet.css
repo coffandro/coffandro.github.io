@@ -3,30 +3,26 @@ body {
     font-family: 'space mono', monospace;
     --FontSize:25px;
     --MFontSize:60px;
-    --hover-color: gray;
+    --hover-color: #ee8695;
     /* Theme colours */
-    --main-color: white;
-    --main-bg-color: black;
+    --main-color: #fbbbad;
+    --main-bg-color: #292831;
     --alt-bg-color: #333;
     --link-color: lightblue;
-    --shadow: white;
-    background-color: black;
-    color: white;
-}
-
-body.light-theme{
-    /* Theme Colours */
-    --main-color: black;
-    --main-bg-color: white;
-    --alt-bg-color: lightgray;
-    --link-color: blue;
-    --shadow: black;
-    background: white;
-    color: black;
+    --shadow: #fbbbad;
+    background-color: #292831;
+    color: #fbbbad;
 }
 /* End of global theming */
 
 /* Global objects */
+
+/* Rounded border */
+hr.Seperator {
+    border-top: 3px solid var(--main-color);
+    border-radius: 20%;
+    width: 75%;
+}
 
 p {
     font-size: var(--FontSize);
@@ -125,6 +121,7 @@ button {
   border-radius: 25px;
   padding: 0;
   margin: 0;
+  filter: invert(5%) sepia(14%) saturate(1328%) hue-rotate(158deg) brightness(86%) contrast(87%);
 }
 
 #AboutPicContainer {

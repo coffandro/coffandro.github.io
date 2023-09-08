@@ -39,11 +39,6 @@
     <i class="fa-solid fa-bars"></i>
   </a>
 
-  <!-- Theme switch button -->
-  <a class="dark-modebtn icon" onclick="themeswitch()">
-    <i id="ThemeButton" class="fa-solid fa-sun"></i>
-  </a>
-
   <!-- Language switch button -->
   <a class="lang-modebtn icon" onclick="Langswitch()">
     <i class="fa-solid fa-globe"></i>
@@ -63,16 +58,7 @@ function Menu() {
 }
 
 // Select the theme preference from localStorage
-const currentTheme = localStorage.getItem("theme");
 const currentLanguage = localStorage.getItem("Language");
-
-// If the current theme in localStorage is "light"...
-if (currentTheme == "light") {
-  document.getElementById("Rose").src = "/Images/BlackRose.svg";
-  document.getElementById("ThemeButton").classList.toggle("fa-moon");
-  document.getElementById("ThemeButton").classList.remove("fa-sun");
-  document.body.classList.add("light-theme");
-}
 
 // If the current Language in localStorage is "Danish"...
 if (currentLanguage == "Danish") {
@@ -98,27 +84,5 @@ function Langswitch() {
   }
   // Then save the choice in localStorage
   localStorage.setItem("Language", Language);
-};
- 
-// The Theme switch function
-function themeswitch() {
-  // Toggle the .dark-theme class on each click
-  document.body.classList.toggle("light-theme");
-
-  // Let's say the theme is equal to dark
-  let theme = "dark";
-  document.getElementById("ThemeButton").classList.toggle("fa-moon");
-  document.getElementById("ThemeButton").classList.toggle("fa-sun");
-  // If the body contains the .dark-theme class...
-  if (document.body.classList.contains("light-theme")) {
-    // ...then let's make the theme light
-    document.getElementById("Rose").src = "/Images/BlackRose.svg";
-    theme = "light";
-  }
-  else {
-    document.getElementById("Rose").src = "/Images/Rose.svg";
-  }
-  // Then save the choice in localStorage
-  localStorage.setItem("theme", theme);
 };
 </script>

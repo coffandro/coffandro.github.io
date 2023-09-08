@@ -77,12 +77,8 @@
   right: 0;
   top: 0;
 }
-.topnav a.icon.dark-modebtn {
-  right: calc(var(--MFontSize) + 55px);
-  top: 0;
-}
 .topnav a.icon.lang-modebtn {
-  right: calc(var(--MFontSize) + 180px);
+  right: calc(var(--MFontSize) + 55px);
   top: 0;
   border-radius: 0 0 0 5px;
 }
@@ -103,5 +99,5 @@
 }
 
 #Coding {
-    margin-top: 1%;
+  margin-top: 1%;
 }
