@@ -20,7 +20,7 @@ body {
 /* Rounded border */
 hr.Seperator {
     border-top: 3px solid var(--main-color);
-    border-radius: 20%;
+    border-radius: 2%;
     width: 75%;
 }
 

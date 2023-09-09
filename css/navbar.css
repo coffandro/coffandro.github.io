@@ -95,11 +95,12 @@ nav #Rose {
 }
 nav #RoseContainer {
     margin: 0;
-    padding: 10px;
+    padding: 11px;
 }
 
 nav #About {
     border-right: none;
+    border-left: 1px solid;
 }
 
 nav #About-Content {
