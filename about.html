@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="google-site-verification" content="S5miEUSow9wX4fls-vk0Zw6bFLHfwxbYNOIk3omz6JU" />
+
   <meta charset="utf-8">
   <meta name="viewport">
   <meta name="og:url" content="coffandro.github.io">
 
-  <title>About Me</title>
-  <meta property="og:title" content="About Me">
-  <meta name="twitter:title" content="About Me">
+  <title>Coffandro</title>
+  <meta property="og:title" content="Coffandro">
+  <meta name="twitter:title" content="Coffandro">
 
-  <meta name="description" content="Hello, my name is Cornelius and this is the page about me">
-  <meta property="og:description" content="Hello, my name is Cornelius and this is the page about me">
-  <meta name="twitter:description" content="Hello, my name is Cornelius and this is the page about me">
+  <meta name="description" content="Welcome to my website, please feel free to take a look around">
+  <meta property="og:description" content="Welcome to my website, please feel free to take a look around">
+  <meta name="twitter:description" content="Welcome to my website, please feel free to take a look around">
 
   <link rel="icon" type="image/x-icon" href="/Images/Xicon.svg">
   <meta property="og:image" content="/Images/Xicon.svg">
@@ -33,23 +35,30 @@
 </div>
 <script>
 // loading a different nav bar depending on phone type
-if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i))
+if (
+    navigator.userAgent.match(/Android/i) || 
+    navigator.userAgent.match(/webOS/i) || 
+    navigator.userAgent.match(/iPhone/i) || 
+    navigator.userAgent.match(/iPad/i) || 
+    navigator.userAgent.match(/iPod/i) || 
+    navigator.userAgent.match(/BlackBerry/i) || 
+    navigator.userAgent.match(/Windows Phone/i)) 
 {
-document.documentElement.classList.toggle("mobile");
-  document.getElementById('mnav').removeAttribute('disabled');
-  $(function(){
-    $("#nav-placeholder").load("/mobile-navbar.html");
-});
-  // nav bar for touch-screen (mobile) devices
+    document.documentElement.classList.toggle("mobile");
+    document.getElementById('mnav').removeAttribute('disabled');
+    $(function(){
+        $("#nav-placeholder").load("/mobile-navbar.html");
+    });
 }
-else
+// nav bar for touch-screen (mobile) devices
+else 
 {
-  document.getElementById('nav').removeAttribute('disabled');
-  $(function(){
-  $("#nav-placeholder").load("/navbar.html");
-});
-  // nav bar for everything else (desktop)
+    document.getElementById('nav').removeAttribute('disabled');
+    $(function(){
+        $("#nav-placeholder").load("/navbar.html");
+    });
 }
+// nav bar for everything else (desktop)
 </script>
 <!--end of Navigation bar-->
 

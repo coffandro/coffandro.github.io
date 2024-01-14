@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta name="google-site-verification" content="S5miEUSow9wX4fls-vk0Zw6bFLHfwxbYNOIk3omz6JU" />
 
@@ -29,67 +28,76 @@
   <script id="Font-Awesome" src="https://kit.fontawesome.com/5c072ddc8a.js" crossorigin="anonymous"></script>
   <script id="Feather-Icons" src="https://unpkg.com/feather-icons"></script>
 </head>
-
 <body>
 
-  <!--Navigation bar-->
-  <div id="nav-placeholder">
-  </div>
-  <script>
-    // loading a different nav bar depending on phone type
-    if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
-      document.documentElement.classList.toggle("mobile");
-      document.getElementById('mnav').removeAttribute('disabled');
-      $(function () {
+<!--Navigation bar-->
+<div id="nav-placeholder">
+</div>
+<script>
+// loading a different nav bar depending on phone type
+if (
+    navigator.userAgent.match(/Android/i) || 
+    navigator.userAgent.match(/webOS/i) || 
+    navigator.userAgent.match(/iPhone/i) || 
+    navigator.userAgent.match(/iPad/i) || 
+    navigator.userAgent.match(/iPod/i) || 
+    navigator.userAgent.match(/BlackBerry/i) || 
+    navigator.userAgent.match(/Windows Phone/i)) 
+{
+    document.documentElement.classList.toggle("mobile");
+    document.getElementById('mnav').removeAttribute('disabled');
+    $(function(){
         $("#nav-placeholder").load("/mobile-navbar.html");
-      });
-      // nav bar for touch-screen (mobile) devices
-    }
-    else {
-      document.getElementById('nav').removeAttribute('disabled');
-      $(function () {
+    });
+}
+// nav bar for touch-screen (mobile) devices
+else 
+{
+    document.getElementById('nav').removeAttribute('disabled');
+    $(function(){
         $("#nav-placeholder").load("/navbar.html");
-      });
-      // nav bar for everything else (desktop)
-    }
-  </script>
-  <!--end of Navigation bar-->
+    });
+}
+// nav bar for everything else (desktop)
+</script>
+<!--end of Navigation bar-->
 
-  <div class="content">
-    <h2 class="en">Welcome to my games page!</h2>
-    <h3 class="en">Here's a plethora of small toy games I've made to test features.</h3>
-    <p class="en">These are all made in my free time and most of them are no longer being patched.</p>
+<div class="content">
+  <h2 class="en">Welcome to my games page!</h2>
+  <h3 class="en">Here's a plethora of small toy games I've made to test features.</h3>
+  <p class="en">These are all made in my free time and most of them are no longer being patched.</p>
 
-    <h2 class="da">Velkommen til min spil side!</h2>
-    <h3 class="da">Her er et væld af små legetøjsspil, jeg har lavet dem for at eksperimenterer.</h3>
-    <p class="da">Disse er alle lavet i min fritid, og de fleste af dem bliver ikke længere opdateret.</i></p>
+  <h2 class="da">Velkommen til min spil side!</h2>
+  <h3 class="da">Her er et væld af små legetøjsspil, jeg har lavet dem for at eksperimenterer.</h3>
+  <p class="da">Disse er alle lavet i min fritid, og de fleste af dem bliver ikke længere opdateret.</i></p>
 
-    <div style="margin-bottom: 150px;"></div>
+  <div style="margin-bottom: 150px;"></div>
 
-    <hr class="mobile Seperator">
+  <hr class="mobile Seperator">
+</div>
 
-    <div class="grid">
-      <a href="/Fishies/Fishies"><img src="/Fishies/desktop/Fishies.icon.png"></img>
-        <p><b>Fishies</b></p>
-        <p class="en">There's too many fish, kill as many as you can!</p>
-        <p class="da">Der er for mange fisk, dræb så mange som du kan!</p>
-      </a>
-      <a href="/Krimi/Krimi"><img src="/Krimi/Krimi.icon.png">
-        <p><b>Krimi</b></p>
-        <p class="en">Krimi is a small game I made to test a dialogue system.</p>
-        <p class="da">Krimi er et lille spil jeg har lavet for at teste et dialog system.</p>
-      </a>
-      <a href="/Wizards/WizardsInto"><img src="/Wizards/Wizards.icon.png">
-        <p><b>Krimi</b></p>
-        <p class="en">Wizards is my failed attempt at making a big game with shooter mechanics.</p>
-        <p class="da">Wizards er mit fejlede fosøg på at lave et stort spil med skyde mekanik.</p>
-        <a href="/gnomes/Gnomes"><img src="/gnomes/Gnomes.icon.png">
-          <p><b>Gnomes</b></p>
-          <p class="en">Gnomes is a small game I made because wth, click the enemies.</p>
-          <p class="da">Gnomes er et lille spil jeg lavede fordi hvorfor ikke, klik på fjenderne.</p>
-        </a>
-    </div>
-  </div>
+<div class="grid content">
+<a href="/Fishies/Fishies"><img src="/Fishies/desktop/Fishies.icon.png"></img>
+  <p><b>Fishies</b></p>
+  <p class="en">There's too many fish, kill as many as you can!</p>
+  <p class="da">Der er for mange fisk, dræb så mange som du kan!</p>
+</a>
+<a href="/Krimi/Krimi"><img src="/Krimi/Krimi.icon.png">
+  <p><b>Krimi</b></p>
+  <p class="en">Krimi is a small game I made to test a dialogue system.</p>
+  <p class="da">Krimi er et lille spil jeg har lavet for at teste et dialog system.</p>
+</a>
+<a href="/Wizards/WizardsInto"><img src="/Wizards/Wizards.icon.png">
+  <p><b>Krimi</b></p>
+  <p class="en">Wizards is my failed attempt at making a big game with shooter mechanics.</p>
+  <p class="da">Wizards er mit fejlede fosøg på at lave et stort spil med skyde mekanik.</p>
+</a>
+<a href="/gnomes/Gnomes"><img src="/gnomes/Gnomes.icon.png">
+  <p><b>Gnomes</b></p>
+  <p class="en">Gnomes is a small game I made because wth, click the enemies.</p>
+  <p class="da">Gnomes er et lille spil jeg lavede fordi hvorfor ikke, klik på fjenderne.</p>
+</a>
+</div>
 
 </body>
 
