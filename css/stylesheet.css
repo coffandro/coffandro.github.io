@@ -77,6 +77,27 @@ p {
     border-color: var(--main-color);
 }
 
+.codeSegment {
+    margin-left: 5px;
+    display: inline-block;
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 2px;
+    transition: all .1s ease-out;
+}
+
+.codeSegmentWrapper {
+    display: inline-block;
+}
+
+.codeSegment:hover {
+    background-color: var(--hover-color);
+    -ms-transform: translate(-.2rem ,-.2rem);
+    -webkit-transform: translate(-.2rem ,-.2rem);
+    transform: translate(-.2rem ,-.2rem);
+    box-shadow: .2rem .2rem 0 var(--shadow);
+}
+
 .codeBlock {
     margin: 5px;
     padding: 5px;
@@ -87,6 +108,15 @@ p {
     background-color: var(--alt-bg-color);
     color: white;
     border-color: var(--shadow);
+    transition: all .1s ease-out;
+}
+
+.codeBlock:hover {
+    background-color: var(--hover-color);
+    -ms-transform: translate(-.5rem ,-.5rem);
+    -webkit-transform: translate(-.5rem ,-.5rem);
+    transform: translate(-.5rem ,-.5rem);
+    box-shadow: .5rem .5rem 0 var(--shadow);
 }
 
 .content {
@@ -127,6 +157,8 @@ button {
 
 .content a:hover, .content div.a:hover{
     background-color: var(--hover-color);
+    -ms-transform: translate(-.5rem ,-.5rem);
+    -webkit-transform: translate(-.5rem ,-.5rem);
     transform: translate(-.5rem ,-.5rem);
     box-shadow: .5rem .5rem 0 var(--shadow);
 }
@@ -165,6 +197,8 @@ button {
 }
 
 #AboutPicContainer:hover {
+    -ms-transform: translate(-.5rem ,-.5rem);
+    -webkit-transform: translate(-.5rem ,-.5rem);
     transform: translate(-.5rem ,-.5rem);
     box-shadow: .5rem .5rem 0 var(--shadow);
 }
@@ -219,6 +253,8 @@ details[open]:hover {
 }
 
 details:hover {
+    -ms-transform: translate(-.5rem ,-.5rem);
+    -webkit-transform: translate(-.5rem ,-.5rem);
     transform: translate(-.5rem ,-.5rem);
     box-shadow: .5rem .5rem 0 var(--shadow);
 }
@@ -232,6 +268,8 @@ details>summary i.icon {
 }
 
 details[open] summary i.icon {
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
 }
 

@@ -1,5 +1,6 @@
 import sys
 import os
+import re
 
 MD = sys.argv[1]
 HTML = sys.argv[1].replace(".md", ".html")
@@ -33,82 +34,78 @@ for line in oldLines:
     line = line.strip()
     print("Line{}: {}".format(count, line.strip()))
 
-    # Header level 1
-    if line[:2] == "# ":
-        line = line[2:]
-        line = f"<h1>{line}"
-        line = f"{line}</h1>"
-    # Header level 2
-    elif line[:3] == "## ":
-        line = line[3:]
-        line = f"<h2>{line}"
-        line = f"{line}</h2>"
-    # Header level 3
-    elif line[:4] == "### ":
-        line = line[4:]
-        line = f"<h3>{line}"
-        line = f"{line}</h3>"
-    # Header level 4
-    elif line[:5] == "#### ":
-        line = line[5:]
-        line = f"<h4>{line}"
-        line = f"{line}</h4>"
-    # Header level 5
-    elif line[:6] == "##### ":
-        line = line[6:]
-        line = f"<h5>{line}"
-        line = f"{line}</h5>"
-    # Header level 6
-    elif line[:7] == "###### ":
-        line = line[7:]
-        line = f"<h6>{line}"
-        line = f"{line}</h6>"
+    # Header levels
+    if line[:1] == "#":
+        n = len(str(re.findall("^#\S*", line)).replace("['", "").replace("']", ""))
+        line = line[n+1:]
+        line = f"<h{n}>{line}"
+        line = f"{line}</h{n}>"
+    # Blockquotes
     elif line[:2] == "> ":
         line = line[2:]
         line = f'<div class="blockquote"><p>{line}'
         line = f'{line}</p></div>'
+    # italized and bold
     elif "***" in line:
         string = find_between(line, "***", "***")
         newString = f"<b><i>{string}</b></i>"
         line = line.replace("***" + string + "***", newString)
         line = f"<p>{line}"
         line = f"{line}</p>"
+    # bold
     elif "**" in line:
         string = find_between(line, "**", "**")
         newString = f"<b>{string}</b>"
         line = line.replace("**" + string + "**", newString)
         line = f"<p>{line}"
         line = f"{line}</p>"
+    #italized
     elif "*" in line:
         string = find_between(line, "*", "*")
         newString = f"<i>{string}</i>"
         line = line.replace("*" + string + "*", newString)
         line = f"<p>{line}"
         line = f"{line}</p>"
+    # seperator
     elif "---" in line:
         line = '<hr class="Seperator">'
+    # number list
     elif line[:1].isdecimal() and line[1:3] == ". ":
         line = f"<li>{line}"
         line = f"{line}</li>"
+    # normal list
     elif line[:2] == "- ":
         line = f"<li>{line}"
         line = f"{line}</li>"
-    elif "`" in line:
+    # code block
+    elif line[:3] == "```":
         string = find_between(line, '`', '`')
-        newString = f'<b><i>{string}</b></i>'
-        line = line.replace('`' + string + '`', newString)
+        line = line.replace('`', '')
         line = f'<div class="codeBlock">{line}'
         line = f'{line}</div>'
+    # code section
+    elif "`" in line:
+        string = find_between(line, "`", "`")
+        newString = f"<div class='codeSegment'>{string}</div>"
+        line = line.replace('`' + string + '`', newString)
+        line = f"<p class='codeSegmentWrapper'>{line}"
+        line = f"{line}</p>"
+    # link
     elif line[:1] == "[" and "](" in line and line[-1] == ")":
         link = find_between(line, "(", ")")
         string = find_between(line, "[", "]")
-        line = f"<a href='{link}'><p>{string}"
-        line = f"{line}</p></a>"
+        line = f"<a href='{link}'>{string}"
+        line = f"{line}</a>"
+    # image
     elif line[:2] == "![" and "](" in line and line[-1] == ")":
         link = find_between(line, "(", ")")
         string = find_between(line, "[", "]")
         line = f"<img src='{link}' alt='{string}'>"
         line = f"{line}</img>"
+    # empty line
+    elif line == "":
+        line = line
+    # text
     else:
         line = f"<p>{line}"
         line = f"{line}</p>"
