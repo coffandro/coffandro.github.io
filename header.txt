@@ -62,35 +62,4 @@ else
 </script>
 <!--end of Navigation bar-->
 
-<div class="content">
-<a id="AboutPicContainer" href="/about"><img id="AboutPic" src="/Images/About/CorneliusNoBG.png"></a>
-<h2 class="en">Welcome to my website!</h2>
-<p class="en">I built all of this myself so feel free to look around.</p>
-<p class="en">Here are some page link below if you want.</p>
-
-<h2 class="da">Velkommen til min hjemmeside!</h2>
-<p class="da">Jeg har bygget alt der her af mig selve så føl dig fri til at kigge rundt.</p>
-<p class="da">Her er der nogle links til et par sider.</i></p>
-
-<div style="margin-bottom: 150px;"></div>
-
-</div>
-<div class="content">
-<div class="grid">
-<a href="/wishList"><img src="/Images/About/Wishlist.png"></img>
-<p><b>Wish List</b></p>
-<p class="en">This is the page where i put my wish list for my family or similar.</p>
-<p class="da">det her er en ønske liste primært for min familie.</p></a>
-<a href="/art"><img src="/Images/Art/monkey_preview.png">
-<p><b>Art</b></p>
-<p class="en">This is where i display my art.</p>
-<p class="da">Dette er hvor jeg fremviser min kunst.</p></a>
-<a href="/Gallery/gallery"><img src="https://picsum.photos/400/300?random=1">
-<p><b>Gallery</b></p>
-<p class="en">Gallery is an experiment to make a stylish gallery page.</p>
-<p class="da">Galleri er et eksperiment for at lave en stilfuld galleriside.</p></a>
-</div>
-</div>
-
-</body>
-</html>
+<div class="writerContent">

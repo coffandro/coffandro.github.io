@@ -1,7 +1,8 @@
 body {
     margin:0;
     font-family: 'space mono', monospace;
-    --FontSize:25px;
+    --SecondaryFont: '';
+    --FontSize:15px;
     --MFontSize:60px;
     --hover-color: #ee8695;
     /* Theme colours */
@@ -57,6 +58,37 @@ p {
 }
 
 /* Content */
+.blockquote {
+    padding-left: 10px;
+    border-left: 3px solid var(--main-color);
+    margin: 10px;
+    overflow: hidden;
+    text-align: left;
+    border-color: var(--main-color);
+}
+
+.writerContent {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: left;
+    border: 2px solid;
+    border-color: var(--main-color);
+}
+
+.codeBlock {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: left;
+    border: 2px solid;
+    background-color: var(--alt-bg-color);
+    color: white;
+    border-color: var(--shadow);
+}
+
 .content {
     margin: 10px;
     border-radius: 15px;
@@ -65,13 +97,15 @@ p {
     border: 2px solid;
     border-color: var(--main-color);
 }
-.content p, .content h1, .content h2, .content h3, .content h4, .content h5{
-    padding: 15px;
-    margin: 15px;
+
+.content p, .writerContent p {
+    padding: 0px;
+    margin: 0px;
 }
 
-.content li{
-    padding: 0px;
+.content li, .writerContent li{
+    list-style-type: none;
+    padding: 5px;
     margin: 0px;
 }
 
