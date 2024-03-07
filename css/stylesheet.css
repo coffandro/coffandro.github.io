@@ -1,8 +1,13 @@
 body {
     margin:0;
     font-family: 'space mono', monospace;
-    --FontSize:25px;
-    --MFontSize:60px;
+    --PFontSize:25px;
+    --H1FontSize:45px;
+    --H2FontSize:40px;
+    --H3FontSize:30px;
+    --MPFontSize:35px;
+    --MH1FontSize:55px;
+    --MH2FontSize:45px;
     --hover-color: #ee8695;
     /* Theme colours */
     --main-color: #fbbbad;
@@ -25,7 +30,16 @@ hr.Seperator {
 }
 
 p {
-    font-size: var(--FontSize);
+    font-size: var(--PFontSize);
+}
+h1 {
+    font-size: var(--H1FontSize);
+}
+h2 {
+    font-size: var(--H2FontSize);
+}
+h3 {
+    font-size: var(--H3FontSize);
 }
 
 /* Grid */
@@ -150,7 +164,7 @@ button {
 }
 .mobile a, .mobile p{
   padding: 5px;
-  font-size: 35px;
+  font-size: var(--MFontSize);
 }
 .mobile h1, .mobile h2{
   padding: 2px;
@@ -160,6 +174,20 @@ button {
     padding: 2px;
     font-size: 250%;
 }
+
+.mobile a, .mobile p {
+    font-size: var(--PFontSize);
+}
+.mobile h1 {
+    font-size: var(--H1FontSize);
+}
+.mobile h2 {
+    font-size: var(--H2FontSize);
+}
+.mobile h3 {
+    font-size: var(--H3FontSize);
+}
+
 .mobile .content, .mobile .content a, .mobile .content div.a{
   text-decoration: none;
   border: 5px solid;
@@ -208,6 +236,79 @@ summary {
 
 summary::-webkit-details-marker {
     display: none;
+}
+
+.CVGrid {
+    position: absolute;
+    right: 0px;
+    width: 68%;
+    height: 25%;
+}
+
+.CVInternalGrid {
+    text-align: left;
+}
+.CVInternalGrid h1,.CVInternalGrid h2,.CVInternalGrid h3,.CVInternalGrid p {
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.CVInternalGrid hr.Seperator {
+    width: 97%;
+}
+
+.CVCodeGrid {
+    text-align: center;
+    margin: 15px;
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(5, 1fr);
+}
+.CVCodeGrid a {
+    text-decoration: none;
+    cursor: pointer;
+}
+.CVCodeGrid img {
+    width: 50%;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.CVSideBar {
+    position: absolute;
+    left: 0px;
+    border: 2px solid;
+    border-color: var(--main-color);
+}
+
+.CVSideBar a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.CVSideBar h1,.CVSideBar h2,.CVSideBar h3,.CVSideBar p {
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#CVPic {
+    border-radius: 25px;
+    padding: 0;
+    margin: 0;
+}
+  
+#CVPicContainer {
+    border: 2px solid var(--main-color);
+    float: left;
+    margin: 10px;
+    padding: 10px;
+}
+  
+#CVPicContainer:hover {
+    transform: translate(-.5rem ,-.5rem);
+    box-shadow: .5rem .5rem 0 var(--shadow);
 }
 
 /*Language changing*/
