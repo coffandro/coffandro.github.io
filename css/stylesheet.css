@@ -244,6 +244,10 @@ summary::-webkit-details-marker {
     width: 68%;
     height: 25%;
 }
+.mobile .CVGrid {
+    position: relative;
+    width: 100%;
+}
 
 .CVInternalGrid {
     text-align: left;
@@ -280,6 +284,9 @@ summary::-webkit-details-marker {
     left: 0px;
     border: 2px solid;
     border-color: var(--main-color);
+}
+.mobile .CVSideBar {
+    position: relative;
 }
 
 .CVSideBar a {
