@@ -80,11 +80,11 @@ nav .dropdown-content i {
 }
 
 nav #LangButton {
-    width: calc(var(--FontSize) + 10px);
+    width: calc(var(--PFontSize) + 10px);
 }
 
 nav .LangImg {
-    width: var(--FontSize);
+    width: var(--PFontSize);
 }
 
 nav .dropdown:hover .dropdown-content {
@@ -117,7 +117,7 @@ nav #About-Content {
     height: 52px;
     width: 52px;
     color: var(--main-color);
-    font-size: var(--FontSize);
+    font-size: var(--PFontSize);
     transition: all .1s ease-out;
 }
 .nav-btn:hover {

@@ -13,17 +13,17 @@
 }
 
 .topnav #Home {
-    text-align: center;
-    padding: 6px 10px 10px 10px;
-    margin: 0;
-    font-size: calc(var(--MFontSize) + 35px);
+  text-align: center;
+  padding: 6px 10px 10px 10px;
+  margin: 0;
+  font-size: calc(var(--MPFontSize) + 35px);
 }
 
 .topnav #Rose {
-    position: absolute;
-    left: 0;
-    padding: 10px 0 0 10px;
-    width: 95px;
+  position: absolute;
+  left: 0;
+  padding: 10px 0 0 10px;
+  width: 95px;
 }
 
 /* Style navigation menu links */
@@ -36,33 +36,33 @@
   font-size: 45px
 }
 .topnav details {
-    font-size: 45px;
-    padding: 14px 16px;
-    border: 0;
-    border-radius: 0;
-    border-top: 3px;
-    border-style: solid;
-    margin: 0;
+  font-size: 45px;
+  padding: 14px 16px;
+  border: 0;
+  border-radius: 0;
+  border-top: 3px;
+  border-style: solid;
+  margin: 0;
 }
 .topnav #Art {
-    border: 0;
-    border-top: 3px;
-    border-style: solid;
+  border: 0;
+  border-top: 3px;
+  border-style: solid;
 }
 
 .topnav details summary i.arrow {
-    align-items: center;
-    transition: all 0.3s;
-    margin-right: 10px;
-    margin-left: auto;
+  align-items: center;
+  transition: all 0.3s;
+  margin-right: 10px;
+  margin-left: auto;
 }
 .topnav details[open] summary i {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 /* Style the hamburger menu */
 .topnav a.icon {
-  font-size: calc(var(--MFontSize) + 35px);
+  font-size: calc(var(--MPFontSize) + 35px);
   border: 0;
   border-left: 3px;
   border-bottom: 3px;
@@ -78,7 +78,7 @@
   top: 0;
 }
 .topnav a.icon.lang-modebtn {
-  right: calc(var(--MFontSize) + 55px);
+  right: calc(var(--MPFontSize) + 55px);
   top: 0;
   border-radius: 0 0 0 5px;
 }

@@ -61,7 +61,7 @@ h3 {
     box-sizing: border-box;
 }
 .grid i {
-    font-size: 500%;
+    font-size: var(--PFontSize);
 }
 .art img {
     width: 100%;
@@ -164,7 +164,7 @@ button {
 }
 .mobile a, .mobile p{
   padding: 5px;
-  font-size: var(--MFontSize);
+  font-size: var(--MPFontSize);
 }
 .mobile h1, .mobile h2{
   padding: 2px;
@@ -219,7 +219,7 @@ details:hover {
 
 details>summary i.icon {
     align-items: center;
-    font-size: calc(var(--FontSize) * 3.5);
+    font-size: calc(var(--PFontSize) * 3.5);
     transition: all 0.3s;
     margin-right: 10px;
     margin-left: auto;
