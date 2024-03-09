@@ -282,6 +282,7 @@ summary::-webkit-details-marker {
 .CVSideBar {
     position: absolute;
     left: 0px;
+    width: 31%;
     border: 2px solid;
     border-color: var(--main-color);
 }
