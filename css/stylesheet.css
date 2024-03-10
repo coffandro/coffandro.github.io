@@ -288,6 +288,7 @@ summary::-webkit-details-marker {
 }
 .mobile .CVSideBar {
     position: relative;
+    width: 100%;
 }
 
 .CVSideBar a {

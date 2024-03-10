@@ -16,7 +16,7 @@
   text-align: center;
   padding: 6px 10px 10px 10px;
   margin: 0;
-  font-size: calc(var(--MPFontSize) + 35px);
+  font-size: calc(var(--MPFontSize) + 60px);
 }
 
 .topnav #Rose {
