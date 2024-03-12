@@ -295,6 +295,9 @@ summary::-webkit-details-marker {
     text-decoration: none;
     cursor: pointer;
 }
+.CVLanguages {
+    width: 50%;
+} 
 
 .CVSideBar h1,.CVSideBar h2,.CVSideBar h3,.CVSideBar p {
     padding: 0px;
