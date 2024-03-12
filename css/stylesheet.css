@@ -244,10 +244,6 @@ summary::-webkit-details-marker {
     width: 68%;
     height: 25%;
 }
-.mobile .CVGrid {
-    position: relative;
-    width: 100%;
-}
 
 .CVInternalGrid {
     text-align: left;
@@ -290,6 +286,17 @@ summary::-webkit-details-marker {
     position: relative;
     width: 100%;
 }
+.mobile .CVSideBar {
+    position: relative;
+    width: 100%;
+}
+.mobile .CVLanguages {
+    width: 75%;
+} 
+.mobile .CVGrid {
+    position: relative;
+    width: 100%;
+}
 
 .CVSideBar a {
     text-decoration: none;
@@ -302,11 +309,6 @@ summary::-webkit-details-marker {
     border: 2px solid;
     border-color: var(--main-color);
 } 
-
-.mobile .CVLanguages {
-    width: 75%;
-} 
-
 .CVSideBar h1,.CVSideBar h2,.CVSideBar h3,.CVSideBar p {
     padding: 0px;
     margin-top: 0px;
