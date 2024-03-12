@@ -299,6 +299,10 @@ summary::-webkit-details-marker {
     width: 50%;
 } 
 
+.mobile .CVLanguages {
+    width: 100%;
+} 
+
 .CVSideBar h1,.CVSideBar h2,.CVSideBar h3,.CVSideBar p {
     padding: 0px;
     margin-top: 0px;
