@@ -265,6 +265,10 @@ summary::-webkit-details-marker {
     gap: 1px;
     grid-template-columns: repeat(5, 1fr);
 }
+.content li {
+    list-style-type: none;
+}
+
 .CVCodeGrid a {
     text-decoration: none;
     cursor: pointer;
@@ -281,10 +285,6 @@ summary::-webkit-details-marker {
     width: 31%;
     border: 2px solid;
     border-color: var(--main-color);
-}
-.mobile .CVSideBar {
-    position: relative;
-    width: 100%;
 }
 .mobile .CVSideBar {
     position: relative;
