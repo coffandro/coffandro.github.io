@@ -154,8 +154,10 @@ button {
     margin-bottom: 200px;
 }
 .mobile #AboutPicContainer{
-    margin: 0;
+    display: block;
+    margin: 5px;
     padding: 0;
+    float: inherit;
 }
 
 .mobile #AboutPic {
@@ -195,7 +197,7 @@ button {
 
 .mobile .grid {
     grid-template-columns: repeat(2, 1fr);
-    width: 100%;
+    width: 95%;
     height: 25%;
 }
 /* End of mobile */
@@ -289,6 +291,7 @@ summary::-webkit-details-marker {
 .mobile .CVSideBar {
     position: relative;
     width: 96%;
+    margin: 10px;
 }
 .mobile .CVLanguages {
     width: 95%;
@@ -331,7 +334,11 @@ summary::-webkit-details-marker {
 }
 
 .mobile #CVPicContainer {
-    width: 94%;
+    width: 98%;
+    display: block;
+    margin: 5px;
+    padding: 0;
+    float: inherit;
 }
 
 #CVPicContainer:hover {
