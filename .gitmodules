@@ -1,0 +1,3 @@
+[submodule "Lively"]
+	path = Lively
+	url = .\\Lively\\
