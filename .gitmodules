@@ -1,6 +1,8 @@
 [submodule "Lively"]
 	path = Lively
-	url = https://github.com/coffandro/Lively
+	url = https://github.com/coffandro/Lively.git
+	branch = main
 [submodule "HTMLOS"]
 	path = HTMLOS
-	url = https://github.com/coffandro/HTMLOS
+	url = https://github.com/coffandro/HTMLOS.git
+	branch = main
