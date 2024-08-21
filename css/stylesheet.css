@@ -8,8 +8,8 @@ body {
     --MPFontSize:35px;
     --MH1FontSize:55px;
     --MH2FontSize:45px;
-    --hover-color: #ee8695;
     /* Theme colours */
+	--hover-color: #ee8695;
     --main-color: #fbbbad;
     --main-bg-color: #292831;
     --alt-bg-color: #333;
