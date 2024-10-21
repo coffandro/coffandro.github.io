@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta name="google-site-verification" content="S5miEUSow9wX4fls-vk0Zw6bFLHfwxbYNOIk3omz6JU" />
 
@@ -20,64 +21,62 @@
   <link id="nav" rel="stylesheet" href="/css/navbar.css" disabled>
   <link id="mnav" rel="stylesheet" href="/css/mnavbar.css" disabled>
 
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="jquery-3.7.1.min.js"></script>
   <script id="Font-Awesome" src="https://kit.fontawesome.com/5c072ddc8a.js" crossorigin="anonymous"></script>
   <script id="Feather-Icons" src="https://unpkg.com/feather-icons"></script>
 </head>
+
 <body>
 
-<!--Navigation bar-->
-<div id="nav-placeholder">
-</div>
-<script>
-LoadNavBar = function() {
-    // loading a different nav bar depending on phone type
-    if (
-        navigator.userAgent.match(/Android/i) || 
-        navigator.userAgent.match(/webOS/i) || 
-        navigator.userAgent.match(/iPhone/i) || 
-        navigator.userAgent.match(/iPad/i) || 
-        navigator.userAgent.match(/iPod/i) || 
-        navigator.userAgent.match(/BlackBerry/i) || 
-        navigator.userAgent.match(/Windows Phone/i) || 
-        window.innerWidth <= 800)
-    {
+  <!--Navigation bar-->
+  <div id="nav-placeholder">
+  </div>
+  <script>
+    LoadNavBar = function () {
+      // loading a different nav bar depending on phone type
+      if (
+        navigator.userAgent.match(/Android/i) ||
+        navigator.userAgent.match(/webOS/i) ||
+        navigator.userAgent.match(/iPhone/i) ||
+        navigator.userAgent.match(/iPad/i) ||
+        navigator.userAgent.match(/iPod/i) ||
+        navigator.userAgent.match(/BlackBerry/i) ||
+        navigator.userAgent.match(/Windows Phone/i) ||
+        window.innerWidth <= 800) {
         document.documentElement.classList.toggle("mobile", true);
         document.getElementById('mnav').removeAttribute('disabled');
-        $(function(){
-            $("#nav-placeholder").load("/mobile-navbar.html");
+        $(function () {
+          $("#nav-placeholder").load("/mobile-navbar.html");
         });
-    }
-    // nav bar for touch-screen (mobile) devices
-    else 
-    {
+      }
+      // nav bar for touch-screen (mobile) devices
+      else {
         document.documentElement.classList.toggle("mobile", false);
         document.getElementById('nav').removeAttribute('disabled');
-        $(function(){
-            $("#nav-placeholder").load("/navbar.html");
+        $(function () {
+          $("#nav-placeholder").load("/navbar.html");
         });
-    }
-};
+      }
+    };
 
-window.onresize = function() {
-  LoadNavBar()
-};
-LoadNavBar()
-// nav bar for everything else (desktop)
-</script>
-<!--end of Navigation bar-->
+    window.onresize = function () {
+      LoadNavBar()
+    };
+    LoadNavBar()
+    // nav bar for everything else (desktop)
+  </script>
+  <!--end of Navigation bar-->
 
-<div class="CVSideBar content">
+  <div class="CVSideBar content">
     <a id="CVPicContainer" href="/Images/About/Cornelius.jpg"><img id="CVPic" src="/Images/About/CorneliusNoBG.png"></a>
     <h2>Profile</h2>
-    <p>I'm a passionated <span id="AGE">AGE</span> year old student  
-      with a love for <br>Linux <i class="fa-brands fa-linux"></i>, 
-      game development <i class="fa-solid fa-gamepad"></i>, 
+    <p>I'm a passionated <span id="AGE">AGE</span> year old student
+      with a love for <br>Linux <i class="fa-brands fa-linux"></i>,
+      game development <i class="fa-solid fa-gamepad"></i>,
       and generally nerdy things.
     </p>
     <script>
-      function diff_years(dt2, dt1) 
-      {
+      function diff_years(dt2, dt1) {
         // Calculate the difference in milliseconds between the two dates
         var diff = (dt2.getTime() - dt1.getTime()) / 1000;
         // Convert the difference from milliseconds to days
@@ -85,7 +84,7 @@ LoadNavBar()
         // Calculate the approximate number of years by dividing the difference in days by the average number of days in a year (365.25)
         return Math.abs(Math.round(diff / 365.25));
       }
-      
+
       let BirthDate = new Date('2006-12-17')
       let now = new Date();
 
@@ -97,16 +96,16 @@ LoadNavBar()
     <hr class="Seperator">
     <br>
     <li><a href="tel:81710302">
-      <span class="en"><b class="en">Phone number:</b></span>
-      <span class="da"><b class="da">Telefon number:</b></span>
-      <span>+45 81 71 03 02</span>
-    </a></li>
+        <span class="en"><b class="en">Phone number:</b></span>
+        <span class="da"><b class="da">Telefon number:</b></span>
+        <span>+45 81 71 03 02</span>
+      </a></li>
     <br>
     <br>
     <li><a href="mailto:macrosedk@gmail.com">
-      <span><b>EMAIL:</b></span>
-      <span>macrosedk@gmail.com</span>
-    </a></li>
+        <span><b>EMAIL:</b></span>
+        <span>macrosedk@gmail.com</span>
+      </a></li>
     <br>
     <br>
     <h2 class="en">Hobbies</h2>
@@ -137,91 +136,101 @@ LoadNavBar()
     <br>
   </div>
 
-<div class="CVGrid">
+  <div class="CVGrid">
 
-<div class="CVInternalGrid content">
-    <br>
-    <h1>Cornelius Andreas Rosenaa</h1>
-    <h3>Game design Student</h3>
-    <br>
-    <h2 class="en">Education</h2>
-    <h2 class="da">Uddanelse</h2>
-    <hr class="Seperator">
-    <br>
-    <h3>Skolen Ved Nordens Plads</h3>
-    <p><b>2013-2024</b></p>
-    <p class="en">At Skolen ved Nordens Plads I learned just about everything I now know, and graduated with a ECTS of <b>B</b>.</p>
-    <p class="da">På Skolen ved Nordens Plads lærte jeg nærmest alt hvad jeg idag ved, og graduerede med en ECTS på <b>B</b>.</p>
-    <br>
-    <!--<h3 class="en">Greenmind Vesterbrogade, internship</h3>
+    <div class="CVInternalGrid content">
+      <br>
+      <h1>Cornelius Andreas Rosenaa</h1>
+      <h3>Game design Student</h3>
+      <br>
+      <h2 class="en">Education</h2>
+      <h2 class="da">Uddanelse</h2>
+      <hr class="Seperator">
+      <br>
+      <h3>Skolen Ved Nordens Plads</h3>
+      <p><b>2013-2024</b></p>
+      <p class="en">At Skolen ved Nordens Plads I learned just about everything I now know, and graduated with a ECTS of
+        <b>B</b>.</p>
+      <p class="da">På Skolen ved Nordens Plads lærte jeg nærmest alt hvad jeg idag ved, og graduerede med en ECTS på
+        <b>B</b>.</p>
+      <br>
+      <!--<h3 class="en">Greenmind Vesterbrogade, internship</h3>
     <h3 class="da">Greenmind Vesterbrogade, praktik</h3>
     <p><b>29 Jan 2024-4 Feb 2024</b></p>
     <p class="en"></p>
     <p class="da"></p>
     <br>-->
-    <h2 class="en">Experience</h2>
-    <h2 class="da">Erfarenhed</h2>
-    <hr class="Seperator">
-    <br>
-    <img class="CVLanguages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=coffandro&bg_color=292831&hide_border=true&title_color=fbbbad&text_color=fbbbad" />
-    <h3>Fallout: London Community moderator</h3>
-    <p class="en"><b class="en">25 Nov 2022-25 Jul 2024</b></p>
-    <p class="da"><b class="da">25 Nov 2022-25 Jul 2024</b></p>
-    <p class="en">As a community moderator I got experience in handling difficult social situation.</p>
-    <p class="da">Som en community moderator fik jeg erfarenhed i at håndtere svære sociale situationer.</p>
-    <br>
-    <h3>Fallout: London Level designer</h3>
-    <p class="en"><b class="en">16 Jul 2023-25 Jul 2024</b></p>
-    <p class="da"><b class="da">16 Jul 2023-25 Jul 2024</b></p>
-    <p class="en">As a Level designer I learned about the technical and artistic elements found in building a good level.</p>
-    <p class="da">Som en Level designer lærte jeg omkring de tekniske og artistiske elementer fundet I at bygge et godt level.</p>
-    <br>
-    <h3>Fallout: London Scripter</h3>
-    <p class="en"><b class="en">15 Nov 2023-25 Jul 2024</b></p>
-    <p class="da"><b class="da">15 Nov 2023-25 Jul 2024</b></p>
-    <p class="en">As a Scripter I learned about the internals of the Bethesda Creation Engine and techniques in designing quests.</p>
-    <p class="da">Som en Scripter lærte jeg om det indre af Bethesda Creation Engine og teknikker til at designe quests.</p>
-    <br>
-    <h3>Fallout: London Downgrader Developer</h3>
-    <p class="en"><b class="en">20 Apr 2023-4 Aug 2024</b></p>
-    <p class="da"><b class="da">20 Apr 2023-4 Aug 2024</b></p>
-    <p class="en">As the developer behind the Fallout: London - Fallout 4 Downgrader I learnt a lot about shipping to prod and handling large volumes of tickets.</p>
-    <p class="da">Som udvikleren bag ved Fallout: London - Fallout 4 Downgrader lærte jeg store mængder omkring at udgive software og ar håndtere store mængder af opgaver.</p>
-    <br>
-</div>
+      <h2 class="en">Experience</h2>
+      <h2 class="da">Erfarenhed</h2>
+      <hr class="Seperator">
+      <br>
+      <img class="CVLanguages"
+        src="https://github-readme-stats.vercel.app/api/top-langs/?username=coffandro&bg_color=292831&hide_border=true&title_color=fbbbad&text_color=fbbbad" />
+      <h3>Fallout: London Community moderator</h3>
+      <p class="en"><b class="en">25 Nov 2022-25 Jul 2024</b></p>
+      <p class="da"><b class="da">25 Nov 2022-25 Jul 2024</b></p>
+      <p class="en">As a community moderator I got experience in handling difficult social situation.</p>
+      <p class="da">Som en community moderator fik jeg erfarenhed i at håndtere svære sociale situationer.</p>
+      <br>
+      <h3>Fallout: London Level designer</h3>
+      <p class="en"><b class="en">16 Jul 2023-25 Jul 2024</b></p>
+      <p class="da"><b class="da">16 Jul 2023-25 Jul 2024</b></p>
+      <p class="en">As a Level designer I learned about the technical and artistic elements found in building a good
+        level.</p>
+      <p class="da">Som en Level designer lærte jeg omkring de tekniske og artistiske elementer fundet I at bygge et
+        godt level.</p>
+      <br>
+      <h3>Fallout: London Scripter</h3>
+      <p class="en"><b class="en">15 Nov 2023-25 Jul 2024</b></p>
+      <p class="da"><b class="da">15 Nov 2023-25 Jul 2024</b></p>
+      <p class="en">As a Scripter I learned about the internals of the Bethesda Creation Engine and techniques in
+        designing quests.</p>
+      <p class="da">Som en Scripter lærte jeg om det indre af Bethesda Creation Engine og teknikker til at designe
+        quests.</p>
+      <br>
+      <h3>Fallout: London Downgrader Developer</h3>
+      <p class="en"><b class="en">20 Apr 2023-4 Aug 2024</b></p>
+      <p class="da"><b class="da">20 Apr 2023-4 Aug 2024</b></p>
+      <p class="en">As the developer behind the Fallout: London - Fallout 4 Downgrader I learnt a lot about shipping to
+        prod and handling large volumes of tickets.</p>
+      <p class="da">Som udvikleren bag ved Fallout: London - Fallout 4 Downgrader lærte jeg store mængder omkring at
+        udgive software og ar håndtere store mængder af opgaver.</p>
+      <br>
+    </div>
 
-<div class="content">
-<h1 class="en">Games I've made/worked on.</h1>
-<h1 class="da">Spil jeg har lavet/arbejdet på.</h1>
-<div class="grid">
-<a href="https://fallout4london.com/"><img src="https://fallout4london.com/wp-content/uploads/2023/12/cropped-TSHIRTLOGO-1.png">
-  <p><b>Fallout: London</b></p>
-  <p class="en">Fallout: London is an ambitious, trail-blazing DLC-sized mod for Fallout 4.</p>
-  <p class="da">Fallout: London er et ambitiøst, banebrydende DLC-størrelse mod for Fallout 4.</p>
-<a href="https://coffandro.itch.io/Fishies"><img src="/Images/Fishies.png"></img>
-  <p><b>Fishies</b></p>
-  <p class="en">There's too many fish, kill as many as you can!</p>
-  <p class="da">Der er for mange fisk, dræb så mange som du kan!</p>
-</a>
-<a href="https://coffandro.itch.io/Krimi"><img src="/Images/Krimi.png">
-  <p><b>Krimi</b></p>
-  <p class="en">Krimi is a small game I made to test a dialogue system.</p>
-  <p class="da">Krimi er et lille spil jeg har lavet for at teste et dialog system.</p>
-</a>
-<a href="https://coffandro.itch.io/gnomes"><img src="/Images/Gnomes.png">
-  <p><b>Gnomes</b></p>
-  <p class="en">Gnomes is a small game I made because wth, click the enemies.</p>
-  <p class="da">Gnomes er et lille spil jeg lavede fordi hvorfor ikke, klik på fjenderne.</p>
-</a>
-<a href="https://coffandro.itch.io/oso-invaders"><img src="/Images/OSO Invaders.png">
-  <p><b>OSO Invaders</b></p>
-  <p class="en">OSO Invaders is a school project game I made.</p>
-  <p class="da">OSO Invaders er et skole projekts spil jeg har lavet.</p>
-</a>
-</a>
-</div>
-</div>
-</div>
+    <div class="content">
+      <h1 class="en">Games I've made/worked on.</h1>
+      <h1 class="da">Spil jeg har lavet/arbejdet på.</h1>
+      <div class="grid">
+        <a href="https://fallout4london.com/"><img
+            src="https://fallout4london.com/wp-content/uploads/2023/12/cropped-TSHIRTLOGO-1.png">
+          <p><b>Fallout: London</b></p>
+          <p class="en">Fallout: London is an ambitious, trail-blazing DLC-sized mod for Fallout 4.</p>
+          <p class="da">Fallout: London er et ambitiøst, banebrydende DLC-størrelse mod for Fallout 4.</p>
+          <a href="https://coffandro.itch.io/Fishies"><img src="/Images/Fishies.png"></img>
+            <p><b>Fishies</b></p>
+            <p class="en">There's too many fish, kill as many as you can!</p>
+            <p class="da">Der er for mange fisk, dræb så mange som du kan!</p>
+          </a>
+          <a href="https://coffandro.itch.io/Krimi"><img src="/Images/Krimi.png">
+            <p><b>Krimi</b></p>
+            <p class="en">Krimi is a small game I made to test a dialogue system.</p>
+            <p class="da">Krimi er et lille spil jeg har lavet for at teste et dialog system.</p>
+          </a>
+          <a href="https://coffandro.itch.io/gnomes"><img src="/Images/Gnomes.png">
+            <p><b>Gnomes</b></p>
+            <p class="en">Gnomes is a small game I made because wth, click the enemies.</p>
+            <p class="da">Gnomes er et lille spil jeg lavede fordi hvorfor ikke, klik på fjenderne.</p>
+          </a>
+          <a href="https://coffandro.itch.io/oso-invaders"><img src="/Images/OSO Invaders.png">
+            <p><b>OSO Invaders</b></p>
+            <p class="en">OSO Invaders is a school project game I made.</p>
+            <p class="da">OSO Invaders er et skole projekts spil jeg har lavet.</p>
+          </a>
+        </a>
+      </div>
+    </div>
+  </div>
 
 </body>
 

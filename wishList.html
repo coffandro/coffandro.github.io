@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="google-site-verification" content="S5miEUSow9wX4fls-vk0Zw6bFLHfwxbYNOIk3omz6JU" />
 
@@ -10,174 +11,356 @@
     <title>Wish List</title>
     <meta property="og:title" content="Wish List">
 
-    <meta name="description" content="this is a gift list primarily for my family, I'll update it along the way when I find things">
-    <meta property="og:description" content="this is a gift list primarily for my family, I'll update it along the way when I find things">
+    <meta name="description"
+        content="this is a gift list primarily for my family, I'll update it along the way when I find things">
+    <meta property="og:description"
+        content="this is a gift list primarily for my family, I'll update it along the way when I find things">
 
     <link rel="icon" type="image/x-icon" href="/Images/Xicon.svg">
     <meta property="og:image" content="/Images/Xicon.svg">
-    
+
     <link rel="stylesheet" href="/css/stylesheet.css">
     <link id="nav" rel="stylesheet" href="/css/navbar.css" disabled>
     <link id="mnav" rel="stylesheet" href="/css/mnavbar.css" disabled>
 
 
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="jquery-3.7.1.min.js"></script>
     <script id="Font-Awesome" src="https://kit.fontawesome.com/5c072ddc8a.js" crossorigin="anonymous"></script>
     <script id="Feather-Icons" src="https://unpkg.com/feather-icons"></script>
 </head>
+
 <body>
 
 
-<!--Navigation bar-->
-<div id="nav-placeholder">
-</div>
-<script>
-    LoadNavBar = function() {
-        // loading a different nav bar depending on phone type
-        if (
-            navigator.userAgent.match(/Android/i) || 
-            navigator.userAgent.match(/webOS/i) || 
-            navigator.userAgent.match(/iPhone/i) || 
-            navigator.userAgent.match(/iPad/i) || 
-            navigator.userAgent.match(/iPod/i) || 
-            navigator.userAgent.match(/BlackBerry/i) || 
-            navigator.userAgent.match(/Windows Phone/i) || 
-            window.innerWidth <= 800)
-        {
-            document.documentElement.classList.toggle("mobile", true);
-            document.getElementById('mnav').removeAttribute('disabled');
-            $(function(){
-                $("#nav-placeholder").load("/mobile-navbar.html");
-            });
-        }
-        // nav bar for touch-screen (mobile) devices
-        else 
-        {
-            document.documentElement.classList.toggle("mobile", false);
-            document.getElementById('nav').removeAttribute('disabled');
-            $(function(){
-                $("#nav-placeholder").load("/navbar.html");
-            });
-        }
-    };
-    
-    window.onresize = function() {
-      LoadNavBar()
-    };
-    LoadNavBar()
-    // nav bar for everything else (desktop)
-</script>
-<!--end of Navigation bar-->
+    <!--Navigation bar-->
+    <div id="nav-placeholder">
+    </div>
+    <script>
+        LoadNavBar = function () {
+            // loading a different nav bar depending on phone type
+            if (
+                navigator.userAgent.match(/Android/i) ||
+                navigator.userAgent.match(/webOS/i) ||
+                navigator.userAgent.match(/iPhone/i) ||
+                navigator.userAgent.match(/iPad/i) ||
+                navigator.userAgent.match(/iPod/i) ||
+                navigator.userAgent.match(/BlackBerry/i) ||
+                navigator.userAgent.match(/Windows Phone/i) ||
+                window.innerWidth <= 800) {
+                document.documentElement.classList.toggle("mobile", true);
+                document.getElementById('mnav').removeAttribute('disabled');
+                $(function () {
+                    $("#nav-placeholder").load("/mobile-navbar.html");
+                });
+            }
+            // nav bar for touch-screen (mobile) devices
+            else {
+                document.documentElement.classList.toggle("mobile", false);
+                document.getElementById('nav').removeAttribute('disabled');
+                $(function () {
+                    $("#nav-placeholder").load("/navbar.html");
+                });
+            }
+        };
 
-<div class="content">
-    <h1 class="en">Wish List</h1>
-    <h1 class="da">Ønske liste</h1>
-    <p class="en">this is a gift list, primarily for my family. I'll update it along the way when I find things.</p>
-    <p class="da">det her er en ønske liste, primært for min familie. jeg opdaterer den hen af vejen imens jeg finder ting.</p>
-</div>
-<div class="content">
-<details class="content">
-<summary>
-    <h1 class="en">Electronics</h1>
-    <h1 class="da">Elektronik</h1>
-    <i class="icon fa fa-caret-down"></i>
-</summary>
-<div class="grid">
-<a href="https://flipperzero.one/"><img src="https://thumb.tildacdn.com/tild3130-3536-4036-b633-343837383536/-/format/webp/front.jpg" width="50%">
-<p class="en"><b class="en">Flipper zero</b></p><p class="en">Flipper Zero is a portable multi-tool for pentesters and geeks in a toy-like body. It loves hacking digital stuff, such as radio protocols, access control systems, hardware and more. It's fully open-source and customizable, so you can extend it in whatever way you like.</p>
-<p class="da"><b class="da">Flipper zero</b></p><p class="da">Flipper Zero er et bærbart multiværktøj til pentestere og nørder i en legetøjslignende krop. Den elsker at hacke digitale ting, såsom radioprotokoller, adgangskontrolsystemer, hardware og mere. Det er fuldt open source og kan tilpasses, så du kan udvide det på den måde, du vil.</p></a>
-<a href="https://www.elgiganten.dk/product/gaming/spiltilbehor/streaming-tilbehor/elgato-stream-deck-controller/ELGSTREAMDECK"><img src="https://www.elgiganten.dk/image/dv_web_D18000100245518/ELGSTREAMDECK/elgato-stream-deck-controller.jpg" width="50%">
-<p class="en"><b class="en">Stream Deck</b></p><p class="en">Elgato Stream Deck is a programmable macro pad with 6-32 displays which can contain whatever the heart desires</p>
-<p class="da"><b class="da">Stream Deck</b></p><p class="da">Elgato Stream Deck er en programmerbar makropad med 6-32 skærme, som kan indeholde alt, hvad hjertet begærer</p></a>
-<a href="https://raspberrypi.dk/webshop/kategori/raspberry-pi-modeller/"><img src="https://raspberrypi.dk/wp-content/uploads/2017/05/RaspberryPidk-logo.png" width="50%">
-<p class="en"><b class="en">Raspberry Pi</b></p><p class="en">Raspberry Pi is a series of programmable micro controller's and mini computer's for use in many electronic projects</p>
-<p class="da"><b class="da">Raspberry Pi</b></p><p class="da">Raspberry Pi er en serie af programmerbare mikrocontrollere og minicomputere til brug i mange elektroniske projekter</p></a>
-<a href="https://www.elgiganten.dk/product/computer-kontor/computertilbehor/mus-tastatur/mus/logitech-mx-master-3-tradlos-mus-sort/49355"><img src="https://www.elgiganten.dk/image/dv_web_D180001002713212/49355/logitech-mx-master-3-tradlos-mus-sort--pdp_zoom-3000.jpg" width="50%">
-<p class="en"><b class="en">MX Master 3</b></p><p class="en">Work faster with the wireless Logitech MX Master 3 mouse. The sensor detects any surface, buttons can be mapped to open your favorite apps, the MagSpeed ​​wheel moves quickly through your documents and the signal is still strong 10 meters away.</p>
-<p class="da"><b class="da">MX Master 3</b></p><p class="da">Arbejd hurtigere med den trådløse Logitech MX Master 3 mus. Sensoren registrerer enhver overflade, knapper kan kortlægges, så de åbner dine yndlingsapps, MagSpeed-hjulet kører hurtigt gennem dine dokumenter og signalet er stadig stærkt 10 meter væk.</p></a>
-</div>
-</details>
+        window.onresize = function () {
+            LoadNavBar()
+        };
+        LoadNavBar()
+        // nav bar for everything else (desktop)
+    </script>
+    <!--end of Navigation bar-->
 
-<details class="content">
-<summary>
-<h1>Miscellaneous</h1>
-<i class="icon fa fa-caret-down"></i>
-</summary>
-<div class="grid">
-<a href="https://let-elektronik.dk/shop/2170-lodde-tilbehoer/9327-solder-wick-2-5ft---generic/"><img src="https://shop13030.sfstatic.io/upload_dir/shop/_thumbs/09327-Solder_Wick__2_5ft._-_Generic-01_115.w1200.jpg" width="50%">
-<p class="en"><b class="en">Soldering Wick</b></p><p class="en">Solder wick is composed of copper threads braided together.</p>
-<p class="da"><b class="da">Lodde Wick</b></p><p class="da">Solder wick is composed of copper threads braided together.</p></a>
-<a href="https://salling.dk/gavekort/starbucks-gavekort-100-kr/p-455436/"><img src="https://assets.salling.structpim.com/media/1t4haybi/starbucks-gavekort-100-kr.jpg?mode=boxpad&heightRatio=1&width=640&quality=80&bgcolor=white" width="50%">
-<p class="en"><b class="en">Starbucks Starbucks gavekort - 100kr</b></p><p class="en">This is a gift card to Starbucks Because i like coffee</p>
-<p class="da"><b class="da">Starbucks Starbucks gavekort - 100kr</b></p><p class="da">Dette er et gavekort til Starbuck, fordi jeg kan lide kaffe</p></a>
-<a href="https://www.stickermule.com/products/unixstickers-pro-pack"><img src="https://assets.stickermule.com/image/fetch/c_fill,fl_lossy,f_auto,q_auto:best,w_auto/https://storage.googleapis.com/sm-content/core/products/products/unixstickers-pro-pack/cover" width="50%">
-<p class="en"><b class="en">Unixstickers pro pack</b></p><p class="en">Get 13 stickers for just $1. Badge sticker sheet (Arch Linux + Git + Vim + Python), Vim, Git, Python, Official Bash, Linux Tux, Debian, Arch Linux, Javascript, GoLang.</p>
-<p class="da"><b class="da">Unixstickers pro pack</b></p><p class="da">Få 13 klistermærker for kun $1. Badge klistermærkeark (Arch Linux + Git + Vim + Python), Vim, Git, Python, Official Bash, Linux Tux, Debian, Arch Linux, Javascript, GoLang.</p></a>
-<a href="https://system76.com/merch/stickers"><img src="https://images.prismic.io/system76/fbb24542-5ef8-43b0-8276-7f9e7ff34a02_stickers.jpg?auto=compress,format" width="50%">
-<p class="en"><b class="en">Free System76 + Pop!_OS stickers!</b></p><p class="en">Send us a self-addressed, stamped envelope, and we'll send you some stickers! We've got logos, robots, and more for you to add to your geek flag.</p>
-<p class="da"><b class="da">Free System76 + Pop!_OS stickers!</b></p><p class="da">Send os en selvadresseret, stemplet konvolut, så sender vi dig nogle klistermærker! Vi har logoer, robotter og mere, som du kan tilføje til dit nørdflag.</p></a>
-<a href="https://system76.com/merch/sys76-flt-hat-1/configure"><img src="https://assets.system76.com/products/sys76-flt-hat-1/feature.jpg?fit=cover" width="50%">
-<p class="en"><b class="en">System76 Flight Crew Mesh-Back Hat</b></p><p class="en">Join a starfleet of users enlisting to be Part of the Mission! This aerospatial trucker hat shields your head from atmospheric friction, while geometric rear vents exhaust heat from your noggin.</p>
-<p class="da"><b class="da">System76 Flight Crew Mesh-Back Hat</b></p><p class="da">Slut dig til en starfflåde af brugere, der melder sig til at blive en del af missionen! Denne aerospatiale truckerhat beskytter dit hoved mod atmosfærisk friktion, mens geometriske bagventiler udstøder varmen fra din noggin.</p></a>
-</div>
-</details>
-<details class="content">
-<summary>
-<h1>Software</h1>
-<i class="icon fa fa-caret-down"></i>
-</summary>
-<div class="grid">
-<a href="https://store.steampowered.com/digitalgiftcards/"><img src="https://store.cloudflare.steamstatic.com/public/images/gift/steamcards_cards_02.png" width="50%">
-<p class="en"><b class="en">Steam git card</b></p><p class="en">Steam is one of the premier PC games stores</p>
-<p class="da"><b class="da">Steam gavekort</b></p><p class="da">Steam er en af de førende pc-spilbutikker</p></a>
-<a href="https://www.nintendo.com/giftcards/"><img src="https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.0/c_scale,w_600/ncom/en_US/gift-cards/gift_cards_02" width="50%">
-<p class="en"><b class="en">Nintendo Online gift card</b></p><p class="en">Nintendo Online is the primary game store for the Nintendo Switch</p>
-<p class="da"><b class="da">Nintendo Online gavekort</b></p><p class="da">Nintendo Online er den primære spilbutik for Nintendo Switch</p></a>
-<a href="https://play.google.com/about/giftcards/"><img src="https://lh3.googleusercontent.com/Mnn3W-HCNSJAYPqLSd4wHlgXRIfxNGuDc5Bh5bGcZbdhbVfRVi9pOGYJdS0bFBZ3908ovZWqrWu02lP1qDpOkmDVuqlBzn2griN9c3EvWeMDLRlx1MUF=s0" width="50%">
-<p class="en"><b class="en">Google play gift card</b></p><p class="en">Google play store is the primary game and software store on Android devices</p>
-<p class="da"><b class="da">Google play gavekort</b></p><p class="da">Google Play Butik er den primære spil- og softwarebutik på Android-enheder</p></a>
-</div>
-</details>
+    <div class="content">
+        <h1 class="en">Wish List</h1>
+        <h1 class="da">Ønske liste</h1>
+        <p class="en">this is a gift list, primarily for my family. I'll update it along the way when I find things.</p>
+        <p class="da">det her er en ønske liste, primært for min familie. jeg opdaterer den hen af vejen imens jeg
+            finder ting.</p>
+    </div>
+    <div class="content">
+        <details class="content">
+            <summary>
+                <h1 class="en">Electronics</h1>
+                <h1 class="da">Elektronik</h1>
+                <i class="icon fa fa-caret-down"></i>
+            </summary>
+            <div class="grid">
+                <a href="https://flipperzero.one/"><img
+                        src="https://thumb.tildacdn.com/tild3130-3536-4036-b633-343837383536/-/format/webp/front.jpg"
+                        width="50%">
+                    <p class="en"><b class="en">Flipper zero</b></p>
+                    <p class="en">Flipper Zero is a portable multi-tool for pentesters and geeks in a toy-like body. It
+                        loves hacking digital stuff, such as radio protocols, access control systems, hardware and more.
+                        It's fully open-source and customizable, so you can extend it in whatever way you like.</p>
+                    <p class="da"><b class="da">Flipper zero</b></p>
+                    <p class="da">Flipper Zero er et bærbart multiværktøj til pentestere og nørder i en legetøjslignende
+                        krop. Den elsker at hacke digitale ting, såsom radioprotokoller, adgangskontrolsystemer,
+                        hardware og mere. Det er fuldt open source og kan tilpasses, så du kan udvide det på den måde,
+                        du vil.</p>
+                </a>
+                <a
+                    href="https://www.elgiganten.dk/product/gaming/spiltilbehor/streaming-tilbehor/elgato-stream-deck-controller/ELGSTREAMDECK"><img
+                        src="https://www.elgiganten.dk/image/dv_web_D18000100245518/ELGSTREAMDECK/elgato-stream-deck-controller.jpg"
+                        width="50%">
+                    <p class="en"><b class="en">Stream Deck</b></p>
+                    <p class="en">Elgato Stream Deck is a programmable macro pad with 6-32 displays which can contain
+                        whatever the heart desires</p>
+                    <p class="da"><b class="da">Stream Deck</b></p>
+                    <p class="da">Elgato Stream Deck er en programmerbar makropad med 6-32 skærme, som kan indeholde
+                        alt, hvad hjertet begærer</p>
+                </a>
+                <a href="https://raspberrypi.dk/webshop/kategori/raspberry-pi-modeller/"><img
+                        src="https://raspberrypi.dk/wp-content/uploads/2017/05/RaspberryPidk-logo.png" width="50%">
+                    <p class="en"><b class="en">Raspberry Pi</b></p>
+                    <p class="en">Raspberry Pi is a series of programmable micro controller's and mini computer's for
+                        use in many electronic projects</p>
+                    <p class="da"><b class="da">Raspberry Pi</b></p>
+                    <p class="da">Raspberry Pi er en serie af programmerbare mikrocontrollere og minicomputere til brug
+                        i mange elektroniske projekter</p>
+                </a>
+                <a
+                    href="https://www.elgiganten.dk/product/computer-kontor/computertilbehor/mus-tastatur/mus/logitech-mx-master-3-tradlos-mus-sort/49355"><img
+                        src="https://www.elgiganten.dk/image/dv_web_D180001002713212/49355/logitech-mx-master-3-tradlos-mus-sort--pdp_zoom-3000.jpg"
+                        width="50%">
+                    <p class="en"><b class="en">MX Master 3</b></p>
+                    <p class="en">Work faster with the wireless Logitech MX Master 3 mouse. The sensor detects any
+                        surface, buttons can be mapped to open your favorite apps, the MagSpeed ​​wheel moves quickly
+                        through your documents and the signal is still strong 10 meters away.</p>
+                    <p class="da"><b class="da">MX Master 3</b></p>
+                    <p class="da">Arbejd hurtigere med den trådløse Logitech MX Master 3 mus. Sensoren registrerer
+                        enhver overflade, knapper kan kortlægges, så de åbner dine yndlingsapps, MagSpeed-hjulet kører
+                        hurtigt gennem dine dokumenter og signalet er stadig stærkt 10 meter væk.</p>
+                </a>
+                <a href="https://www.elgiganten.dk/mobil-tablet-smartwatch/e-bogslaser">
+                    <img src="https://www.elgiganten.dk/image/dv_web_D1800010021829958/767065/kobo-clara-bw-e-bogslaser-16-gb-sort--pdp_main-1920.jpg"
+                        width="50%">
+                    <p class="en"><b class="en">E-Book reader</b></p>
+                    <p class="da"><b class="da">E-Bogs læser</b></p>
+                    <p class="en">An E-Book reader is a simple device which allows you to read virtual book with a real
+                        world touch, it's the middle point between reading something on a tablet and printing it out.
+                    </p>
+                    <p class="da">En E-Bogs læser er en simple maskine som lader en læse virtuelle bøger uden at lugge
+                        verdenen udenfor, den er middel punktet mellem at læse noget på en tablet og at printe det ud.
+                    </p>
+                </a>
+            </div>
+        </details>
 
-<details class="content">
-<summary>
-<h1 class="en">Games</h1>
-<h1 class="da">Spil</h1>
-<i class="icon fa fa-caret-down"></i>
-</summary>
-<div class="grid">
-<a href="https://store.steampowered.com/app/1601580/Frostpunk_2/"><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1601580/capsule_616x353.jpg?t=1666882982" width="50%">
-<p class="en"><b class="en">Frostpunk 2</b></p><p class="en">In Frostpunk 2 the age of steam has passed and now, oil leads the way as humanity's newest salvation. However, with new threats on the horizon, the future of the city looks even grimmer than before</p>
-<p class="da"><b class="da">Frostpunk 2</b></p><p class="da">I Frostpunk 2 er dampens tidsalder passeret, og nu viser olie vejen som menneskehedens nyeste redning. Men med nye trusler i horisonten ser byens fremtid endnu mere dyster ud end før</p></a>
-<a href="https://store.steampowered.com/app/368230/Kingdom_Classic/"><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/368230/capsule_616x353.jpg?t=1674055442" width="50%">
-<p class="en"><b class="en">Kingdom: Classic</b></p><p class="en">Kingdom is a 2D sidescrolling strategy/resource management hybrid with a minimalist feel wrapped in a beautiful, modern pixel art aesthetic.</p>
-<p class="da"><b class="da">Kingdom: Classic</b></p><p class="da">Kingdom er en 2D-sidescrollende strategi/ressourcestyringshybrid med en minimalistisk følelse pakket ind i en smuk, moderne pixelkunst-æstetik.</p></a>
-<a href="https://store.steampowered.com/app/996580/Spyro_Reignited_Trilogy/">
-<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/996580/header.jpg?t=1715804778" width="50%">
-<p class="en"><b class="en">Spyro Reignited Trilogy</b></p><p class="en">Spyro is back in the Spyro™ Reignited Trilogy! Rekindle the fire with remastered versions of the original three games, Spyro™ the Dragon, Spyro™ 2: Ripto's Rage! and Spyro™: Year of the Dragon</p>
-<p class="da"><b class="da">Spyro Reignited Trilogy</b></p><p class="da">Spyro er tilbage i Spyro™ Reignited Trilogy! Tænd ilden igen med remasterede versioner af de originale tre spil, Spyro™ the Dragon, Spyro™ 2: Ripto's Rage! og Spyro™: Dragens år</p></a>
-<a href="https://store.steampowered.com/app/524220/NieRAutomata/">
-<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/524220/header.jpg?t=1727790045" width="50%">
-<p class="en"><b class="en">Nier Automata: The End of YoRHa Edition</b></p><p class="en">NieR: Automata tells the story of androids 2B, 9S and A2 and their battle to reclaim the machine-driven dystopia overrun by powerful machines</p>
-<p class="da"><b class="da">Nier Automata: The End of YoRHa Edition</b></p><p class="da">NieR: Automata fortæller historien om androiderne 2B, 9S og A2 og deres kamp for at genvinde den maskindrevne dystopi, der er oversvømmet af kraftfulde maskiner</p></a>
-<a href="">
-<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/424840/header.jpg?t=1727359291" width="50%">
-<p class="en"><b>Little Nightmares</b></p>
-<p class="en">Take on the role of Six, a lone child lost in a massive metal vessel known as the Maw, surrounded by dangerous, distorted versions of adults. You’ll need to do your best to escape in one piece or your fate will be worse than you ever dared dream. </p>
-<p class="da">Indtag rollen som Six, et ensomt barn tabt i et massivt metalkar kendt som Maw, omgivet af farlige, forvrængede versioner af voksne. Du bliver nødt til at gøre dit bedste for at flygte i ét stykke, ellers bliver din skæbne værre, end du nogensinde turde drømme.</p></a>
-<a href="https://store.steampowered.com/app/860510/Little_Nightmares_II/">
-<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/860510/header.jpg?t=1711727324" width="50%">
-<p class="en"><b class="en">Little Nightmares 2 - switch</b></p><p class="en">Little Nightmares II is a suspense-adventure game in which you play as Mono, a young boy trapped in a world that has been distorted by the humming transmission of a distant tower</p>
-<p class="da"><b class="da">Little Nightmares 2 - switch</b></p><p class="da">Little Nightmares II er et spændingseventyrspil, hvor du spiller som Mono, en ung dreng fanget i en verden, der er blevet forvrænget af den brummende transmission af et fjernt tårn</p></a>
-<a href="https://store.steampowered.com/app/460790/Bayonetta/">
-<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/460790/header.jpg?t=1721737243" width="50%">
-<p class="en"><b class="en">Bayonetta</b></p><p class="en">Bayonetta is a butt-kicking, havoc-wreaking witch, and she'll shoot, whip, slice, and burn angels as she uncovers the truth about her own past</p>
-<p class="da"><b class="da">Bayonetta</b></p><p class="da">Bayonetta er en røvsparkende, ødelæggende heks, og hun vil skyde, piske, skære i skiver og brænde engle, mens hun afslører sandheden om sin egen fortid</p></a>
-</div>
-</details>
+        <details class="content">
+            <summary>
+                <h1>Miscellaneous</h1>
+                <i class="icon fa fa-caret-down"></i>
+            </summary>
+            <div class="grid">
+                <a href="https://let-elektronik.dk/shop/2170-lodde-tilbehoer/9327-solder-wick-2-5ft---generic/"><img
+                        src="https://shop13030.sfstatic.io/upload_dir/shop/_thumbs/09327-Solder_Wick__2_5ft._-_Generic-01_115.w1200.jpg"
+                        width="50%">
+                    <p class="en"><b class="en">Soldering Wick</b></p>
+                    <p class="en">Solder wick is composed of copper threads braided together.</p>
+                    <p class="da"><b class="da">Lodde Wick</b></p>
+                    <p class="da">Solder wick is composed of copper threads braided together.</p>
+                </a>
+                <a href="https://salling.dk/gavekort/starbucks-gavekort-100-kr/p-455436/"><img
+                        src="https://assets.salling.structpim.com/media/1t4haybi/starbucks-gavekort-100-kr.jpg?mode=boxpad&heightRatio=1&width=640&quality=80&bgcolor=white"
+                        width="50%">
+                    <p class="en"><b class="en">Starbucks Starbucks gavekort - 100kr</b></p>
+                    <p class="en">This is a gift card to Starbucks Because i like coffee</p>
+                    <p class="da"><b class="da">Starbucks Starbucks gavekort - 100kr</b></p>
+                    <p class="da">Dette er et gavekort til Starbuck, fordi jeg kan lide kaffe</p>
+                </a>
+                <a href="https://www.stickermule.com/products/unixstickers-pro-pack"><img
+                        src="https://assets.stickermule.com/image/fetch/c_fill,fl_lossy,f_auto,q_auto:best,w_auto/https://storage.googleapis.com/sm-content/core/products/products/unixstickers-pro-pack/cover"
+                        width="50%">
+                    <p class="en"><b class="en">Unixstickers pro pack</b></p>
+                    <p class="en">Get 13 stickers for just $1. Badge sticker sheet (Arch Linux + Git + Vim + Python),
+                        Vim, Git, Python, Official Bash, Linux Tux, Debian, Arch Linux, Javascript, GoLang.</p>
+                    <p class="da"><b class="da">Unixstickers pro pack</b></p>
+                    <p class="da">Få 13 klistermærker for kun $1. Badge klistermærkeark (Arch Linux + Git + Vim +
+                        Python), Vim, Git, Python, Official Bash, Linux Tux, Debian, Arch Linux, Javascript, GoLang.</p>
+                </a>
+                <a href="https://system76.com/merch/stickers"><img
+                        src="https://images.prismic.io/system76/fbb24542-5ef8-43b0-8276-7f9e7ff34a02_stickers.jpg?auto=compress,format"
+                        width="50%">
+                    <p class="en"><b class="en">Free System76 + Pop!_OS stickers!</b></p>
+                    <p class="en">Send us a self-addressed, stamped envelope, and we'll send you some stickers! We've
+                        got logos, robots, and more for you to add to your geek flag.</p>
+                    <p class="da"><b class="da">Free System76 + Pop!_OS stickers!</b></p>
+                    <p class="da">Send os en selvadresseret, stemplet konvolut, så sender vi dig nogle klistermærker! Vi
+                        har logoer, robotter og mere, som du kan tilføje til dit nørdflag.</p>
+                </a>
+                <a href="https://system76.com/merch/sys76-flt-hat-1/configure"><img
+                        src="https://assets.system76.com/products/sys76-flt-hat-1/feature.jpg?fit=cover" width="50%">
+                    <p class="en"><b class="en">System76 Flight Crew Mesh-Back Hat</b></p>
+                    <p class="en">Join a starfleet of users enlisting to be Part of the Mission! This aerospatial
+                        trucker hat shields your head from atmospheric friction, while geometric rear vents exhaust heat
+                        from your noggin.</p>
+                    <p class="da"><b class="da">System76 Flight Crew Mesh-Back Hat</b></p>
+                    <p class="da">Slut dig til en starfflåde af brugere, der melder sig til at blive en del af
+                        missionen! Denne aerospatiale truckerhat beskytter dit hoved mod atmosfærisk friktion, mens
+                        geometriske bagventiler udstøder varmen fra din noggin.</p>
+                </a>
+            </div>
+        </details>
+        <details class="content">
+            <summary>
+                <h1>Software</h1>
+                <i class="icon fa fa-caret-down"></i>
+            </summary>
+            <div class="grid">
+                <a href="https://store.steampowered.com/digitalgiftcards/"><img
+                        src="https://store.cloudflare.steamstatic.com/public/images/gift/steamcards_cards_02.png"
+                        width="50%">
+                    <p class="en"><b class="en">Steam git card</b></p>
+                    <p class="en">Steam is one of the premier PC games stores</p>
+                    <p class="da"><b class="da">Steam gavekort</b></p>
+                    <p class="da">Steam er en af de førende pc-spilbutikker</p>
+                </a>
+                <a href="https://www.nintendo.com/giftcards/"><img
+                        src="https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.0/c_scale,w_600/ncom/en_US/gift-cards/gift_cards_02"
+                        width="50%">
+                    <p class="en"><b class="en">Nintendo Online gift card</b></p>
+                    <p class="en">Nintendo Online is the primary game store for the Nintendo Switch</p>
+                    <p class="da"><b class="da">Nintendo Online gavekort</b></p>
+                    <p class="da">Nintendo Online er den primære spilbutik for Nintendo Switch</p>
+                </a>
+                <a href="https://play.google.com/about/giftcards/"><img
+                        src="https://lh3.googleusercontent.com/Mnn3W-HCNSJAYPqLSd4wHlgXRIfxNGuDc5Bh5bGcZbdhbVfRVi9pOGYJdS0bFBZ3908ovZWqrWu02lP1qDpOkmDVuqlBzn2griN9c3EvWeMDLRlx1MUF=s0"
+                        width="50%">
+                    <p class="en"><b class="en">Google play gift card</b></p>
+                    <p class="en">Google play store is the primary game and software store on Android devices</p>
+                    <p class="da"><b class="da">Google play gavekort</b></p>
+                    <p class="da">Google Play Butik er den primære spil- og softwarebutik på Android-enheder</p>
+                </a>
+            </div>
+        </details>
 
-<p class="en">Other than all of that you are welcome to give me money if you would like or nothing at all, up to you</p>
-<p class="da">Andet end det er i velkommende til at bare give mig penge hvis i har lyst eller ikke noget, up til jer</p>
-</div>
+        <details class="content">
+            <summary>
+                <h1 class="en">Games</h1>
+                <h1 class="da">Spil</h1>
+                <i class="icon fa fa-caret-down"></i>
+            </summary>
+            <div class="grid">
+                <a href="https://store.steampowered.com/app/1601580/Frostpunk_2/"><img
+                        src="https://cdn.cloudflare.steamstatic.com/steam/apps/1601580/capsule_616x353.jpg?t=1666882982"
+                        width="50%">
+                    <p class="en"><b class="en">Frostpunk 2</b></p>
+                    <p class="en">In Frostpunk 2 the age of steam has passed and now, oil leads the way as humanity's
+                        newest salvation. However, with new threats on the horizon, the future of the city looks even
+                        grimmer than before</p>
+
+                    <p class="da">I Frostpunk 2 er dampens tidsalder passeret, og nu viser olie vejen som menneskehedens
+                        nyeste redning. Men med nye trusler i horisonten ser byens fremtid endnu mere dyster ud end før
+                    </p>
+                </a>
+                <a href="https://store.steampowered.com/app/368230/Kingdom_Classic/"><img
+                        src="https://cdn.cloudflare.steamstatic.com/steam/apps/368230/capsule_616x353.jpg?t=1674055442"
+                        width="50%">
+                    <p class="en"><b class="en">Kingdom: Classic</b></p>
+                    <p class="en">Kingdom is a 2D sidescrolling strategy/resource management hybrid with a minimalist
+                        feel wrapped in a beautiful, modern pixel art aesthetic.</p>
+                    <p class="da">Kingdom er en 2D-sidescrollende strategi/ressourcestyringshybrid med en minimalistisk
+                        følelse pakket ind i en smuk, moderne pixelkunst-æstetik.</p>
+                </a>
+                <a href="https://store.steampowered.com/app/996580/Spyro_Reignited_Trilogy/">
+                    <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/996580/header.jpg?t=1715804778"
+                        width="50%">
+                    <p class="en"><b class="en">Spyro Reignited Trilogy</b></p>
+                    <p class="en">Spyro is back in the Spyro™ Reignited Trilogy! Rekindle the fire with remastered
+                        versions of the original three games, Spyro™ the Dragon, Spyro™ 2: Ripto's Rage! and Spyro™:
+                        Year of the Dragon</p>
+                    < <p class="da">Spyro er tilbage i Spyro™ Reignited Trilogy! Tænd ilden igen med remasterede
+                        versioner
+                        af de originale tre spil, Spyro™ the Dragon, Spyro™ 2: Ripto's Rage! og Spyro™: Dragens år</p>
+                </a>
+                <a href="https://store.steampowered.com/app/524220/NieRAutomata/">
+                    <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/524220/header.jpg?t=1727790045"
+                        width="50%">
+                    <p><b>Nier Automata: The End of YoRHa Edition</b></p>
+                    <p class="en">NieR: Automata tells the story of androids 2B, 9S and A2 and their battle to reclaim
+                        the machine-driven dystopia overrun by powerful machines</p>
+                    <p class="da">NieR: Automata fortæller historien om androiderne 2B, 9S og A2 og deres kamp for at
+                        genvinde den maskindrevne dystopi, der er oversvømmet af kraftfulde maskiner</p>
+                </a>
+                <a href="">
+                    <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/424840/header.jpg?t=1727359291"
+                        width="50%">
+                    <p class="en"><b>Little Nightmares</b></p>
+                    <p class="en">Take on the role of Six, a lone child lost in a massive metal vessel known as the Maw,
+                        surrounded by dangerous, distorted versions of adults. You’ll need to do your best to escape in
+                        one piece or your fate will be worse than you ever dared dream. </p>
+                    <p class="da">Indtag rollen som Six, et ensomt barn tabt i et massivt metalkar kendt som Maw,
+                        omgivet af farlige, forvrængede versioner af voksne. Du bliver nødt til at gøre dit bedste for
+                        at flygte i ét stykke, ellers bliver din skæbne værre, end du nogensinde turde drømme.</p>
+                </a>
+                <a href="https://store.steampowered.com/app/860510/Little_Nightmares_II/">
+                    <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/860510/header.jpg?t=1711727324"
+                        width="50%">
+                    <p class="en"><b class="en">Little Nightmares 2 - switch</b></p>
+                    <p class="en">Little Nightmares II is a suspense-adventure game in which you play as Mono, a young
+                        boy trapped in a world that has been distorted by the humming transmission of a distant tower
+                    </p>
+                    <p class="da">Little Nightmares II er et spændingseventyrspil, hvor du spiller som Mono, en ung
+                        dreng fanget i en verden, der er blevet forvrænget af den brummende transmission af et fjernt
+                        tårn</p>
+                </a>
+                <a href="https://store.steampowered.com/app/460790/Bayonetta/">
+                    <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/460790/header.jpg?t=1721737243"
+                        width="50%">
+                    <p class="en"><b class="en">Bayonetta</b></p>
+                    <p class="en">Bayonetta is a butt-kicking, havoc-wreaking witch, and she'll shoot, whip, slice, and
+                        burn angels as she uncovers the truth about her own past</p>
+
+                    <p class="da">Bayonetta er en røvsparkende, ødelæggende heks, og hun vil skyde, piske, skære i
+                        skiver og brænde engle, mens hun afslører sandheden om sin egen fortid</p>
+                </a>
+                <a href="https://store.steampowered.com/app/2736340/Kingdom_Two_Crowns_Call_of_Olympus/">
+                    <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2736340/header.jpg?t=1728551354"
+                        width="50%">
+                    <p><b>Kingdom Two Crowns: Call of Olympus</b></p>
+                    <p>In faraway lands, Mount Olympus stands tall among the islands, casting an eerie shadow of unease.
+                        A sinister force has seized the divine realm and as a Monarch, you are setting out on a journey
+                        to stop it from consuming the world.</p>
+                </a>
+                <a href="https://store.steampowered.com/app/645390/Factorio_Space_Age/  ">
+                    <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/645390/header.jpg?t=1729525903"
+                        width="50%">
+                    <p><b>Factorio: Space Age</b></p>
+                    <p class="en">Factorio: Space Age continues the player's journey after launching rockets into space.
+                        Discover new worlds with unique challenges, exploit their novel resources for advanced
+                        technological gains, and manage your fleet of interplanetary space platforms.</p>
+                </a>
+                <a href="https://store.steampowered.com/app/753640/Outer_Wilds/">
+                    <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/753640/header.jpg?t=1729097431"
+                        width="50%">
+                    <p><b>Outer Wilds</b></p>
+                    <p class="en">Named Game of the Year 2019 Outer Wilds is a critically-acclaimed and award-winning
+                        open world
+                        mystery about a solar system trapped in an endless time loop. </p>
+                    <p class="da">Udnævnt til årets spil 2019 Outer Wilds er et anmelderrost og prisvindende spil
+                        åben verden
+                        mysterium om et solsystem fanget i en endeløs tidsløkke.</p>
+                </a>
+                <a href="https://store.steampowered.com/app/1622100/Outer_Wilds__Echoes_of_the_Eye/">
+                    <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1622100/header.jpg?t=1701451540"
+                        width="50%">
+                    <p><b>Outer Wilds - Echoes of the Eye</b></p>
+                    <p class="en">A strange satellite photo that can't be explained. A new museum exhibit that marks the
+                        trailhead for one last journey into the wilds. Should you pull at the thread and unravel the
+                        solar system's deepest secret, or is some knowledge better left in the dark?</p>
+                    <p class="da">Et mærkeligt satellitfoto, der ikke kan forklares. En ny museumsudstilling, der
+                        markerer sporet for en sidste rejse ud i naturen. Skal du trække i tråden og optrevle
+                        solsystemets dybeste hemmelighed, eller er det bedre at lade noget viden ligge i mørket?</p>
+                </a>
+            </div>
+        </details>
+
+        <p class="en">Other than all of that you are welcome to give me money if you would like or nothing at all, up to
+            you</p>
+        <p class="da">Andet end det er i velkommende til at bare give mig penge hvis i har lyst eller ikke noget, up til
+            jer</p>
+    </div>
 </body>
+
 </html>
