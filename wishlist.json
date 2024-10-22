@@ -1,0 +1,212 @@
+{
+    "wishlist": [
+        {
+            "enTitle": "Electronics",
+            "daTitle": "Elektronik",
+            "content": [
+                {
+                    "enName": "Flipper zero",
+                    "daName": "Flipper zero",
+                    "enDesc": "Flipper Zero is a portable multi-tool for pentesters and geeks in a toy-like body. It loves hacking digital stuff, such as radio protocols, access control systems, hardware and more. It's fully open-source and customizable, so you can extend it in whatever way you like.",
+                    "daDesc": "Flipper Zero er et bærbart multiværktøj til pentestere og nørder i en legetøjslignende krop. Den elsker at hacke digitale ting, såsom radioprotokoller, adgangskontrolsystemer, hardware og mere. Det er fuldt open source og kan tilpasses, så du kan udvide det på den måde, du vil.",
+                    "img": "https://thumb.tildacdn.com/tild3130-3536-4036-b633-343837383536/-/format/webp/front.jpg",
+                    "link": "https://flipperzero.one/"
+                },
+                {
+                    "enName": "Stream Deck",
+                    "daName": "Stream Deck",
+                    "enDesc": "Elgato Stream Deck is a programmable macro pad with 6-32 displays which can contain whatever the heart desires",
+                    "daDesc": "Elgato Stream Deck er en programmerbar makropad med 6-32 skærme, som kan indeholde alt, hvad hjertet begærer",
+                    "img": "https://www.elgiganten.dk/image/dv_web_D18000100245518/ELGSTREAMDECK/elgato-stream-deck-controller.jpg",
+                    "link": "https://www.elgiganten.dk/product/gaming/spiltilbehor/streaming-tilbehor/elgato-stream-deck-controller/ELGSTREAMDECK"
+                },
+                {
+                    "enName": "Raspberry Pi",
+                    "daName": "Raspberry Pi",
+                    "enDesc": "Raspberry Pi is a series of programmable micro controller's and mini computer's for use in many electronic projects",
+                    "daDesc": "Raspberry Pi er en serie af programmerbare mikrocontrollere og minicomputere til brug i mange elektroniske projekter",
+                    "img": "https://raspberrypi.dk/wp-content/uploads/2017/05/RaspberryPidk-logo.png",
+                    "link": "https://raspberrypi.dk/webshop/kategori/raspberry-pi-modeller/"
+                },
+                {
+                    "enName": "MX Master 3",
+                    "daName": "MX Master 3",
+                    "enDesc": "Work faster with the wireless Logitech MX Master 3 mouse. The sensor detects any surface, buttons can be mapped to open your favorite apps, the MagSpeed wheel moves quickly through your documents and the signal is still strong 10 meters away.",
+                    "daDesc": "Arbejd hurtigere med den trådløse Logitech MX Master 3 mus. Sensoren registrerer enhver overflade, knapper kan kortlægges, så de åbner dine yndlingsapps, MagSpeed-hjulet kører hurtigt gennem dine dokumenter og signalet er stadig stærkt 10 meter væk.",
+                    "img": "https://www.elgiganten.dk/image/dv_web_D180001002713212/49355/logitech-mx-master-3-tradlos-mus-sort--pdp_zoom-3000.jpg",
+                    "link": "https://www.elgiganten.dk/product/computer-kontor/computertilbehor/mus-tastatur/mus/logitech-mx-master-3-tradlos-mus-sort/49355"
+                },
+                {
+                    "enName": "E-Book reader",
+                    "daName": "E-Bogs læser",
+                    "enDesc": "An E-Book reader is a simple device which allows you to read virtual book with a real world touch, it's the middle point between reading something on a tablet and printing it out.",
+                    "daDesc": "En E-Bogs læser er en simple maskine som lader en læse virtuelle bøger uden at lugge verdenen udenfor, den er middel punktet mellem at læse noget på en tablet og at printe det ud.",
+                    "img": "https://www.elgiganten.dk/image/dv_web_D1800010021829958/767065/kobo-clara-bw-e-bogslaser-16-gb-sort--pdp_main-1920.jpg",
+                    "link": "https://www.elgiganten.dk/mobil-tablet-smartwatch/e-bogslaser"
+                }
+            ]
+        },
+        {
+            "enTitle": "Miscellaneous",
+            "daTitle": "Miscellaneous",
+            "content": [
+                {
+                    "enName": "Starbucks giftcard - 100kr",
+                    "daName": "Starbucks gavekort - 100kr",
+                    "enDesc": "This is a gift card to Starbucks Because i like coffee",
+                    "daDesc": "Dette er et gavekort til Starbuck, fordi jeg kan lide kaffe",
+                    "img": "https://assets.salling.structpim.com/media/1t4haybi/starbucks-gavekort-100-kr.jpg?mode=boxpad&heightRatio=1&width=640&quality=80&bgcolor=white",
+                    "link": "https://salling.dk/gavekort/starbucks-gavekort-100-kr/p-455436/"
+                },
+                {
+                    "enName": "Unixstickers pro pack",
+                    "daName": "Unixstickers pro pack",
+                    "enDesc": "Get 13 stickers for just $1. Badge sticker sheet (Arch Linux + Git + Vim + Python), Vim, Git, Python, Official Bash, Linux Tux, Debian, Arch Linux, Javascript, GoLang.",
+                    "daDesc": "Få 13 klistermærker for kun $1. Badge klistermærkeark (Arch Linux + Git + Vim + Python), Vim, Git, Python, Official Bash, Linux Tux, Debian, Arch Linux, Javascript, GoLang.",
+                    "img": "https://assets.stickermule.com/image/fetch/c_fill,fl_lossy,f_auto,q_auto:best,w_auto/https://storage.googleapis.com/sm-content/core/products/products/unixstickers-pro-pack/cover",
+                    "link": "https://www.stickermule.com/products/unixstickers-pro-pack"
+                },
+                {
+                    "enName": "Free System76 + Pop!_OS stickers!",
+                    "daName": "Gratis System76 + Pop!_OS stickers!",
+                    "enDesc": "Send us a self-addressed, stamped envelope, and we'll send you some stickers! We've got logos, robots, and more for you to add to your geek flag.",
+                    "daDesc": "Send os en selvadresseret, stemplet konvolut, så sender vi dig nogle klistermærker! Vi har logoer, robotter og mere, som du kan tilføje til dit nørdflag.",
+                    "img": "https://images.prismic.io/system76/fbb24542-5ef8-43b0-8276-7f9e7ff34a02_stickers.jpg?auto=compress,format",
+                    "link": "https://system76.com/merch/stickers"
+                },
+                {
+                    "enName": "System76 Flight Crew Mesh-Back Hat",
+                    "daName": "System76 Flight Crew Mesh-Back Hat",
+                    "enDesc": "Join a starfleet of users enlisting to be Part of the Mission! This aerospatial trucker hat shields your head from atmospheric friction, while geometric rear vents exhaust heat from your noggin.",
+                    "daDesc": "Slut dig til en starfflåde af brugere, der melder sig til at blive en del af missionen! Denne aerospatiale truckerhat beskytter dit hoved mod atmosfærisk friktion, mens geometriske bagventiler udstøder varmen fra din noggin.",
+                    "img": "https://assets.system76.com/products/sys76-flt-hat-1/feature.jpg?fit=cover",
+                    "link": "https://system76.com/merch/sys76-flt-hat-1/configure"
+                }
+            ]
+        },
+        {
+            "enTitle": "Software",
+            "daTitle": "Software",
+            "content": [
+                {
+                    "enName": "Steam git card",
+                    "daName": "Steam gavekort",
+                    "enDesc": "Steam is one of the premier PC games stores",
+                    "daDesc": "Steam er en af de førende pc-spilbutikker",
+                    "img": "https://store.cloudflare.steamstatic.com/public/images/gift/steamcards_cards_02.png",
+                    "link": "https://store.steampowered.com/digitalgiftcards/"
+                },
+                {
+                    "enName": "Nintendo Online gift card",
+                    "daName": "Nintendo Online gavekort",
+                    "enDesc": "Nintendo Online is the primary game store for the Nintendo Switch",
+                    "daDesc": "Nintendo Online er den primære spilbutik for Nintendo Switch",
+                    "img": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.0/c_scale,w_600/ncom/en_US/gift-cards/gift_cards_02",
+                    "link": "https://www.nintendo.com/giftcards/"
+                },
+                {
+                    "enName": "Google play gift card",
+                    "daName": "Google play store is the primary game and software store on Android devices",
+                    "enDesc": "Google play gavekort",
+                    "daDesc": "Google Play Butik er den primære spil- og softwarebutik på Android-enheder",
+                    "img": "https://lh3.googleusercontent.com/Mnn3W-HCNSJAYPqLSd4wHlgXRIfxNGuDc5Bh5bGcZbdhbVfRVi9pOGYJdS0bFBZ3908ovZWqrWu02lP1qDpOkmDVuqlBzn2griN9c3EvWeMDLRlx1MUF=s0",
+                    "link": "https://play.google.com/about/giftcards/"
+                }
+            ]
+        },
+        {
+            "enTitle": "Games",
+            "daTitle": "Spil",
+            "content": [
+                {
+                    "enName": "Frostpunk 2",
+                    "daName": "Frostpunk 2",
+                    "enDesc": "In Frostpunk 2 the age of steam has passed and now, oil leads the way as humanity's newest salvation. However, with new threats on the horizon, the future of the city looks even grimmer than before",
+                    "daDesc": "I Frostpunk 2 er dampens tidsalder passeret, og nu viser olie vejen som menneskehedens nyeste redning. Men med nye trusler i horisonten ser byens fremtid endnu mere dyster ud end før",
+                    "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/1601580/capsule_616x353.jpg?t=1666882982",
+                    "link": "https://store.steampowered.com/app/1601580/Frostpunk_2/"
+                },
+                {
+                    "enName": "Kingdom: Classic",
+                    "daName": "Kingdom: Classic",
+                    "enDesc": "Kingdom is a 2D sidescrolling strategy/resource management hybrid with a minimalist feel wrapped in a beautiful, modern pixel art aesthetic.",
+                    "daDesc": "Kingdom er en 2D-sidescrollende strategi/ressourcestyringshybrid med en minimalistisk følelse pakket ind i en smuk, moderne pixelkunst-æstetik.",
+                    "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/368230/capsule_616x353.jpg?t=1674055442",
+                    "link": "https://store.steampowered.com/app/368230/Kingdom_Classic/"
+                },
+                {
+                    "enName": "Spyro Reignited Trilogy",
+                    "daName": "Spyro Reignited Trilogy",
+                    "enDesc": "Spyro is back in the Spyro™ Reignited Trilogy! Rekindle the fire with remastered versions of the original three games, Spyro™ the Dragon, Spyro™ 2: Ripto's Rage! and Spyro™: Year of the Dragon",
+                    "daDesc": "Spyro er tilbage i Spyro™ Reignited Trilogy! Tænd ilden igen med remasterede versioner af de originale tre spil, Spyro™ the Dragon, Spyro™ 2: Ripto's Rage! og Spyro™: Dragens år",
+                    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/996580/header.jpg?t=1715804778",
+                    "link": "https://store.steampowered.com/app/996580/Spyro_Reignited_Trilogy/"
+                },
+                {
+                    "enName": "Nier Automata: The End of YoRHa Edition",
+                    "daName": "Nier Automata: The End of YoRHa Edition",
+                    "enDesc": "NieR: Automata tells the story of androids 2B, 9S and A2 and their battle to reclaim the machine-driven dystopia overrun by powerful machines",
+                    "daDesc": "NieR: Automata fortæller historien om androiderne 2B, 9S og A2 og deres kamp for at genvinde den maskindrevne dystopi, der er oversvømmet af kraftfulde maskiner",
+                    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/524220/header.jpg?t=1727790045",
+                    "link": "https://store.steampowered.com/app/524220/NieRAutomata/"
+                },
+                {
+                    "enName": "Little Nightmares",
+                    "daName": "Little Nightmares",
+                    "enDesc": "Take on the role of Six, a lone child lost in a massive metal vessel known as the Maw, surrounded by dangerous, distorted versions of adults. You’ll need to do your best to escape in one piece or your fate will be worse than you ever dared dream.",
+                    "daDesc": "Indtag rollen som Six, et ensomt barn tabt i et massivt metalkar kendt som Maw, omgivet af farlige, forvrængede versioner af voksne. Du bliver nødt til at gøre dit bedste for at flygte i ét stykke, ellers bliver din skæbne værre, end du nogensinde turde drømme.",
+                    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/424840/header.jpg?t=1727359291",
+                    "link": "https://store.steampowered.com/app/424840/Little_Nightmares/"
+                },
+                {
+                    "enName": "Little Nightmares 2",
+                    "daName": "Little Nightmares 2",
+                    "enDesc": "Little Nightmares II is a suspense-adventure game in which you play as Mono, a young boy trapped in a world that has been distorted by the humming transmission of a distant tower",
+                    "daDesc": "Little Nightmares II er et spændingseventyrspil, hvor du spiller som Mono, en ung dreng fanget i en verden, der er blevet forvrænget af den brummende transmission af et fjernt tårn",
+                    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/860510/header.jpg?t=1711727324",
+                    "link": "https://store.steampowered.com/app/860510/Little_Nightmares_II/"
+                },
+                {
+                    "enName": "Bayonetta",
+                    "daName": "Bayonetta",
+                    "enDesc": "Bayonetta is a butt-kicking, havoc-wreaking witch, and she'll shoot, whip, slice, and burn angels as she uncovers the truth about her own past",
+                    "daDesc": "Bayonetta er en røvsparkende, ødelæggende heks, og hun vil skyde, piske, skære i skiver og brænde engle, mens hun afslører sandheden om sin egen fortid",
+                    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/460790/header.jpg?t=1721737243",
+                    "link": "https://store.steampowered.com/app/460790/Bayonetta/"
+                },
+                {
+                    "enName": "Kingdom Two Crowns: Call of Olympus",
+                    "daName": "Kingdom Two Crowns: Call of Olympus",
+                    "enDesc": "In faraway lands, Mount Olympus stands tall among the islands, casting an eerie shadow of unease. A sinister force has seized the divine realm and as a Monarch, you are setting out on a journey to stop it from consuming the world.",
+                    "daDesc": "I fjerne lande står Olympen højt blandt øerne og kaster en uhyggelig skygge af uro. En uhyggelig kraft har erobret det guddommelige rige, og som en monark begiver du dig ud på en rejse for at forhindre den i at fortære verden.",
+                    "img": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2736340/header.jpg?t=1728551354",
+                    "link": "https://store.steampowered.com/app/2736340/Kingdom_Two_Crowns_Call_of_Olympus/"
+                },
+                {
+                    "enName": "Factorio: Space Age",
+                    "daName": "Factorio: Space Age",
+                    "enDesc": "Factorio: Space Age continues the player's journey after launching rockets into space. Discover new worlds with unique challenges, exploit their novel resources for advanced technological gains, and manage your fleet of interplanetary space platforms.",
+                    "daDesc": "Factorio: Space Age fortsætter spillerens rejse efter at have opsendt raketter ud i rummet. Oplev nye verdener med unikke udfordringer, udnyt deres nye ressourcer til avancerede teknologiske gevinster, og administrer din flåde af interplanetariske rumplatforme.",
+                    "img": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/645390/header.jpg?t=1729525903",
+                    "link": "https://store.steampowered.com/app/645390/Factorio_Space_Age/"
+                },
+                {
+                    "enName": "Outer Wilds",
+                    "daName": "Outer Wilds",
+                    "enDesc": "Named Game of the Year 2019 Outer Wilds is a critically-acclaimed and award-winningopen world mystery about a solar system trapped in an endless time loop.",
+                    "daDesc": "Udnævnt til årets spil 2019 Outer Wilds er et anmelderrost og prisvindende spil åben verden mysterium om et solsystem fanget i en endeløs tidsløkke.",
+                    "img": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/753640/header.jpg?t=1729097431",
+                    "link": "https://store.steampowered.com/app/753640/Outer_Wilds/"
+                },
+                {
+                    "enName": "Outer Wilds - Echoes of the Eye",
+                    "daName": "Outer Wilds - Echoes of the Eye",
+                    "enDesc": "A strange satellite photo that can't be explained. A new museum exhibit that marks the trailhead for one last journey into the wilds. Should you pull at the thread and unravel the solar system's deepest secret, or is some knowledge better left in the dark?",
+                    "daDesc": "Et mærkeligt satellitfoto, der ikke kan forklares. En ny museumsudstilling, der markerer sporet for en sidste rejse ud i naturen. Skal du trække i tråden og optrevle solsystemets dybeste hemmelighed, eller er det bedre at lade noget viden ligge i mørket?",
+                    "img": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1622100/header.jpg?t=1701451540",
+                    "link": "https://store.steampowered.com/app/1622100/Outer_Wilds__Echoes_of_the_Eye/"
+                }
+            ]
+        }
+    ]
+}
