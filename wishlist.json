@@ -97,14 +97,6 @@
                     "link": "https://store.steampowered.com/digitalgiftcards/"
                 },
                 {
-                    "enName": "Nintendo Online gift card",
-                    "daName": "Nintendo Online gavekort",
-                    "enDesc": "Nintendo Online is the primary game store for the Nintendo Switch",
-                    "daDesc": "Nintendo Online er den primære spilbutik for Nintendo Switch",
-                    "img": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.0/c_scale,w_600/ncom/en_US/gift-cards/gift_cards_02",
-                    "link": "https://www.nintendo.com/giftcards/"
-                },
-                {
                     "enName": "Google play gift card",
                     "daName": "Google play store is the primary game and software store on Android devices",
                     "enDesc": "Google play gavekort",
