@@ -93,8 +93,8 @@
             ]
         },
         {
-            "enTitle": "Software",
-            "daTitle": "Software",
+            "enTitle": "Gift cards",
+            "daTitle": "Gavekort",
             "content": [
                 {
                     "enName": "Steam git card",
@@ -111,6 +111,14 @@
                     "daDesc": "Google Play Butik er den primære spil- og softwarebutik på Android-enheder",
                     "img": "https://lh3.googleusercontent.com/Mnn3W-HCNSJAYPqLSd4wHlgXRIfxNGuDc5Bh5bGcZbdhbVfRVi9pOGYJdS0bFBZ3908ovZWqrWu02lP1qDpOkmDVuqlBzn2griN9c3EvWeMDLRlx1MUF=s0",
                     "link": "https://play.google.com/about/giftcards/"
+                },
+                {
+                    "enName": "Duolingo",
+                    "daName": "Duolingo",
+                    "enDesc": "Duolingo is a prime language learning app from which I am learning German",
+                    "daDesc": "Duolingo er en af de største sprog lærnings apps som jeg er ved at lære tysk fra",
+                    "img": "https://d35aaqx5ub95lt.cloudfront.net/images/super/df5cdd4213762736cbb74356f4fa0050.svg",
+                    "link": "https://www.duolingo.com/gift"
                 }
             ]
         },
