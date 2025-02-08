@@ -96,7 +96,7 @@ button {
     color: var(--main-color);
 
 }
-.content a, .content div .a{
+.content a, .content div .a, #CVPicContainer{
     color: var(--main-color);
     margin: 10px;
     padding: 10px;
@@ -105,7 +105,7 @@ button {
     transition: all .1s ease-out;
 }
 
-.content a:hover, .content div.a:hover{
+.content a:hover, .content div.a:hover, #CVPicContainer:hover{
     background-color: var(--hover-color);
     transform: translate(-.5rem ,-.5rem);
     box-shadow: .5rem .5rem 0 var(--shadow);
@@ -333,6 +333,7 @@ summary::-webkit-details-marker {
     float: left;
     margin: 10px;
     padding: 10px;
+	border-radius: 10px;
 }
 
 .mobile #CVPicContainer {
