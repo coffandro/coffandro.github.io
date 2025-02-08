@@ -225,6 +225,8 @@ details>summary i.icon {
     transition: all 0.3s;
     margin-right: 10px;
     margin-left: auto;
+	margin-top: 5%;
+	margin-bottom: 10%;
 }
 
 details[open] summary i.icon {
