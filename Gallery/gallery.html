@@ -38,26 +38,19 @@
             window.innerWidth <= 800)
         {
             document.documentElement.classList.toggle("mobile", true);
-            document.getElementById('mnav').removeAttribute('disabled');
-            $(function(){
-                $("#nav-placeholder").load("/mobile-navbar.html");
-            });
         }
         // nav bar for touch-screen (mobile) devices
         else 
         {
             document.documentElement.classList.toggle("mobile", false);
-            document.getElementById('nav').removeAttribute('disabled');
-            $(function(){
-                $("#nav-placeholder").load("/galleryNav.html");
-            });
         }
+		$(function(){
+			$("#nav-placeholder").load("/Gallery/galleryNav.html");
+		});
     };
     
-    window.onresize = function() {
-      LoadNavBar()
-    };
-    LoadNavBar()
+    window.onresize = LoadNavBar()
+    window.onload = LoadNavBar()
     // nav bar for everything else (desktop)
 </script>
 <!--end of Navigation bar-->
