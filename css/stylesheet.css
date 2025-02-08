@@ -226,7 +226,7 @@ details>summary i.icon {
     margin-right: 10px;
     margin-left: auto;
 	margin-top: 5%;
-	margin-bottom: 10%;
+	margin-bottom: 5%;
 }
 
 details[open] summary i.icon {
@@ -308,8 +308,8 @@ summary::-webkit-details-marker {
     cursor: pointer;
 }
 .CVLanguages {
-    width: 50%;
-    margin: 10px;
+    width: 65%;
+    margin: 10px 10px -20px 10px;
     border-radius: 15px;
     border: 2px solid;
     border-color: var(--main-color);
