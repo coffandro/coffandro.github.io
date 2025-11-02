@@ -80,7 +80,7 @@
     </div>
     <div id="WishlistHolder" class="content">
         <script>
-            $.getJSON("wishlist.json", function (json) {
+            $.getJSON("https://raw.githubusercontent.com/coffandro/coffandro.github.io/refs/heads/main/wishlist.json", function (json) {
                 Container = document.getElementById("WishlistHolder");
 
                 json["wishlist"].forEach(a => {
