@@ -35,14 +35,6 @@
                     "daDesc": "Arbejd hurtigere med den trådløse Logitech MX Master 3 mus. Sensoren registrerer enhver overflade, knapper kan kortlægges, så de åbner dine yndlingsapps, MagSpeed-hjulet kører hurtigt gennem dine dokumenter og signalet er stadig stærkt 10 meter væk.",
                     "img": "https://www.elgiganten.dk/image/dv_web_D180001002713212/49355/logitech-mx-master-3-tradlos-mus-sort--pdp_zoom-3000.jpg",
                     "link": "https://www.elgiganten.dk/product/computer-kontor/computertilbehor/mus-tastatur/mus/logitech-mx-master-3-tradlos-mus-sort/49355"
-                },
-                {
-                    "enName": "In-ear headphones",
-                    "daName": "In-ear høretelefoner",
-                    "enDesc": "Headphones that sit in the ears, also known as earbuds.",
-                    "daDesc": "Høretelefoner der sidder inden i ørende, også kendt som øre dutter.",
-                    "img": "https://www.elgiganten.dk/image/dv_web_D1800010021570411/649230/jbl-tune-buds-true-wireless-in-ear-horetelefoner-sort--pdp_main-1920.jpg",
-                    "link": "https://www.elgiganten.dk/tv-lyd-smart-home/horetelefoner-tilbehor/horetelefoner/in-ear-horetelefoner"
                 }
             ]
         },
@@ -56,7 +48,7 @@
                     "enDesc": "This is a gift card to Starbucks Because i like coffee",
                     "daDesc": "Dette er et gavekort til Starbuck, fordi jeg kan lide kaffe",
                     "img": "https://assets.salling.structpim.com/media/1t4haybi/starbucks-gavekort-100-kr.jpg?mode=boxpad&heightRatio=1&width=640&quality=80&bgcolor=white",
-                    "link": "https://salling.dk/gavekort/starbucks-gavekort-100-kr/p-455436/"
+                    "link": "https://gavekort.sallinggroup.com/dk/"
                 },
                 {
                     "enName": "Unixstickers pro pack",
@@ -85,39 +77,73 @@
             ]
         },
         {
-            "enTitle": "Gift cards",
-            "daTitle": "Gavekort",
-            "content": [
-                {
-                    "enName": "Steam git card",
-                    "daName": "Steam gavekort",
-                    "enDesc": "Steam is one of the premier PC games stores",
-                    "daDesc": "Steam er en af de førende pc-spilbutikker",
-                    "img": "https://store.cloudflare.steamstatic.com/public/images/gift/steamcards_cards_02.png",
-                    "link": "https://store.steampowered.com/digitalgiftcards/"
-                },
-                {
-                    "enName": "Google play gift card",
-                    "daName": "Google play store is the primary game and software store on Android devices",
-                    "enDesc": "Google play gavekort",
-                    "daDesc": "Google Play Butik er den primære spil- og softwarebutik på Android-enheder",
-                    "img": "https://lh3.googleusercontent.com/Mnn3W-HCNSJAYPqLSd4wHlgXRIfxNGuDc5Bh5bGcZbdhbVfRVi9pOGYJdS0bFBZ3908ovZWqrWu02lP1qDpOkmDVuqlBzn2griN9c3EvWeMDLRlx1MUF=s0",
-                    "link": "https://play.google.com/about/giftcards/"
-                },
-                {
-                    "enName": "Duolingo",
-                    "daName": "Duolingo",
-                    "enDesc": "Duolingo is a prime language learning app from which I am learning German",
-                    "daDesc": "Duolingo er en af de største sprog lærnings apps som jeg er ved at lære tysk fra",
-                    "img": "https://d35aaqx5ub95lt.cloudfront.net/images/super/df5cdd4213762736cbb74356f4fa0050.svg",
-                    "link": "https://www.duolingo.com/gift"
-                }
-            ]
-        },
-        {
             "enTitle": "Games",
             "daTitle": "Spil",
             "content": [
+                {
+                    "enName": "Hoomanz!",
+                    "daName": "Hoomanz!",
+                    "enDesc": "Scare away all the invading Hoomanz! A stealth-adventure game packed with coziness and humour, featuring non-combat gameplay & family-friendly content.",
+                    "daDesc": "Skræm alle de invaderende Hoomanz væk! Et stealth-eventyrspil fyldt med hygge og humor, med ikke-kamp gameplay og familievenligt indhold.",
+                    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3156450/336c1169f2103bb92640910c00c6ae14b6fdf244/header.jpg?t=1761563479",
+                    "link": "https://store.steampowered.com/app/3156450/Hoomanz/"
+                },
+                {
+                    "enName": "Ratchet & Clank: Rift Apart",
+                    "daName": "Ratchet & Clank: Rift Apart",
+                    "enDesc": "Blast your way through an interdimensional adventure with Ratchet and Clank and help them take on an evil emperor from another reality as you jump between action-packed worlds and beyond at hyper-speed!",
+                    "daDesc": "Blæs dig vej gennem et interdimensionelt eventyr med Ratchet og Clank, og hjælp dem med at tage kampen op mod en ond kejser fra en anden virkelighed, mens du hopper mellem actionfyldte verdener og videre i hyperhastighed!",
+                    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1895880/header.jpg?t=1750956328",
+                    "link": "https://store.steampowered.com/app/1895880/Ratchet__Clank_Rift_Apart/"
+                },
+                {
+                    "enName": "Disco Elysium - The Final Cut",
+                    "daName": "Disco Elysium - The Final Cut",
+                    "enDesc": "Disco Elysium - The Final Cut is a groundbreaking role playing game. You're a detective with a unique skill system at your disposal and a whole city to carve your path across.",
+                    "daDesc": "Disco Elysium - The Final Cut er et banebrydende rollespil. Du er en detektiv med et unikt færdighedssystem til din rådighed og en hel by at bane dig vej igennem.",
+                    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1562430/header.jpg?t=1761823030",
+                    "link": "https://store.steampowered.com/app/632470/Disco_Elysium__The_Final_Cut/"
+                },
+                {
+                    "enName": "Neva",
+                    "daName": "Neva",
+                    "enDesc": "Experience the moving tale of a young woman and her lifelong bond with a magnificent wolf as they embark on a thrilling adventure through a rapidly dying world.",
+                    "daDesc": "Oplev den rørende fortælling om en ung kvinde og hendes livslange bånd med en storslået ulv, når de begiver sig ud på et spændende eventyr gennem en hurtigt døende verden.",
+                    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1774580/header.jpg?t=1748945254",
+                    "link": "https://store.steampowered.com/app/1774580/STAR_WARS_Jedi_Survivor/"
+                },
+                {
+                    "enName": "PVKK: Planetenverteidigungskanonenkommandant",
+                    "daName": "PVKK: Planetenverteidigungskanonenkommandant",
+                    "enDesc": "Operate your planetary defense cannon to fend off an interplanetary invasion from the comfort of your cozy bunker.",
+                    "daDesc": "Betjen din planetariske forsvarskanon for at afværge en interplanetarisk invasion fra komforten af ​​din hyggelige bunker.",
+                    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2956040/header.jpg?t=1757586776",
+                    "link": "https://store.steampowered.com/app/2956040/PVKK_Planetenverteidigungskanonenkommandant/"
+                },
+                {
+                    "enName": "DREDGE",
+                    "daName": "DREDGE",
+                    "enDesc": "DREDGE is a single-player fishing adventure with a sinister undercurrent. Sell your catch, upgrade your boat, and dredge the depths for long-buried secrets.",
+                    "daDesc": "DREDGE er et singleplayer-fiskeeventyr med en uhyggelig understrøm. Sælg din fangst, opgrader din båd og grav ned i dybet efter længe begravede hemmeligheder.",
+                    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/632470/header.jpg?t=1727256511",
+                    "link": "https://store.steampowered.com/app/1562430/DREDGE/"
+                },
+                {
+                    "enName": "Baldur's Gate 3",
+                    "daName": "Baldur's Gate 3",
+                    "enDesc": "Baldur's Gate 3 is a story-rich, party-based RPG set in the universe of Dungeons & Dragons.",
+                    "daDesc": "Baldur's Gate 3 er et historierigt, gruppebaseret RPG, der foregår i Dungeons & Dragons-universet.",
+                    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/48a2fcbda8565bb45025e98fd8ebde8a7203f6a0/header.jpg?t=1759825106",
+                    "link": "https://store.steampowered.com/app/1086940/Baldurs_Gate_3/"
+                },
+                {
+                    "enName": "STAR WARS Jedi: Survivor™",
+                    "daName": "STAR WARS Jedi: Survivor™",
+                    "enDesc": "The story of Cal Kestis continues in STAR WARS Jedi: Survivor™, a galaxy-spanning, third-person, action-adventure game. ",
+                    "daDesc": "Historien om Cal Kestis fortsætter i STAR WARS Jedi: Survivor™, et galakse-omspændende tredjepersons action-eventyrspil.",
+                    "img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1774580/header.jpg?t=1748945254",
+                    "link": "https://store.steampowered.com/app/1774580/STAR_WARS_Jedi_Survivor/"
+                },
                 {
                     "enName": "Frostpunk 2",
                     "daName": "Frostpunk 2",

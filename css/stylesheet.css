@@ -235,6 +235,7 @@ details[open] summary i.icon {
 
 summary {
     display: flex;
+    align-items: center;
     cursor: pointer;
 }
 
