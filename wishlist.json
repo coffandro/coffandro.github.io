@@ -51,6 +51,14 @@
                     "link": "https://gavekort.sallinggroup.com/dk/"
                 },
                 {
+                    "enName": "Star Trek: U.S.S. Enterprise NCC-1701-D™",
+                    "daName": "Star Trek: U.S.S. Enterprise NCC-1701-D™",
+                    "enDesc": "",
+                    "daDesc": "",
+                    "img": "https://www.lego.com/cdn/cs/set/assets/blt56fb754616654b30/10356_boxprod_v39_en-gb.png",
+                    "link": "https://www.lego.com/en-us/product/star-trek-u-s-s-enterprise-ncc-1701-d-10356"
+                },
+                {
                     "enName": "Unixstickers pro pack",
                     "daName": "Unixstickers pro pack",
                     "enDesc": "Get 13 stickers for just $1. Badge sticker sheet (Arch Linux + Git + Vim + Python), Vim, Git, Python, Official Bash, Linux Tux, Debian, Arch Linux, Javascript, GoLang.",
@@ -228,3 +236,4 @@
         }
     ]
 }
+
