@@ -5,6 +5,22 @@
             "daTitle": "Elektronik",
             "content": [
                 {
+                    "enName": "Steam Frame",
+                    "daName": "Steam Frame",
+                    "enDesc": "Steam Frame is a streaming-first, wireless VR headset + controllers that can handle your whole Steam library. Step into immersive VR, or lean back and enjoy your non-VR catalog. And it supports stand-alone play too.",
+                    "daDesc": "Steam Frame er et streaming-først, trådløst VR-headset + controllere, der kan håndtere hele dit Steam-bibliotek. Træd ind i fordybende VR, eller læn dig tilbage og nyd dit ikke-VR-katalog. Og det understøtter også separat spil.",
+                    "img": "https://clan.fastly.steamstatic.com/images/45479024/41ac1feaa13a1396844a31be91beb068eb2e509f.jpg",
+                    "link": "https://store.steampowered.com/sale/steamframe"
+                },
+                {
+                    "enName": "Steam Controller",
+                    "daName": "Steam Controller",
+                    "enDesc": "Steam Controller was designed with all the inputs for all your games. Paired with Steam Input, it’s the ultimate customizable controller.",
+                    "daDesc": "Steam Controlleren er designet med alle input til alle dine spil. Kombineret med Steam Input er det den ultimative brugerdefinerbare controller.",
+                    "img": "https://clan.akamai.steamstatic.com/images/45479024/f32de91a43a351c831d1fad012ce22fad0889470.jpg",
+                    "link": "https://store.steampowered.com/sale/steamcontroller"
+                },
+                {
                     "enName": "Flipper zero",
                     "daName": "Flipper zero",
                     "enDesc": "Flipper Zero is a portable multi-tool for pentesters and geeks in a toy-like body. It loves hacking digital stuff, such as radio protocols, access control systems, hardware and more. It's fully open-source and customizable, so you can extend it in whatever way you like.",
@@ -236,5 +252,6 @@
         }
     ]
 }
+
 
 
