@@ -67,6 +67,22 @@
                     "link": "https://gavekort.sallinggroup.com/dk/"
                 },
                 {
+                    "enName": "Fallout: The Vault Dweller's Official Cookbook",
+                    "daName": "Fallout: The Vault Dweller's Official Cookbook",
+                    "enDesc": "Craft your own glass of Nuka-Cola, a bowl of BlamCo Mac & Cheese, and more with the recipes in Fallout: The Official Cookbook.",
+                    "daDesc": "Lav dit eget glas Nuka-Cola, en skål med BlamCo Mac & Cheese og mere med opskrifterne i Fallout: The Official Cookbook.",
+                    "img": "https://m.media-amazon.com/images/I/81KsOSD2G2L._SY385_.jpg",
+                    "link": "https://www.amazon.com/Fallout-Vault-Dwellers-Official-Cookbook/dp/168383397X"
+                },
+                {
+                    "enName": "Project Hail Mary",
+                    "daName": "Project Hail Mary",
+                    "enDesc": "A lonely astronaut. an impossible mission. A way he never imagined",
+                    "daDesc": "EN ENLIG ASTRONAUT. EN UMULIG MISSION. EN VEJ, HAN ALDRIG HAVDE FORESTILLET SIG.",
+                    "img": "https://imgcdn.saxo.com/_9788771718218",
+                    "link": "https://www.saxo.com/dk/project-hail-mary_bog_9788771718218"
+                },
+                {
                     "enName": "Star Trek: U.S.S. Enterprise NCC-1701-D™",
                     "daName": "Star Trek: U.S.S. Enterprise NCC-1701-D™",
                     "enDesc": "",
@@ -252,6 +268,7 @@
         }
     ]
 }
+
 
 
 
