@@ -1,0 +1,43 @@
+@import 'tailwindcss';
+
+@font-face {
+    font-family: Adwaita; /* set name */
+    src: url(AdwaitaSans-Regular.ttf); /* url of the font */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Adwaita; /* set name */
+    src: url(AdwaitaSans-Italic.ttf); /* url of the font */
+    font-style: italic;
+}
+
+/* stolen from https://github.com/eevee/eev.ee*/
+body {
+    --screen-width: 100vw;
+    --screen-scale: calc(tan(atan2(var(--screen-width), 1000px)));
+    --flex-scale: calc((var(--screen-scale) - 0.6) / 0.4);
+    --body-width: clamp(320px, 100vw - 6em * var(--screen-scale), 960px);
+    font-family: Adwaita;
+}
+
+.inset-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@theme {
+    --font-display: Adwaita;
+
+    /* Yes we're naming based on the catppuccin standard... I ENJOY IT SUE ME */
+    --color-base-bg: #303446;
+    --color-base: #c6d0f5;
+    --color-mantle-bg: #292c3c;
+    --color-mantle: #b5bfe2;
+    --color-crust-bg: #232634;
+    --color-crust: #a5adce;
+    --color-surface-bg: #414559;
+    --color-surface: #a5adce;
+}
