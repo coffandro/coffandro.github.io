@@ -33,7 +33,7 @@
     <title>Coffandro's website</title>
 </svelte:head>
 
-<div class="flex flex-col my-5">
+<div class="w-full flex flex-col mb-10">
     <div class="flex">
         <div class="w-2/3">
             <h1 class="text-3xl">Welcome to my website!</h1>
@@ -54,7 +54,7 @@
                     <a
                         bind:this={link.element}
                         href={link.href}
-                        class="inner text-2xl bg-crust-bg hover:bg-base-bg"
+                        class="inner text-lg sm:text-2xl bg-crust-bg hover:bg-base-bg"
                     >
                         {link.name}
                     </a>
@@ -77,8 +77,8 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        width: 200px;
-        height: 200px;
+        width: 35%;
+        height: 35%;
         border-radius: 50%;
     }
 
