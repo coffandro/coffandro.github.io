@@ -29,7 +29,7 @@
     topbar={topbar}
     id={game.title}
 >
-    <div class="w-full md:bg-blue-500 sm:grid grid-cols-2 gap-4">
+    <div class="w-full sm:grid grid-cols-2 gap-4">
         <div class="overflow-hidden rounded-xl">
             {#if game.itch_path && playing_game}
                 <iframe frameborder="0" src={game.itch_path} allowfullscreen="" width="640" height="480" style="width:100%; height:400px;overflow:hidden;" title={game.title}></iframe>
@@ -45,7 +45,7 @@
         </div>
 
         <div class="text-base flex flex-col justify-between">
-            <p class="whitespace-pre-wrap my-5">{game.desc}</p>
+            <p class="whitespace-pre-wrap mt-5 sm:mt-0">{game.desc}</p>
 
             <div class="flex gap-2 mt-2">
                 {#if game.link_path}

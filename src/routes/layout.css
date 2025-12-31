@@ -2,10 +2,6 @@
 
 /* stolen from https://github.com/eevee/eev.ee*/
 body {
-    --screen-width: 100vw;
-    --screen-scale: calc(tan(atan2(var(--screen-width), 1000px)));
-    --flex-scale: calc((var(--screen-scale) - 0.6) / 0.4);
-    --body-width: max(min(100vw, 700px), 320px);
     font-family: InterVariable;
 }
 

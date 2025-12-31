@@ -132,7 +132,7 @@
 </svelte:head>
 
 <div class="w-full flex flex-col mb-5">
-    <div class="grid grid-cols-2 md:grid-cols-3 w-full gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-4">
         {#each games as game}
             <GamePiece
                 {game}

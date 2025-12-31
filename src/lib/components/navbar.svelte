@@ -16,11 +16,6 @@
             icon: null
         },
         {
-            name: 'Electronics',
-            href: '/electronics',
-            icon: null
-        },
-        {
             name: 'Art',
             href: '/art',
             icon: null
@@ -28,11 +23,6 @@
     ];
 
     const profItems: MenuItem[] = [
-        {
-            name: 'CV',
-            href: '/cv',
-            icon: null
-        },
         {
             name: 'Portfolio',
             href: '/portfolio',
@@ -49,19 +39,6 @@
             icon: null
         }
     ];
-
-    const personalItems: MenuItem[] = [
-        {
-            name: 'About',
-            href: '/about',
-            icon: null
-        },
-        {
-            name: 'Wishlist',
-            href: '/wishlist',
-            icon: null
-        }
-    ];
 </script>
 
 <div class="bg-mantle-bg text-surface p-2 rounded-b-xl flex justify-center flex-wrap gap-2">
@@ -73,12 +50,6 @@
 
     <ul class="bg-crust-bg overflow-hidden border rounded-xl flex grow justify-center flex-wrap">
         {#each profItems as item}
-            <NavButton item={item} />
-        {/each}
-    </ul>
-
-    <ul class="bg-crust-bg overflow-hidden border rounded-xl flex grow justify-center flex-wrap">
-        {#each personalItems as item}
             <NavButton item={item} />
         {/each}
     </ul>

@@ -39,8 +39,8 @@
             <h1 class="text-3xl">Welcome to my website!</h1>
             <p>My name's Frida and I'm a Game Developer and Software developer from Denmark</p>
         </div>
-        <div style="clip-path: circle(50% at 50% 50%);" class="bg-mantle-bg relative w-1/3 aspect-square">
-            <img src="/Frida.png" class="absolute -left-2 top-2.5">
+        <div style="clip-path: circle(50% at 50% 50%);" class="bg-mantle-bg relative w-1/3 aspect-square overflow-hidden">
+            <img src="/Frida.png" class="bg-mantle-bg absolute -left-2 top-2.5">
         </div>
     </div>
 

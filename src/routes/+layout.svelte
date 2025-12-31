@@ -2,7 +2,6 @@
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import Navbar from '$lib/components/navbar.svelte';
-	import { browser } from '$app/environment';
 
 	let { children } = $props();
 </script>
@@ -11,11 +10,10 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="absolute left-1/2 -translate-x-1/2">
+<div>
 	<Navbar />
 
-	<div class="mt-2.5 flex justify-center overflow-hidden /*And now our defaults*/ text-base"
-		style="width: var(--body-width);">
+	<div class="mt-2.5 px-2 flex justify-center overflow-hidden /*And now our defaults*/ text-base">
 		{@render children()}
 	</div>
 </div>
