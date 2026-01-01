@@ -4,14 +4,8 @@
 
     const sites: Site[] = [
         {
-            title: "Team FOLON website",
-            desc: "As a favor for the FOLON team I helped in building a new and improved website to show off their brand",
-            link_path: "https://www.teamfolon.com/",
-            logo_path: "/sites/team_folon.png"
-        },
-        {
             title: "SimplyPrint",
-            desc: "For X years I worked as a Junior Software developer for SimplyPrint, working on features such as the initial student dashboard feature and a printer integration.",
+            desc: "For 1 year I worked as a Junior Software developer for SimplyPrint, working on features such as the initial student dashboard feature and a printer integration.",
             link_path: "https://simplyprint.io/",
             logo_path: "/sites/simply_print.svg",
             image_path: "/sites/simply_print_screenshot.png",
