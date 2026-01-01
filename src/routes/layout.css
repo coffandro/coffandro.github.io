@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+
+/* stolen from https://github.com/eevee/eev.ee*/
+body {
+    font-family: InterVariable;
+}
+
+.inset-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@theme {
+    --font-display: InterVariable;
+
+    --color-hover: #ee8695;
+    --color-bg: #292831;
+    --color-text: #fbbbad;
+}
