@@ -45,6 +45,11 @@
 </svelte:head>
 
 <div class="w-full flex flex-col mb-5">
+    <div class="mb-2">
+        <h1 class="text-3xl">Web Dev!</h1>
+        <p>Besides working on Games I sometimes end up doing web dev, below are the websites I have either created or taken part in.</p>
+    </div>
+
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-4">
         {#each sites as site}
             <SitePiece

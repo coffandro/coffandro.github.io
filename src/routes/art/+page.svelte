@@ -34,7 +34,12 @@
     <title>Art</title>
 </svelte:head>
 
-<div class="w-full flex flex-col">
+<div class="w-full flex flex-col mb-5">
+    <div class="mb-2">
+        <h1 class="text-3xl">Art!</h1>
+        <p>I sometimes end up doing artistic things, mostly 3D, below are a few of my "pieces"</p>
+    </div>
+
     <div class="grid grid-cols-2 md:grid-cols-3 w-full gap-4">
         {#each pieces as piece}
             <ArtPiece
