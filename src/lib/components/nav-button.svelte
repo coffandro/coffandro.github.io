@@ -13,7 +13,7 @@
 {#if item}
     {@const Icon = item.icon}
     <li 
-        class="bg-surface-bg hover:bg-base-bg not-last:border-r px-1 text-nowrap grow"
+        class="hover:bg-hover not-last:border-r px-1 text-nowrap grow"
     >
         <a 
             href={item.href}

@@ -11,7 +11,7 @@
     }
 </script>
 
-<button command="show-modal" commandfor="{game.title}-dialog" class="p-2 bg-mantle-bg hover:bg-crust-bg rounded-lg flex flex-col justify-between cursor-pointer {classes}">
+<button command="show-modal" commandfor="{game.title}-dialog" class="p-2 bg-bg hover:bg-bg rounded-lg flex flex-col justify-between cursor-pointer border-2 border-text {classes}">
     <p class="text-center mb-2">{game.title}</p>
     <div class="aspect-square flex justify-center items-center">
         {#if game.logo_path}
@@ -21,8 +21,8 @@
 </button>
 
 {#snippet topbar()}
-    <h3 id="{game.title}-dialog-title" class="text-base font-semibold text-xl text-white">{game.title}</h3>
-    <button type="button" command="close" commandfor="{game.title}-dialog" class="flex flex-col content-center justify-center rounded-md bg-gray-500 text-sm font-semibold text-white hover:bg-gray-400 ml-3 p-3 w-auto cursor-pointer">Close</button>
+    <h3 id="dialog-title" class="font-semibold text-xl">{game.title}</h3>
+    <button type="button" command="close" commandfor="{game.title}-dialog" class="flex flex-col content-center justify-center rounded-md text-sm font-semibold border border-text hover:bg-hover cursor-pointer ml-3 p-3 w-auto">Close</button>
 {/snippet}
 
 <Modal
@@ -49,18 +49,18 @@
 
             <div class="flex gap-2 mt-2">
                 {#if game.link_path}
-                    <a class="bg-surface-bg p-2 rounded-lg grow text-center" href={game.link_path}>Visit Page</a>
+                    <a class="border border-text p-2 rounded-lg grow text-center" href={game.link_path}>Visit Page</a>
                 {/if}
 
                 {#if game.source_path}
-                    <a class="bg-surface-bg p-2 rounded-lg grow text-center" href={game.source_path}>See code</a>
+                    <a class="border border-text p-2 rounded-lg grow text-center" href={game.source_path}>See code</a>
                 {/if}
 
                 {#if game.itch_path}
                     {#if playing_game}
-                        <button on:click={buttonClick} class="bg-surface-bg p-2 rounded-lg grow text-center cursor-pointer">Return to {game.youtupe_path ? "video" : "image"}</button>
+                        <button on:click={buttonClick} class="border border-text p-2 rounded-lg grow text-center cursor-pointer">Return to {game.youtupe_path ? "video" : "image"}</button>
                     {:else}
-                        <button on:click={buttonClick} class="bg-surface-bg p-2 rounded-lg grow text-center cursor-pointer">Play Game</button>
+                        <button on:click={buttonClick} class="border border-text p-2 rounded-lg grow text-center cursor-pointer">Play Game</button>
                     {/if}
                 {/if}
             </div>

@@ -15,13 +15,7 @@ body {
 @theme {
     --font-display: InterVariable;
 
-    /* Yes we're naming based on the catppuccin standard... I ENJOY IT SUE ME */
-    --color-base-bg: #303446;
-    --color-base: #c6d0f5;
-    --color-mantle-bg: #292c3c;
-    --color-mantle: #b5bfe2;
-    --color-crust-bg: #232634;
-    --color-crust: #a5adce;
-    --color-surface-bg: #414559;
-    --color-surface: #a5adce;
+    --color-hover: #ee8695;
+    --color-bg: #292831;
+    --color-text: #fbbbad;
 }

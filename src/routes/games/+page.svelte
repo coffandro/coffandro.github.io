@@ -137,7 +137,7 @@
         <p>These are the games which I have either made on my own or worked on, the list is ever expanding, sorted based upon which games I'm the most proud of, not success or date of publishing.</p>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-4 border-3 border-text p-2 rounded-xl">
         {#each games as game}
             <GamePiece
                 {game}

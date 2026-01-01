@@ -50,7 +50,7 @@
         <p>Besides working on Games I sometimes end up doing web dev, below are the websites I have either created or taken part in.</p>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-4 border-3 border-text p-2 rounded-xl">
         {#each sites as site}
             <SitePiece
                 {site}

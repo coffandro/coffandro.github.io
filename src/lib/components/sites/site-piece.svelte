@@ -5,7 +5,7 @@
     export let site: Site, classes: string = "";
 </script>
 
-<button command="show-modal" commandfor="{site.title}-dialog" class="p-2 bg-mantle-bg hover:bg-crust-bg rounded-lg flex flex-col justify-between cursor-pointer {classes}">
+<button command="show-modal" commandfor="{site.title}-dialog" class="p-2 bg-bg hover:bg-bg rounded-lg flex flex-col justify-between cursor-pointer border-2 border-text {classes}">
     <p class="text-center mb-2">{site.title}</p>
     <div class="aspect-square flex justify-center items-center">
         {#if site.logo_path}
@@ -37,11 +37,11 @@
 
             <div class="flex gap-2 mt-2">
                 {#if site.link_path}
-                    <a class="bg-surface-bg p-2 rounded-lg grow text-center" href={site.link_path}>Visit Page</a>
+                    <a class="border border-text p-2 rounded-lg grow text-center" href={site.link_path}>Visit Page</a>
                 {/if}
 
                 {#if site.source_path}
-                    <a class="bg-surface-bg p-2 rounded-lg grow text-center" href={site.source_path}>See code</a>
+                    <a class="border border-text p-2 rounded-lg grow text-center" href={site.source_path}>See code</a>
                 {/if}
             </div>
         </div>

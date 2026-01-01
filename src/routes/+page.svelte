@@ -39,12 +39,12 @@
             <h1 class="text-3xl">Welcome to my website!</h1>
             <p>My name's Frida and I'm a Game Developer and Software developer from Denmark</p>
         </div>
-        <div style="clip-path: circle(50% at 50% 50%);" class="bg-mantle-bg relative w-1/3 aspect-square overflow-hidden">
-            <img src="/Frida.png" class="bg-mantle-bg absolute -left-2 top-2.5">
+        <div class="relative w-1/3 aspect-square overflow-hidden border border-text rounded-full">
+            <img src="/Frida.png" class="absolute -left-2 top-2.5">
         </div>
     </div>
 
-    <div class="circles-container w-full aspect-square bg-mantle-bg rounded-xl">
+    <div class="circles-container w-full aspect-square border-3 border-text rounded-xl">
         <div class="outer-circle">
             {#each links as link, index}
                 <div
@@ -54,7 +54,7 @@
                     <a
                         bind:this={link.element}
                         href={link.href}
-                        class="inner text-lg sm:text-2xl bg-crust-bg hover:bg-base-bg"
+                        class="inner text-lg sm:text-2xl border-2 border-text hover:bg-hover"
                     >
                         {link.name}
                     </a>
