@@ -5,7 +5,7 @@
     export let site: Site, classes: string = "";
 </script>
 
-<button command="show-modal" commandfor="{site.title}-dialog" class="p-2 bg-bg hover:bg-bg rounded-lg flex flex-col justify-between cursor-pointer border-2 border-text {classes}">
+<button command="show-modal" commandfor="{site.title}-dialog" class="p-2 bg-bg hover:bg-bg rounded-lg flex flex-col justify-between cursor-pointer border-2 border-text font-semibold {classes}">
     <p class="text-center mb-2">{site.title}</p>
     <div class="aspect-square flex justify-center items-center">
         {#if site.logo_path}

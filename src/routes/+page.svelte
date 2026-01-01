@@ -34,7 +34,7 @@
             <h1 class="text-3xl">Welcome to my website!</h1>
             <p>My name's Frida and I'm a Game Developer and Software developer from Denmark</p>
         </div>
-        <div class="relative w-1/3 aspect-square overflow-hidden border border-text rounded-full">
+        <div class="relative w-1/3 aspect-square overflow-hidden border-2 border-text rounded-full">
             <img src="/Frida.png" class="absolute -left-2 top-2.5">
         </div>
     </div>

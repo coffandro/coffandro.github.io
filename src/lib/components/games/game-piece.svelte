@@ -11,7 +11,7 @@
     }
 </script>
 
-<button command="show-modal" commandfor="{game.title}-dialog" class="p-2 bg-bg hover:bg-bg rounded-lg flex flex-col justify-between cursor-pointer border-2 border-text {classes}">
+<button command="show-modal" commandfor="{game.title}-dialog" class="p-2 bg-bg hover:bg-bg rounded-lg flex flex-col justify-between cursor-pointer border-2 border-text font-semibold {classes}">
     <p class="text-center mb-2">{game.title}</p>
     <div class="aspect-square flex justify-center items-center">
         {#if game.logo_path}

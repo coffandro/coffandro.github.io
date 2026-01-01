@@ -62,21 +62,21 @@
     }
 </script>
 
-<div class="text-surface p-2 rounded-b-xl border border-t-0 mx-2 border-text flex justify-center flex-wrap gap-2">
-    <ul class="overflow-hidden border rounded-xl flex grow justify-center flex-wrap">
+<div class="text-surface p-2 rounded-b-xl border-3 border-t-0 mx-2 border-text flex justify-center flex-wrap gap-2">
+    <ul class="overflow-hidden border-2 rounded-xl flex grow justify-center flex-wrap">
         {#each projectItems as item}
             <NavButton item={item} />
         {/each}
     </ul>
 
-    <ul class="overflow-hidden border rounded-xl flex grow justify-center flex-wrap">
+    <ul class="overflow-hidden border-2 rounded-xl flex grow justify-center flex-wrap">
         {#each profItems as item}
             <NavButton item={item} />
         {/each}
     </ul>
 
     {#if enabledOptionalItems.length > 0}
-        <ul class="overflow-hidden border rounded-xl flex grow justify-center flex-wrap">
+        <ul class="overflow-hidden border-2 rounded-xl flex grow justify-center flex-wrap">
             {#each enabledOptionalItems as item}
                 <NavButton item={item} />
             {/each}

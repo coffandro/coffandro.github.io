@@ -4,7 +4,7 @@
     export let title: string, imagePath: string, classes: string = "";
 </script>
 
-<button command="show-modal" commandfor="{title}-dialog" class="p-2 hover:bg-hover rounded-lg flex flex-col justify-between cursor-pointer border-2 border-text {classes}">
+<button command="show-modal" commandfor="{title}-dialog" class="p-2 hover:bg-hover rounded-lg flex flex-col justify-between cursor-pointer border-2 border-text font-semibold {classes}">
     <p class="text-center mb-2">{title}</p>
     <div class="aspect-square flex justify-center items-center">
         <img src={imagePath} class="rounded-lg">
