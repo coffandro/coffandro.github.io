@@ -17,11 +17,6 @@
             element: null
         },
         {
-            name: "Electronics",
-            href: "/electronics",
-            element: null
-        },
-        {
             name: "Games",
             href: "/games",
             element: null
@@ -69,7 +64,7 @@
         position: relative;
         margin: 0 auto;
         top: calc(var(--spacing) * 5);
-        --circle-offset: 85%;
+        --circle-offset: 75%;
     }
 
     .outer-circle {
@@ -106,14 +101,10 @@
     .animation3 {
         animation-name: circle3;
     }
-    .animation4 {
-        animation-name: circle4;
-    }
 
     .animation1,
     .animation2,
-    .animation3,
-    .animation4 {
+    .animation3 {
         animation-duration: 45s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
@@ -130,55 +121,19 @@
 
     @keyframes circle2 {
         from {
-            transform: rotateZ(90deg) translate(var(--circle-offset)) rotateZ(-90deg);
+            transform: rotateZ(120deg) translate(var(--circle-offset)) rotateZ(-120deg);
         }
         to {
-            transform: rotateZ(450deg) translate(var(--circle-offset)) rotateZ(-450deg);
+            transform: rotateZ(480deg) translate(var(--circle-offset)) rotateZ(-480deg);
         }
     }
 
     @keyframes circle3 {
         from {
-            transform: rotateZ(180deg) translate(var(--circle-offset)) rotateZ(-180deg);
+            transform: rotateZ(240deg) translate(var(--circle-offset)) rotateZ(-240deg);
         }
         to {
-            transform: rotateZ(540deg) translate(var(--circle-offset)) rotateZ(-540deg);
-        }
-    }
-
-    @keyframes circle4 {
-        from {
-            transform: rotateZ(270deg) translate(var(--circle-offset)) rotateZ(-270deg);
-        }
-        to {
-            transform: rotateZ(630deg) translate(var(--circle-offset)) rotateZ(-630deg);
-        }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .animation1,
-        .animation2,
-        .animation3,
-        .animation4 {
-            position: relative;
-            animation: none;
-        }
-
-        .animation1 {
-            left: 50px;
-            top: -20px;
-        }
-        .animation2 {
-            left: 120px;
-            top: -150px;
-        }
-        .animation3 {
-            top: -280px;
-            left: 50px;
-        }
-        .animation4 {
-            top: -550px;
-            left: -20px;
+            transform: rotateZ(600deg) translate(var(--circle-offset)) rotateZ(-600deg);
         }
     }
 </style>
