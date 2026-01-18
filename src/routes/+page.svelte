@@ -36,7 +36,7 @@
             <p class="text-xl">I've been programming since 2019, making electronics since 2021, making games and websites since 2022.</p>
         </div>
 
-        <div class="grow border-3 rounded-xl flex align items-center justify-center">
+        <div class="grow border-3 rounded-xl flex align items-center justify-center overflox-hidden">
             <div class="circles-container aspect-square h-full">
                 <div class="outer-circle">
                     {#each links as link, index}
