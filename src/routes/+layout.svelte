@@ -10,10 +10,6 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div>
-	<Navbar />
+<Navbar />
 
-	<div class="mt-2.5 px-2 flex justify-center overflow-hidden /*And now our defaults*/ text-base">
-		{@render children()}
-	</div>
-</div>
+{@render children()}

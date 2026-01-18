@@ -28,42 +28,52 @@
     <title>Coffandro's website</title>
 </svelte:head>
 
-<div class="w-full flex flex-col mb-10">
-    <div class="flex">
-        <div class="w-2/3">
-            <h1 class="text-3xl">Welcome to my website!</h1>
-            <p>My name's Frida and I'm a Game Developer and Software developer from Denmark</p>
+<div class="grow mb-2 gap-3 flex flex-col-reverse sm:flex-row">
+    <div class="grow flex flex-col min-h-0 overflow-y-hidden">
+        <div class="border-3 rounded-xl p-3 mb-2">
+            <h1 class="text-5xl">Frida Rosenaa</h1>
+            <p class="text-xl">I make games, websites, electronics and scripts to tie it all together.</p>
+            <p class="text-xl">I've been programming since 2019, making electronics since 2021, making games and websites since 2022.</p>
         </div>
-        <div class="relative w-1/3 aspect-square overflow-hidden border-2 border-text rounded-full">
-            <img src="/Frida.png" class="absolute -left-2 top-2.5">
+
+        <div class="grow border-3 rounded-xl flex align items-center justify-center">
+            <div class="circles-container aspect-square h-full">
+                <div class="outer-circle">
+                    {#each links as link, index}
+                        <div
+                            class="animation{index+1} rotate"
+                            data-animation
+                        >
+                            <a
+                                bind:this={link.element}
+                                href={link.href}
+                                data-sveltekit-reload
+                                class="inner text-lg sm:text-2xl border-3 hover:bg-hover"
+                            >
+                                {link.name}
+                            </a>
+                        </div>
+                    {/each}
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="circles-container w-full aspect-square border-3 border-text rounded-xl">
-        <div class="outer-circle">
-            {#each links as link, index}
-                <div
-                    class="animation{index+1} rotate"
-                    data-animation
-                >
-                    <a
-                        bind:this={link.element}
-                        href={link.href}
-                        class="inner text-lg sm:text-2xl border-2 border-text hover:bg-hover"
-                    >
-                        {link.name}
-                    </a>
-                </div>
-            {/each}
+    <div class="flex-col gap-2 hidden sm:flex">
+        <div class="relative rounded-xl overflow-hidden border-3">
+            <img src="/Frida.png" class="mx-auto w-full">
+        </div>
+
+        <!-- This makes our socials appear on the side on PC, part of the header section on mobile-->
+        <div class="relative rounded-xl overflow-hidden border-3 grow p-3">
+            <h2 class="text-3xl">Socials</h2>
         </div>
     </div>
 </div>
 
 <style>
     .circles-container {
-        position: relative;
-        margin: 0 auto;
-        top: calc(var(--spacing) * 5);
+        position: relative; 
         --circle-offset: 75%;
     }
 

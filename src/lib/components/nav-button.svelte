@@ -1,5 +1,6 @@
 <script lang="ts">
     import { type Icon as IconType } from "@lucide/svelte"
+    import { page } from "$app/state";
 
     type MenuItem = {
         name: string;
@@ -7,13 +8,22 @@
         icon: typeof IconType|null;
     }
 
-    export let item: MenuItem; 
+    export let item: MenuItem;
+
+    function isActive(target: string) {
+        if (!target.includes("/")) {
+            target = "/" + target;
+        }
+
+        return page.url.pathname == target;
+    }
 </script>
 
 {#if item}
     {@const Icon = item.icon}
     <li 
-        class="hover:bg-hover not-last:border-r px-1 text-nowrap grow"
+        class="hover:bg-hover not-last:border-r px-1 text-nowrap grow {isActive(item.href) ? 'bg-focus' : ''}"
+        data-sveltekit-reload
     >
         <a 
             href={item.href}

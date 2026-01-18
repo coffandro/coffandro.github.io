@@ -1,8 +1,9 @@
 @import 'tailwindcss';
 
 /* stolen from https://github.com/eevee/eev.ee*/
-body {
+html, body {
     font-family: InterVariable;
+    height: 100%;
 }
 
 .inset-center {
@@ -15,7 +16,8 @@ body {
 @theme {
     --font-display: InterVariable;
 
-    --color-hover: #ee8695;
-    --color-bg: #292831;
-    --color-text: #fbbbad;
+    --color-hover: #ab6c84;
+    --color-focus: #613854;
+    --color-bg: #292b30;
+    --color-text: #ffc4d1;
 }
