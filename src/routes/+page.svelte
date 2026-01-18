@@ -73,8 +73,8 @@
 
 <style>
     .circles-container {
-        position: relative; 
-        --circle-offset: 75%;
+        position: relative;
+        --circle-offset: 85%;
     }
 
     .outer-circle {
