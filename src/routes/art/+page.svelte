@@ -35,7 +35,7 @@
 </svelte:head>
 
 <div class="w-full flex flex-col mb-5">
-    <div class="mb-2">
+    <div class="mb-2 border-3 p-2 rounded-xl">
         <h1 class="text-3xl">Art!</h1>
         <p>I sometimes end up doing artistic things, mostly 3D, below are a few of my "pieces"</p>
     </div>

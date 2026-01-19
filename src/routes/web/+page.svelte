@@ -35,11 +35,11 @@
 </script>
 
 <svelte:head>
-    <title>Sites</title>
+    <title>Websites</title>
 </svelte:head>
 
 <div class="w-full flex flex-col mb-5">
-    <div class="mb-2">
+    <div class="mb-2 border-3 p-2 rounded-xl">
         <h1 class="text-3xl">Web Dev!</h1>
         <p>Besides working on Games I sometimes end up doing web dev, below are the websites I have either created or taken part in.</p>
     </div>
