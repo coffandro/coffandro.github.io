@@ -54,7 +54,7 @@
                                 bind:this={link.element}
                                 href={link.href}
                                 data-sveltekit-reload
-                                class="inner text-center text-lg sm:text-2xl border-3 hover:bg-hover"
+                                class="inner text-center text-lg sm:text-2xl border-3 hover:bg-hover bg-bg"
                             >
                                 {link.name}
                             </a>
