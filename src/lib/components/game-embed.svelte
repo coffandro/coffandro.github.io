@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount, onDestroy } from "svelte";
   import { browser } from "$app/environment";
 
@@ -7,8 +7,7 @@
 
   let container;
   let canvas;
-  let resizeObserver;
-  let aspectRatio = 1;
+  let setDimensions;
 
   const canvasId = `raylib-canvas-${Math.random().toString(36).slice(2)}`;
 
@@ -30,11 +29,13 @@
   }
 
   function resizeToFit() {
-    if (!canvas || !container || !aspectRatio) return;
+    if (!canvas || !container) return;
 
     const w = container.clientWidth;
-    canvas.style.width = `${w}px`;
-    canvas.style.height = `${w / aspectRatio}px`;
+    const h = container.clientHeight;
+    //canvas.style.width = `${w}px`;
+    //canvas.style.height = `${h}px`;
+    setDimensions(w, h);
   }
 
   onMount(async () => {
@@ -43,7 +44,6 @@
 
     const basePath = dirname(jsUrl);
 
-    // ⚠️ DO NOT touch window at top-level
     globalThis.Module = {
       canvas,
 
@@ -53,7 +53,11 @@
       },
 
       onRuntimeInitialized() {
-        aspectRatio = canvas.width / canvas.height || 1;
+        setDimensions = Module.cwrap(
+          "set_dimensions",
+          "void",
+          ["number", "number"]
+        )
         resizeToFit();
       }
     };
@@ -62,26 +66,24 @@
       "https://cdn.jsdelivr.net/gh/eligrey/FileSaver.js/dist/FileSaver.min.js"
     );
 
-    await loadScript(jsUrl);
+    window.addEventListener('resize', resizeToFit);
 
-    resizeObserver = new ResizeObserver(resizeToFit);
-    resizeObserver.observe(container);
+    await loadScript(jsUrl);
   });
 
   onDestroy(() => {
-    resizeObserver?.disconnect();
     if (browser) delete globalThis.Module;
   });
 </script>
 
 <div
-  class="grow rounded-xl overflow-hidden"
+  class="relative flex-1 min-h-0 rounded-xl overflow-hidden"
   bind:this={container}
 >
   <canvas
     id={canvasId}
     bind:this={canvas}
-    class="emscripten"
+    class="emscripten w-full h-full min-h-0 min-w-0 m-0"
     tabindex="-1"
     on:contextmenu|preventDefault
   />

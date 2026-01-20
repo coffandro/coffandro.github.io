@@ -31,7 +31,7 @@
 </svelte:head>
 
 <div class="grow mb-2 gap-3 flex flex-col-reverse sm:flex-row">
-    <div class="grow flex flex-col min-h-0 overflow-y-hidden overflow-x-hidden">
+    <div class="grow flex flex-col min-h-0 overflow-hidden">
         <div class="border-3 rounded-xl p-3 mb-2">
             <h1 class="text-5xl">Frida Rosenaa</h1>
             <p class="text-xl">I make games, websites, electronics and scripts to tie it all together.</p>

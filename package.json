@@ -27,6 +27,7 @@
 		"@fortawesome/free-solid-svg-icons": "^7.1.0",
 		"@lucide/svelte": "^0.562.0",
 		"svelte-device-info": "^1.0.6",
-		"svelte-fa": "^4.0.4"
+		"svelte-fa": "^4.0.4",
+		"svelte-watch-resize": "^1.0.3"
 	}
 }

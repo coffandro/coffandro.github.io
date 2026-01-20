@@ -2,7 +2,7 @@ DEF_FLAGS=-Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -Wunused-result -
 INCLUDES=-Iinclude -Iinclude/raylib/src -Iinclude/raylib/src/external
 LINKING=-Linclude -Linclude/raylib/src
 RAYLIB_ARGS=-sUSE_GLFW=3 -sASYNCIFY
-SYS=include/libraylib.a -DPLATFORM_WEB -s 'EXPORTED_FUNCTIONS=["_free","_malloc","_main"]' -s EXPORTED_RUNTIME_METHODS=ccall
+SYS=include/libraylib.a -DPLATFORM_WEB -s 'EXPORTED_FUNCTIONS=["_free","_malloc","_set_dimensions","_main"]' -s EXPORTED_RUNTIME_METHODS=["ccall","cwrap"]
 
 DEFAULT_ARGS=$(INCLUDES) $(LINKING) $(RAYLIB_ARGS)
 

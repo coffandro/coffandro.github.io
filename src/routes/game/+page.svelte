@@ -96,13 +96,13 @@
     <title>Games</title>
 </svelte:head>
 
-<div class="w-full flex flex-col mb-5">
-    <div class="mb-2 border-3 p-2 rounded-xl">
+<div class="grow flex flex-col gap-3 min-h-0 overflow-hidden mb-2">
+    <!--<div class="mb-2 border-3 p-2 rounded-xl">
         <h1 class="text-3xl">Games!</h1>
         <p>These are the games which I have either made on my own or worked on, the list is ever expanding, sorted based upon which games I'm the most proud of, not success or date of publishing.</p>
-    </div>
+    </div>-->
 
-    <div class="border-3 p-2 rounded-xl flex">
+    <div class="border-3 p-2 grow rounded-xl flex min-h-0">
         <GameEmbed jsUrl="/games/game/index.js" />
     </div>
 </div>
