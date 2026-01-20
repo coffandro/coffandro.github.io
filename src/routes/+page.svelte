@@ -1,4 +1,6 @@
 <script lang="ts">
+    import Socials from "$lib/components/index/socials.svelte";
+
     type Link = {
         name: string;
         href: string;
@@ -34,6 +36,10 @@
             <h1 class="text-5xl">Frida Rosenaa</h1>
             <p class="text-xl">I make games, websites, electronics and scripts to tie it all together.</p>
             <p class="text-xl">I've been programming since 2019, making electronics since 2021, making games and websites since 2022.</p>
+            <div class="block sm:hidden mt-2">
+                <p class="text-2xl font-bold mb-1">Socials</p>
+                <Socials is_horizontal={true}/>
+            </div>
         </div>
 
         <div class="grow border-3 rounded-xl flex align items-center justify-center overflox-hidden">
@@ -48,7 +54,7 @@
                                 bind:this={link.element}
                                 href={link.href}
                                 data-sveltekit-reload
-                                class="inner text-lg sm:text-2xl border-3 hover:bg-hover"
+                                class="inner text-center text-lg sm:text-2xl border-3 hover:bg-hover"
                             >
                                 {link.name}
                             </a>
@@ -66,7 +72,8 @@
 
         <!-- This makes our socials appear on the side on PC, part of the header section on mobile-->
         <div class="relative rounded-xl overflow-hidden border-3 grow p-3">
-            <h2 class="text-3xl">Socials</h2>
+            <h2 class="text-3xl mb-1">Socials</h2>
+            <Socials classes="hidden sm:flex"/>
         </div>
     </div>
 </div>
