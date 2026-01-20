@@ -58,7 +58,6 @@ int main(void) {
     // Main game loop
     while (!WindowShouldClose()) {
         SetWindowSize(screenWidth, screenHeight);
-
         UpdateCamera(&camera, CAMERA_ORBITAL);
 
         earthRotation += (5.0f*rotationSpeed);
@@ -67,7 +66,7 @@ int main(void) {
         moonOrbitRotation += (8.0f*rotationSpeed);
 
         BeginDrawing();
-            ClearBackground(RAYWHITE);
+            ClearBackground(BG_COL);
 
             BeginMode3D(camera);
 
@@ -96,12 +95,10 @@ int main(void) {
                 rlPopMatrix();
 
                 // Some reference elements (not affected by previous matrix transformations)
-                DrawCircle3D((Vector3){ 0.0f, 0.0f, 0.0f }, earthOrbitRadius, (Vector3){ 1, 0, 0 }, 90.0f, Fade(RED, 0.5f));
+                DrawCircle3D((Vector3){ 0.0f, 0.0f, 0.0f }, earthOrbitRadius, (Vector3){ 1, 0, 0 }, 90.0f, Fade(TEXT_COL, 1.0f));
                 DrawGrid(20, 1.0f);
 
             EndMode3D();
-
-            DrawFPS(10, 10);
         EndDrawing();
     }
 
