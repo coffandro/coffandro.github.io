@@ -18,10 +18,10 @@ int main(void) {
     while (!WindowShouldClose()) {
         sys_update();
 
-        update_player();
-
         BeginDrawing();
             ClearBackground(COL_BG);
+
+            update_player();
 
             draw_player();
         EndDrawing();

@@ -1,8 +1,7 @@
 #include "girl_math.h"
 #include <math.h>
 
-Vector2 Vector2Eerp(Vector2 a, Vector2 b, float t)
-{
+Vector2 Vector2Eerp(Vector2 a, Vector2 b, float t) {
     Vector2 result = { 0 };
 
     // No clue...

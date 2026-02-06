@@ -3,6 +3,6 @@
 
 #include "raylib.h"
 
-Vector2 Vector2Eerp(Vector2 a, Vector2 b, float t);
+Vector2 Vector2Eerp(Vector2 a, Vector2 b, float t);;
 
 #endif
