@@ -1,5 +1,21 @@
 {
   "files": [
+    "planets/fallout_london.png",
+    "planets/fight_for_forest.png",
+    "planets/fishies.png",
+    "planets/gnomes.png",
+    "planets/katastrofe.svg",
+    "planets/krimi.png",
+    "planets/meeleetonin.png",
+    "planets/one_last_straw.png",
+    "planets/oso_invaders.png",
+    "planets/round_snake.png",
+    "planets/spc.png",
+    "planets/switcheroo.png",
+    "planets/tiles_in_progress.png",
+    "planets/ur.png",
+    "planets/whacka.png",
+    "planets/wizards.png",
     "ship.png"
   ]
 }

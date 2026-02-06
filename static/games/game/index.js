@@ -1640,6 +1640,13 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   write(stream, buffer, offset, length, position, canOwn) {
           // The data buffer should be a typed array view
           assert(!(buffer instanceof ArrayBuffer));
+          // If the buffer is located in main memory (HEAP), and if
+          // memory can grow, we can't hold on to references of the
+          // memory buffer, as they may get invalidated. That means we
+          // need to copy its contents.
+          if (buffer.buffer === HEAP8.buffer) {
+            canOwn = false;
+          }
   
           if (!length) return 0;
           var node = stream.node;
@@ -3777,6 +3784,66 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       if (size < cwdLengthInBytes) return -68;
       stringToUTF8(cwd, buf, size);
       return cwdLengthInBytes;
+    } catch (e) {
+    if (typeof FS == 'undefined' || !(e.name === 'ErrnoError')) throw e;
+    return -e.errno;
+  }
+  }
+
+  
+  function ___syscall_getdents64(fd, dirp, count) {
+  try {
+  
+      var stream = SYSCALLS.getStreamFromFD(fd)
+      stream.getdents ||= FS.readdir(stream.path);
+  
+      var struct_size = 280;
+      var pos = 0;
+      var off = FS.llseek(stream, 0, 1);
+  
+      var startIdx = Math.floor(off / struct_size);
+      var endIdx = Math.min(stream.getdents.length, startIdx + Math.floor(count/struct_size))
+      for (var idx = startIdx; idx < endIdx; idx++) {
+        var id;
+        var type;
+        var name = stream.getdents[idx];
+        if (name === '.') {
+          id = stream.node.id;
+          type = 4; // DT_DIR
+        }
+        else if (name === '..') {
+          var lookup = FS.lookupPath(stream.path, { parent: true });
+          id = lookup.node.id;
+          type = 4; // DT_DIR
+        }
+        else {
+          var child;
+          try {
+            child = FS.lookupNode(stream.node, name);
+          } catch (e) {
+            // If the entry is not a directory, file, or symlink, nodefs
+            // lookupNode will raise EINVAL. Skip these and continue.
+            if (e?.errno === 28) {
+              continue;
+            }
+            throw e;
+          }
+          id = child.id;
+          type = FS.isChrdev(child.mode) ? 2 :  // DT_CHR, character device.
+                 FS.isDir(child.mode) ? 4 :     // DT_DIR, directory.
+                 FS.isLink(child.mode) ? 10 :   // DT_LNK, symbolic link.
+                 8;                             // DT_REG, regular file.
+        }
+        assert(id);
+        HEAP64[((dirp + pos)>>3)] = BigInt(id);
+        HEAP64[(((dirp + pos)+(8))>>3)] = BigInt((idx + 1) * struct_size);
+        HEAP16[(((dirp + pos)+(16))>>1)] = 280;
+        HEAP8[(dirp + pos)+(18)] = type;
+        stringToUTF8(name, dirp + pos + 19, 256);
+        pos += struct_size;
+      }
+      FS.llseek(stream, idx * struct_size, 0);
+      return pos;
     } catch (e) {
     if (typeof FS == 'undefined' || !(e.name === 'ErrnoError')) throw e;
     return -e.errno;
@@ -6029,14 +6096,83 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _emscripten_glViewport = (x0, x1, x2, x3) => GLctx.viewport(x0, x1, x2, x3);
 
-  var abortOnCannotGrowMemory = (requestedSize) => {
-      abort(`Cannot enlarge memory arrays to size ${requestedSize} bytes (OOM). Either (1) compile with -sINITIAL_MEMORY=X with X higher than the current value ${HEAP8.length}, (2) compile with -sALLOW_MEMORY_GROWTH which allows increasing the size at runtime, or (3) if you want malloc to return NULL (0) instead of this abort, compile with -sABORTING_MALLOC=0`);
+  var getHeapMax = () =>
+      // Stay one Wasm page short of 4GB: while e.g. Chrome is able to allocate
+      // full 4GB Wasm memories, the size will wrap back to 0 bytes in Wasm side
+      // for any code that deals with heap sizes, which would require special
+      // casing all heap size related code to treat 0 specially.
+      2147483648;
+  
+  var alignMemory = (size, alignment) => {
+      assert(alignment, "alignment argument is required");
+      return Math.ceil(size / alignment) * alignment;
+    };
+  
+  var growMemory = (size) => {
+      var oldHeapSize = wasmMemory.buffer.byteLength;
+      var pages = ((size - oldHeapSize + 65535) / 65536) | 0;
+      try {
+        // round size grow request up to wasm page size (fixed 64KB per spec)
+        wasmMemory.grow(pages); // .grow() takes a delta compared to the previous size
+        updateMemoryViews();
+        return 1 /*success*/;
+      } catch(e) {
+        err(`growMemory: Attempted to grow heap from ${oldHeapSize} bytes to ${size} bytes, but got error: ${e}`);
+      }
+      // implicit 0 return to save code size (caller will cast "undefined" into 0
+      // anyhow)
     };
   var _emscripten_resize_heap = (requestedSize) => {
       var oldSize = HEAPU8.length;
       // With CAN_ADDRESS_2GB or MEMORY64, pointers are already unsigned.
       requestedSize >>>= 0;
-      abortOnCannotGrowMemory(requestedSize);
+      // With multithreaded builds, races can happen (another thread might increase the size
+      // in between), so return a failure, and let the caller retry.
+      assert(requestedSize > oldSize);
+  
+      // Memory resize rules:
+      // 1.  Always increase heap size to at least the requested size, rounded up
+      //     to next page multiple.
+      // 2a. If MEMORY_GROWTH_LINEAR_STEP == -1, excessively resize the heap
+      //     geometrically: increase the heap size according to
+      //     MEMORY_GROWTH_GEOMETRIC_STEP factor (default +20%), At most
+      //     overreserve by MEMORY_GROWTH_GEOMETRIC_CAP bytes (default 96MB).
+      // 2b. If MEMORY_GROWTH_LINEAR_STEP != -1, excessively resize the heap
+      //     linearly: increase the heap size by at least
+      //     MEMORY_GROWTH_LINEAR_STEP bytes.
+      // 3.  Max size for the heap is capped at 2048MB-WASM_PAGE_SIZE, or by
+      //     MAXIMUM_MEMORY, or by ASAN limit, depending on which is smallest
+      // 4.  If we were unable to allocate as much memory, it may be due to
+      //     over-eager decision to excessively reserve due to (3) above.
+      //     Hence if an allocation fails, cut down on the amount of excess
+      //     growth, in an attempt to succeed to perform a smaller allocation.
+  
+      // A limit is set for how much we can grow. We should not exceed that
+      // (the wasm binary specifies it, so if we tried, we'd fail anyhow).
+      var maxHeapSize = getHeapMax();
+      if (requestedSize > maxHeapSize) {
+        err(`Cannot enlarge memory, requested ${requestedSize} bytes, but the limit is ${maxHeapSize} bytes!`);
+        return false;
+      }
+  
+      // Loop through potential heap size increases. If we attempt a too eager
+      // reservation that fails, cut down on the attempted size and reserve a
+      // smaller bump instead. (max 3 times, chosen somewhat arbitrarily)
+      for (var cutDown = 1; cutDown <= 4; cutDown *= 2) {
+        var overGrownHeapSize = oldSize * (1 + 0.2 / cutDown); // ensure geometric growth
+        // but limit overreserving (default to capping at +96MB overgrowth at most)
+        overGrownHeapSize = Math.min(overGrownHeapSize, requestedSize + 100663296 );
+  
+        var newSize = Math.min(maxHeapSize, alignMemory(Math.max(requestedSize, overGrownHeapSize), 65536));
+  
+        var replacement = growMemory(newSize);
+        if (replacement) {
+  
+          return true;
+        }
+      }
+      err(`Failed to grow the heap from ${oldSize} bytes to ${newSize} bytes, not enough memory!`);
+      return false;
     };
 
   /** @suppress {checkTypes} */
@@ -9317,8 +9453,6 @@ if (Module['wasmBinary']) wasmBinary = Module['wasmBinary'];
   'getTempRet0',
   'setTempRet0',
   'zeroMemory',
-  'getHeapMax',
-  'growMemory',
   'withStackSave',
   'inetPton4',
   'inetNtop4',
@@ -9331,7 +9465,6 @@ if (Module['wasmBinary']) wasmBinary = Module['wasmBinary'];
   'autoResumeAudioContext',
   'getDynCaller',
   'asmjsMangle',
-  'alignMemory',
   'HandleAllocator',
   'addOnInit',
   'addOnPostCtor',
@@ -9451,7 +9584,8 @@ missingLibrarySymbols.forEach(missingLibrarySymbol)
   'createNamedFunction',
   'ptrToString',
   'exitJS',
-  'abortOnCannotGrowMemory',
+  'getHeapMax',
+  'growMemory',
   'ENV',
   'ERRNO_CODES',
   'strError',
@@ -9473,6 +9607,7 @@ missingLibrarySymbols.forEach(missingLibrarySymbol)
   'callUserCallback',
   'maybeExit',
   'asyncLoad',
+  'alignMemory',
   'mmapAlloc',
   'wasmTable',
   'wasmMemory',
@@ -9725,49 +9860,49 @@ function checkIncomingModuleAPI() {
   ignoredModuleProp('fetchSettings');
 }
 var ASM_CONSTS = {
-  96141: () => { if (document.fullscreenElement) return 1; },  
- 96187: () => { return Module.canvas.width; },  
- 96219: () => { return parseInt(Module.canvas.style.width); },  
- 96267: () => { document.exitFullscreen(); },  
- 96294: () => { setTimeout(function(){ Module.requestFullscreen(false, false); }, 100); },  
- 96366: () => { if (document.fullscreenElement) return 1; },  
- 96412: () => { return Module.canvas.width; },  
- 96444: () => { return screen.width; },  
- 96469: () => { document.exitFullscreen(); },  
- 96496: () => { setTimeout(function() { Module.requestFullscreen(false, true); setTimeout(function() { canvas.style.width="unset"; }, 100); }, 100); },  
- 96629: () => { return window.innerWidth; },  
- 96655: () => { return window.innerHeight; },  
- 96682: () => { if (document.fullscreenElement) return 1; },  
- 96728: () => { return Module.canvas.width; },  
- 96760: () => { return parseInt(Module.canvas.style.width); },  
- 96808: () => { if (document.fullscreenElement) return 1; },  
- 96854: () => { return Module.canvas.width; },  
- 96886: () => { return screen.width; },  
- 96911: () => { return window.innerWidth; },  
- 96937: () => { return window.innerHeight; },  
- 96964: () => { if (document.fullscreenElement) return 1; },  
- 97010: () => { return Module.canvas.width; },  
- 97042: () => { return screen.width; },  
- 97067: () => { document.exitFullscreen(); },  
- 97094: () => { if (document.fullscreenElement) return 1; },  
- 97140: () => { return Module.canvas.width; },  
- 97172: () => { return parseInt(Module.canvas.style.width); },  
- 97220: () => { document.exitFullscreen(); },  
- 97247: ($0) => { Module.canvas.style.opacity = $0; },  
- 97285: () => { return screen.width; },  
- 97310: () => { return screen.height; },  
- 97336: () => { return window.screenX; },  
- 97363: () => { return window.screenY; },  
- 97390: () => { return window.devicePixelRatio; },  
- 97426: ($0) => { navigator.clipboard.writeText(UTF8ToString($0)); },  
- 97479: ($0) => { Module.canvas.style.cursor = UTF8ToString($0); },  
- 97530: () => { Module.canvas.style.cursor = 'none'; },  
- 97567: ($0, $1, $2, $3) => { try { navigator.getGamepads()[$0].vibrationActuator.playEffect('dual-rumble', { startDelay: 0, duration: $3, weakMagnitude: $1, strongMagnitude: $2 }); } catch (e) { try { navigator.getGamepads()[$0].hapticActuators[0].pulse($2, $3); } catch (e) { } } },  
- 97823: ($0) => { Module.canvas.style.cursor = UTF8ToString($0); },  
- 97874: () => { if (document.pointerLockElement) return 1; },  
- 97921: () => { if (document.fullscreenElement) return 1; },  
- 97967: () => { return window.innerWidth; },  
- 97993: () => { return window.innerHeight; }
+  109797: () => { if (document.fullscreenElement) return 1; },  
+ 109843: () => { return Module.canvas.width; },  
+ 109875: () => { return parseInt(Module.canvas.style.width); },  
+ 109923: () => { document.exitFullscreen(); },  
+ 109950: () => { setTimeout(function(){ Module.requestFullscreen(false, false); }, 100); },  
+ 110022: () => { if (document.fullscreenElement) return 1; },  
+ 110068: () => { return Module.canvas.width; },  
+ 110100: () => { return screen.width; },  
+ 110125: () => { document.exitFullscreen(); },  
+ 110152: () => { setTimeout(function() { Module.requestFullscreen(false, true); setTimeout(function() { canvas.style.width="unset"; }, 100); }, 100); },  
+ 110285: () => { return window.innerWidth; },  
+ 110311: () => { return window.innerHeight; },  
+ 110338: () => { if (document.fullscreenElement) return 1; },  
+ 110384: () => { return Module.canvas.width; },  
+ 110416: () => { return parseInt(Module.canvas.style.width); },  
+ 110464: () => { if (document.fullscreenElement) return 1; },  
+ 110510: () => { return Module.canvas.width; },  
+ 110542: () => { return screen.width; },  
+ 110567: () => { return window.innerWidth; },  
+ 110593: () => { return window.innerHeight; },  
+ 110620: () => { if (document.fullscreenElement) return 1; },  
+ 110666: () => { return Module.canvas.width; },  
+ 110698: () => { return screen.width; },  
+ 110723: () => { document.exitFullscreen(); },  
+ 110750: () => { if (document.fullscreenElement) return 1; },  
+ 110796: () => { return Module.canvas.width; },  
+ 110828: () => { return parseInt(Module.canvas.style.width); },  
+ 110876: () => { document.exitFullscreen(); },  
+ 110903: ($0) => { Module.canvas.style.opacity = $0; },  
+ 110941: () => { return screen.width; },  
+ 110966: () => { return screen.height; },  
+ 110992: () => { return window.screenX; },  
+ 111019: () => { return window.screenY; },  
+ 111046: () => { return window.devicePixelRatio; },  
+ 111082: ($0) => { navigator.clipboard.writeText(UTF8ToString($0)); },  
+ 111135: ($0) => { Module.canvas.style.cursor = UTF8ToString($0); },  
+ 111186: () => { Module.canvas.style.cursor = 'none'; },  
+ 111223: ($0, $1, $2, $3) => { try { navigator.getGamepads()[$0].vibrationActuator.playEffect('dual-rumble', { startDelay: 0, duration: $3, weakMagnitude: $1, strongMagnitude: $2 }); } catch (e) { try { navigator.getGamepads()[$0].hapticActuators[0].pulse($2, $3); } catch (e) { } } },  
+ 111479: ($0) => { Module.canvas.style.cursor = UTF8ToString($0); },  
+ 111530: () => { if (document.pointerLockElement) return 1; },  
+ 111577: () => { if (document.fullscreenElement) return 1; },  
+ 111623: () => { return window.innerWidth; },  
+ 111649: () => { return window.innerHeight; }
 };
 function SetCanvasIdJs(out,outSize) { var canvasId = "#" + Module.canvas.id; stringToUTF8(canvasId, out, outSize); }
 
@@ -9775,8 +9910,8 @@ function SetCanvasIdJs(out,outSize) { var canvasId = "#" + Module.canvas.id; str
 var _set_dimensions = Module['_set_dimensions'] = makeInvalidEarlyAccess('_set_dimensions');
 var _malloc = Module['_malloc'] = makeInvalidEarlyAccess('_malloc');
 var _main = Module['_main'] = makeInvalidEarlyAccess('_main');
-var _fflush = makeInvalidEarlyAccess('_fflush');
 var _free = Module['_free'] = makeInvalidEarlyAccess('_free');
+var _fflush = makeInvalidEarlyAccess('_fflush');
 var _emscripten_stack_get_end = makeInvalidEarlyAccess('_emscripten_stack_get_end');
 var _emscripten_stack_get_base = makeInvalidEarlyAccess('_emscripten_stack_get_base');
 var _strerror = makeInvalidEarlyAccess('_strerror');
@@ -9785,8 +9920,9 @@ var _emscripten_stack_get_free = makeInvalidEarlyAccess('_emscripten_stack_get_f
 var __emscripten_stack_restore = makeInvalidEarlyAccess('__emscripten_stack_restore');
 var __emscripten_stack_alloc = makeInvalidEarlyAccess('__emscripten_stack_alloc');
 var _emscripten_stack_get_current = makeInvalidEarlyAccess('_emscripten_stack_get_current');
-var dynCall_vii = makeInvalidEarlyAccess('dynCall_vii');
 var dynCall_viii = makeInvalidEarlyAccess('dynCall_viii');
+var dynCall_vii = makeInvalidEarlyAccess('dynCall_vii');
+var dynCall_iii = makeInvalidEarlyAccess('dynCall_iii');
 var dynCall_viff = makeInvalidEarlyAccess('dynCall_viff');
 var dynCall_viiiii = makeInvalidEarlyAccess('dynCall_viiiii');
 var dynCall_viiii = makeInvalidEarlyAccess('dynCall_viiii');
@@ -9795,6 +9931,8 @@ var dynCall_ii = makeInvalidEarlyAccess('dynCall_ii');
 var dynCall_iiii = makeInvalidEarlyAccess('dynCall_iiii');
 var dynCall_iiiiii = makeInvalidEarlyAccess('dynCall_iiiiii');
 var dynCall_viiiiii = makeInvalidEarlyAccess('dynCall_viiiiii');
+var dynCall_fffi = makeInvalidEarlyAccess('dynCall_fffi');
+var dynCall_ffi = makeInvalidEarlyAccess('dynCall_ffi');
 var dynCall_vi = makeInvalidEarlyAccess('dynCall_vi');
 var dynCall_vffff = makeInvalidEarlyAccess('dynCall_vffff');
 var dynCall_vf = makeInvalidEarlyAccess('dynCall_vf');
@@ -9804,7 +9942,6 @@ var dynCall_i = makeInvalidEarlyAccess('dynCall_i');
 var dynCall_vff = makeInvalidEarlyAccess('dynCall_vff');
 var dynCall_v = makeInvalidEarlyAccess('dynCall_v');
 var dynCall_viiiiiii = makeInvalidEarlyAccess('dynCall_viiiiiii');
-var dynCall_iii = makeInvalidEarlyAccess('dynCall_iii');
 var dynCall_vfi = makeInvalidEarlyAccess('dynCall_vfi');
 var dynCall_viif = makeInvalidEarlyAccess('dynCall_viif');
 var dynCall_vif = makeInvalidEarlyAccess('dynCall_vif');
@@ -9825,8 +9962,8 @@ function assignWasmExports(wasmExports) {
   assert(typeof wasmExports['set_dimensions'] != 'undefined', 'missing Wasm export: set_dimensions');
   assert(typeof wasmExports['malloc'] != 'undefined', 'missing Wasm export: malloc');
   assert(typeof wasmExports['main'] != 'undefined', 'missing Wasm export: main');
-  assert(typeof wasmExports['fflush'] != 'undefined', 'missing Wasm export: fflush');
   assert(typeof wasmExports['free'] != 'undefined', 'missing Wasm export: free');
+  assert(typeof wasmExports['fflush'] != 'undefined', 'missing Wasm export: fflush');
   assert(typeof wasmExports['emscripten_stack_get_end'] != 'undefined', 'missing Wasm export: emscripten_stack_get_end');
   assert(typeof wasmExports['emscripten_stack_get_base'] != 'undefined', 'missing Wasm export: emscripten_stack_get_base');
   assert(typeof wasmExports['strerror'] != 'undefined', 'missing Wasm export: strerror');
@@ -9835,8 +9972,9 @@ function assignWasmExports(wasmExports) {
   assert(typeof wasmExports['_emscripten_stack_restore'] != 'undefined', 'missing Wasm export: _emscripten_stack_restore');
   assert(typeof wasmExports['_emscripten_stack_alloc'] != 'undefined', 'missing Wasm export: _emscripten_stack_alloc');
   assert(typeof wasmExports['emscripten_stack_get_current'] != 'undefined', 'missing Wasm export: emscripten_stack_get_current');
-  assert(typeof wasmExports['dynCall_vii'] != 'undefined', 'missing Wasm export: dynCall_vii');
   assert(typeof wasmExports['dynCall_viii'] != 'undefined', 'missing Wasm export: dynCall_viii');
+  assert(typeof wasmExports['dynCall_vii'] != 'undefined', 'missing Wasm export: dynCall_vii');
+  assert(typeof wasmExports['dynCall_iii'] != 'undefined', 'missing Wasm export: dynCall_iii');
   assert(typeof wasmExports['dynCall_viff'] != 'undefined', 'missing Wasm export: dynCall_viff');
   assert(typeof wasmExports['dynCall_viiiii'] != 'undefined', 'missing Wasm export: dynCall_viiiii');
   assert(typeof wasmExports['dynCall_viiii'] != 'undefined', 'missing Wasm export: dynCall_viiii');
@@ -9845,6 +9983,8 @@ function assignWasmExports(wasmExports) {
   assert(typeof wasmExports['dynCall_iiii'] != 'undefined', 'missing Wasm export: dynCall_iiii');
   assert(typeof wasmExports['dynCall_iiiiii'] != 'undefined', 'missing Wasm export: dynCall_iiiiii');
   assert(typeof wasmExports['dynCall_viiiiii'] != 'undefined', 'missing Wasm export: dynCall_viiiiii');
+  assert(typeof wasmExports['dynCall_fffi'] != 'undefined', 'missing Wasm export: dynCall_fffi');
+  assert(typeof wasmExports['dynCall_ffi'] != 'undefined', 'missing Wasm export: dynCall_ffi');
   assert(typeof wasmExports['dynCall_vi'] != 'undefined', 'missing Wasm export: dynCall_vi');
   assert(typeof wasmExports['dynCall_vffff'] != 'undefined', 'missing Wasm export: dynCall_vffff');
   assert(typeof wasmExports['dynCall_vf'] != 'undefined', 'missing Wasm export: dynCall_vf');
@@ -9854,7 +9994,6 @@ function assignWasmExports(wasmExports) {
   assert(typeof wasmExports['dynCall_vff'] != 'undefined', 'missing Wasm export: dynCall_vff');
   assert(typeof wasmExports['dynCall_v'] != 'undefined', 'missing Wasm export: dynCall_v');
   assert(typeof wasmExports['dynCall_viiiiiii'] != 'undefined', 'missing Wasm export: dynCall_viiiiiii');
-  assert(typeof wasmExports['dynCall_iii'] != 'undefined', 'missing Wasm export: dynCall_iii');
   assert(typeof wasmExports['dynCall_vfi'] != 'undefined', 'missing Wasm export: dynCall_vfi');
   assert(typeof wasmExports['dynCall_viif'] != 'undefined', 'missing Wasm export: dynCall_viif');
   assert(typeof wasmExports['dynCall_vif'] != 'undefined', 'missing Wasm export: dynCall_vif');
@@ -9872,8 +10011,8 @@ function assignWasmExports(wasmExports) {
   _set_dimensions = Module['_set_dimensions'] = createExportWrapper('set_dimensions', 2);
   _malloc = Module['_malloc'] = createExportWrapper('malloc', 1);
   _main = Module['_main'] = createExportWrapper('main', 2);
-  _fflush = createExportWrapper('fflush', 1);
   _free = Module['_free'] = createExportWrapper('free', 1);
+  _fflush = createExportWrapper('fflush', 1);
   _emscripten_stack_get_end = wasmExports['emscripten_stack_get_end'];
   _emscripten_stack_get_base = wasmExports['emscripten_stack_get_base'];
   _strerror = createExportWrapper('strerror', 1);
@@ -9882,8 +10021,9 @@ function assignWasmExports(wasmExports) {
   __emscripten_stack_restore = wasmExports['_emscripten_stack_restore'];
   __emscripten_stack_alloc = wasmExports['_emscripten_stack_alloc'];
   _emscripten_stack_get_current = wasmExports['emscripten_stack_get_current'];
-  dynCall_vii = dynCalls['vii'] = createExportWrapper('dynCall_vii', 3);
   dynCall_viii = dynCalls['viii'] = createExportWrapper('dynCall_viii', 4);
+  dynCall_vii = dynCalls['vii'] = createExportWrapper('dynCall_vii', 3);
+  dynCall_iii = dynCalls['iii'] = createExportWrapper('dynCall_iii', 3);
   dynCall_viff = dynCalls['viff'] = createExportWrapper('dynCall_viff', 4);
   dynCall_viiiii = dynCalls['viiiii'] = createExportWrapper('dynCall_viiiii', 6);
   dynCall_viiii = dynCalls['viiii'] = createExportWrapper('dynCall_viiii', 5);
@@ -9892,6 +10032,8 @@ function assignWasmExports(wasmExports) {
   dynCall_iiii = dynCalls['iiii'] = createExportWrapper('dynCall_iiii', 4);
   dynCall_iiiiii = dynCalls['iiiiii'] = createExportWrapper('dynCall_iiiiii', 6);
   dynCall_viiiiii = dynCalls['viiiiii'] = createExportWrapper('dynCall_viiiiii', 7);
+  dynCall_fffi = dynCalls['fffi'] = createExportWrapper('dynCall_fffi', 4);
+  dynCall_ffi = dynCalls['ffi'] = createExportWrapper('dynCall_ffi', 3);
   dynCall_vi = dynCalls['vi'] = createExportWrapper('dynCall_vi', 2);
   dynCall_vffff = dynCalls['vffff'] = createExportWrapper('dynCall_vffff', 5);
   dynCall_vf = dynCalls['vf'] = createExportWrapper('dynCall_vf', 2);
@@ -9901,7 +10043,6 @@ function assignWasmExports(wasmExports) {
   dynCall_vff = dynCalls['vff'] = createExportWrapper('dynCall_vff', 3);
   dynCall_v = dynCalls['v'] = createExportWrapper('dynCall_v', 1);
   dynCall_viiiiiii = dynCalls['viiiiiii'] = createExportWrapper('dynCall_viiiiiii', 8);
-  dynCall_iii = dynCalls['iii'] = createExportWrapper('dynCall_iii', 3);
   dynCall_vfi = dynCalls['vfi'] = createExportWrapper('dynCall_vfi', 3);
   dynCall_viif = dynCalls['viif'] = createExportWrapper('dynCall_viif', 4);
   dynCall_vif = dynCalls['vif'] = createExportWrapper('dynCall_vif', 3);
@@ -9929,6 +10070,8 @@ var wasmImports = {
   __syscall_fcntl64: ___syscall_fcntl64,
   /** @export */
   __syscall_getcwd: ___syscall_getcwd,
+  /** @export */
+  __syscall_getdents64: ___syscall_getdents64,
   /** @export */
   __syscall_ioctl: ___syscall_ioctl,
   /** @export */

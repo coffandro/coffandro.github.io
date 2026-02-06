@@ -1,7 +1,7 @@
 DEF_FLAGS=-Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -Wunused-result -Os
-INCLUDES=-Iinclude -Iinclude/raylib/src -Iinclude/raylib/src/external -Igames/lib
+INCLUDES=-Iinclude -Iinclude/raylib/src -Igames/lib
 LINKING=-Linclude -lraylib
-RAYLIB_ARGS=-sUSE_GLFW=3 -sASYNCIFY
+RAYLIB_ARGS=-sUSE_GLFW=3 -sASYNCIFY -sALLOW_MEMORY_GROWTH=1
 SYS=include/libraylib.a -DPLATFORM_WEB -s 'EXPORTED_FUNCTIONS=["_free","_malloc","_set_dimensions","_main"]' -s EXPORTED_RUNTIME_METHODS=["ccall","cwrap","FS","addRunDependency","removeRunDependency"]
 
 DEFAULT_ARGS=$(INCLUDES) $(LINKING) $(RAYLIB_ARGS)
