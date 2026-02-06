@@ -23,8 +23,8 @@
     topbar={topbar}
     id={site.title}
 >
-    <div class="w-full gap-4">
-        <div class="overflow-hidden rounded-xl">
+    <div class="w-full gap-4 flex">
+        <div class="w-3/4 overflow-hidden rounded-xl">
             {#if site.image_path}
                 <img src={site.image_path}>
             {:else if site.link_path}

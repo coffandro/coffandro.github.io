@@ -22,12 +22,12 @@
 {#if item}
     {@const Icon = item.icon}
     <li 
-        class="hover:bg-hover not-last:border-r px-1 text-nowrap grow {isActive(item.href) ? 'bg-focus' : ''}"
+        class="hover:bg-hover not-last:border-r grow {isActive(item.href) ? 'bg-focus' : ''}"
         data-sveltekit-reload
     >
         <a 
             href={item.href}
-            class="block p-1 text-lg"
+            class="p-1 text-lg flex justify-center sm:block"
         >
             {#if Icon}
                 <Icon />

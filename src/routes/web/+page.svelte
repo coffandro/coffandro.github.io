@@ -5,7 +5,7 @@
     const sites: Site[] = [
         {
             title: "SimplyPrint",
-            desc: "For 1 year I worked as a Junior Software developer for SimplyPrint, working on features such as the initial student dashboard feature and a printer integration.",
+            desc: "As a part of my job as a Junior Software developer for SimplyPrint, I've worked on features such as the initial student dashboard feature and a printer integration.",
             link_path: "https://simplyprint.io/",
             logo_path: "/sites/simply_print.svg",
             image_path: "/sites/simply_print_screenshot.png",
@@ -19,17 +19,17 @@
         },
         {
             title: "KATastrofe",
-            desc: "In collaboration with Save the child I helped develop a board game to promote child safety on the internet, and the accompanying website.",
+            desc: "In collaboration with Save the child Denmark I helped develop a board game to promote child safety on the internet, and the accompanying website.",
             link_path: "https://katastrofespil.github.io/",
             source_path: "https://github.com/KatastrofeSpil/KatastrofeSpil.github.io",
             logo_path: "/sites/katastrofe.svg"
         },
         {
-            title: "Gallery",
-            desc: "A small UI mockup I created for an imaginary artist.",
-            link_path: "http://coffandro.dk/Gallery/",
-            source_path: "https://github.com/coffandro/Gallery",
-            logo_path: "/sites/gallery.svg"
+            title: "Open Filament Database API",
+            desc: "As a part of my role under SimplyPrint I've helped to further the 3D printing space, one of these projects lead me to help develop the Open Filament Database and it's accompanying website(s).",
+            link_path: "https://api.openfilamentdatabase.org/",
+            source_path: "https://github.com/OpenFilamentCollective/open-filament-database/",
+            logo_path: "/sites/ofd.png"
         }
     ];
 </script>

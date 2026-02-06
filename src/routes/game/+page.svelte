@@ -102,7 +102,7 @@
         <p>These are the games which I have either made on my own or worked on, the list is ever expanding, sorted based upon which games I'm the most proud of, not success or date of publishing.</p>
     </div>-->
 
-    <div class="border-3 p-2 grow rounded-xl flex min-h-0">
+    <div class="border-3 p-0 grow rounded-xl flex min-h-0">
         <GameEmbed jsUrl="/games/game/index.js" />
     </div>
 </div>
