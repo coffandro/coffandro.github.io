@@ -36,7 +36,16 @@
             <h1 class="text-5xl">Frida Rosenaa</h1>
             <p class="text-xl">I make games, websites, electronics and scripts to tie it all together.</p>
             <p class="text-xl">I've been programming since 2019, making electronics since 2021, making games and websites since 2022.</p>
-            <div class="block sm:hidden mt-2">
+            <br>
+            <p class="text-xl font-bold">You may know me from:</p>
+            <p class="text-xl">
+                <a class="hover:text-hover underline" href="https://fallout4london.com/">Fallout: London</a>, 
+                <a class="hover:text-hover underline" href="https://simplyprint.io/">SimplyPrint</a>,
+                <a class="hover:text-hover underline" href="https://breadbirdgames.github.io/">BreadBird Games</a>, or from a variety of random spaces!
+            </p>
+            
+            <div class="block sm:hidden">
+                <br>
                 <p class="text-2xl font-bold mb-1">Socials</p>
                 <Socials is_horizontal={true}/>
             </div>
@@ -67,7 +76,7 @@
 
     <div class="flex-col gap-2 hidden sm:flex">
         <div class="relative rounded-xl overflow-hidden border-3">
-            <img src="/Frida.png" class="mx-auto w-full">
+            <img src="/Frida.png" class="mx-auto w-full" style="filter: grayscale(100%);">
         </div>
 
         <!-- This makes our socials appear on the side on PC, part of the header section on mobile-->
