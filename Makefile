@@ -7,6 +7,7 @@ SYS=include/libraylib.a -DPLATFORM_WEB -s 'EXPORTED_FUNCTIONS=["_free","_malloc"
 DEFAULT_ARGS=$(INCLUDES) $(LINKING) $(RAYLIB_ARGS)
 
 GAMES_GAME_PATH="static/games/game/"
+ART_GAME_PATH="static/art/game/"
 
 build-libs:
 	./raylib.sh
@@ -22,6 +23,18 @@ build-games-game: generate-assets-game
 	mkdir -p $(GAMES_GAME_PATH)
 
 	emcc -o $(GAMES_GAME_PATH)index.html games/lib/*.c games/src/games/*.c \
+		$(DEFAULT_ARGS) \
+		--shell-file include/raylib/src/minshell.html \
+		$(SYS)
+
+generate-assets-art:
+	mkdir -p $(ART_GAME_PATH)assets
+	node scripts/generate-assets-manifest.js $(ART_GAME_PATH)
+
+build-art-game: generate-assets-art
+	mkdir -p $(ART_GAME_PATH)
+
+	emcc -o $(ART_GAME_PATH)index.html games/lib/*.c games/src/art/*.c \
 		$(DEFAULT_ARGS) \
 		--shell-file include/raylib/src/minshell.html \
 		$(SYS)

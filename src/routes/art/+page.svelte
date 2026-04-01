@@ -1,5 +1,6 @@
 <script lang="ts">
     import ArtPiece from "$lib/components/art/art-piece.svelte";
+    import GameEmbed from "$lib/components/game-embed.svelte";
 
     type ArtPiece = {
         title: string;
@@ -40,12 +41,7 @@
         <p>I sometimes end up doing artistic things, mostly 3D, below are a few of my "pieces"</p>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 w-full gap-4 border-3 border-text p-2 rounded-xl">
-        {#each pieces as piece}
-            <ArtPiece
-                title={piece.title}
-                imagePath="/pieces/{piece.imageFile}"
-            />
-        {/each}
+    <div class="border-3 p-0 grow rounded-xl flex min-h-0">
+        <GameEmbed jsUrl="/art/game/index.js" />
     </div>
 </div>

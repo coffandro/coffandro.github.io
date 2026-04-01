@@ -13,6 +13,8 @@
 static Planet planets[MAX_PLANETS];
 static int planetCount = 0;
 
+void on_dimension_update(int w, int h) {}
+
 int main(void) {
     InitWindow(screenWidth, screenHeight, "");
 
