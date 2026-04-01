@@ -25,11 +25,18 @@
             logo_path: "/sites/katastrofe.svg"
         },
         {
-            title: "Open Filament Database API",
+            title: "Open Filament Database",
             desc: "As a part of my role under SimplyPrint I've helped to further the 3D printing space, one of these projects lead me to help develop the Open Filament Database and it's accompanying website(s).",
             link_path: "https://api.openfilamentdatabase.org/",
             source_path: "https://github.com/OpenFilamentCollective/open-filament-database/",
             logo_path: "/sites/ofd.png"
+        },
+        {
+            title: "Open Filament Database API",
+            desc: "I helped to recreate Copenhagens GameDesign Association in 2025, rebuilding it and helping to allow several generations of new Game Developers to spring out from NEXT Københavns Mediegymnasium.",
+            link_path: "https://kbh-gamedesign-forening.github.io/",
+            source_path: "https://github.com/KBH-Gamedesign-Forening/KBH-Gamedesign-Forening.github.io/",
+            logo_path: "/sites/GDF.svg"
         }
     ];
 </script>
