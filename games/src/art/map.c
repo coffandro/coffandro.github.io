@@ -1,22 +1,48 @@
 #include "map.h"
 
 int MAPDATA[MAP_SIZE * MAP_SIZE] = {
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 1, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1,
+    1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1,
+    1, 0, 1, 0, 1, 2, 1, 0, 0, 0, 1,
+    1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1,
+    1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1,
+    1, 0, 7, 0, 0, 0, 0, 0, 3, 0, 1,
+    1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1,
+    1, 0, 6, 0, 0, 0, 0, 0, 4, 0, 1,
+    1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1,
+    1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1,
 };
 
 Model mapModels[MAX_MAP_MODELS];
 int mapModelCount = 0;
 Vector3 *mapEdgeVerts = NULL;
 int mapEdgeVertCount = 0;
+
+Texture2D wallTextures[MAX_WALL_TEXTURES];
+int wallTextureCount = 0;
+WallPainting wallPaintings[MAX_WALL_PAINTINGS];
+int wallPaintingCount = 0;
+
+static const char *wallTextureFiles[] = {
+    "/tmp/assets/guide.png",
+    "/tmp/assets/monkey_art.png",
+    "/tmp/assets/space_suit.png",
+    "/tmp/assets/sitting_at_desk.png",
+    "/tmp/assets/coffandro.png",
+    "/tmp/assets/torture_hardware.png",
+};
+static const char *wallTextureTitles[] = {
+    "Guide",
+    "Someone forgot their plushie\nin a cave :(",
+    "Remember your god damned\nspace suit!",
+    "Sitting at desk",
+    "A little voxel avatar of me",
+    "\"Torture Hardware\"\na metal album cover",
+};
+#define WALL_TEXTURE_FILE_COUNT 6
+#define TITLE_FONT_SIZE 20
+#define TITLE_PADDING 4
 
 static int mapFilled(int x, int z) {
     if (x < 0 || x >= MAP_SIZE || z < 0 || z >= MAP_SIZE)
@@ -240,6 +266,126 @@ void GenerateMapModels() {
                 float wz = bz * CUBE_SIZE - H;
                 mapEdgeVerts[mapEdgeVertCount++] = (Vector3){wx, -HY, wz};
                 mapEdgeVerts[mapEdgeVertCount++] = (Vector3){wx, HY, wz};
+            }
+        }
+    }
+}
+
+void LoadWallTextures() {
+    for (int i = 0; i < WALL_TEXTURE_FILE_COUNT; i++) {
+        wallTextures[i] = LoadTexture(wallTextureFiles[i]);
+        if (wallTextures[i].id != 0) wallTextureCount = i + 1;
+    }
+
+    // Pre-render title textures (one per texture index)
+    Texture2D titleTextures[WALL_TEXTURE_FILE_COUNT] = {0};
+    float titleWorldW[WALL_TEXTURE_FILE_COUNT] = {0};
+    float titleWorldH[WALL_TEXTURE_FILE_COUNT] = {0};
+    Font font = GetFontDefault();
+
+    for (int i = 0; i < WALL_TEXTURE_FILE_COUNT; i++) {
+        if (wallTextures[i].id == 0) continue;
+        Vector2 size = MeasureTextEx(font, wallTextureTitles[i], TITLE_FONT_SIZE, 1);
+        int imgW = (int)(size.x + 0.5f) + TITLE_FONT_SIZE * 2;
+        int imgH = (int)(size.y + 0.5f) + TITLE_FONT_SIZE * 2;
+
+        Image img = GenImageColor(imgW, imgH, BLANK);
+        int drawX = (imgW - (int)(size.x + 0.5f)) / 2;
+        int drawY = (imgH - (int)(size.y + 0.5f)) / 2;
+        ImageDrawTextEx(&img, font, wallTextureTitles[i],
+                        (Vector2){drawX, drawY},
+                        TITLE_FONT_SIZE, 1, WHITE);
+        ImageFlipHorizontal(&img);
+        titleTextures[i] = LoadTextureFromImage(img);
+        UnloadImage(img);
+
+        float tAspect = (float)imgW / (float)imgH;
+        float twH = CUBE_HEIGHT * 0.15f;
+        float twW = twH * tAspect;
+        if (twW > CUBE_SIZE * 0.9f) {
+            twW = CUBE_SIZE * 0.9f;
+            twH = twW / tAspect;
+        }
+        titleWorldW[i] = twW;
+        titleWorldH[i] = twH;
+    }
+
+    float H = CUBE_SIZE / 2.0f;
+    float paintMaxW = CUBE_SIZE * 0.7f;
+    float paintMaxH = CUBE_HEIGHT * 0.7f;
+    float offset = 0.01f;
+
+    for (int z = 0; z < MAP_SIZE; z++) {
+        for (int x = 0; x < MAP_SIZE; x++) {
+            int val = MAPDATA[z * MAP_SIZE + x];
+            if (val < 2) continue;
+
+            int texIdx = val - 2;
+            if (texIdx >= wallTextureCount || wallTextures[texIdx].id == 0) continue;
+
+            float cx = x * CUBE_SIZE;
+            float cz = z * CUBE_SIZE;
+
+            float texW = (float)wallTextures[texIdx].width;
+            float texH = (float)wallTextures[texIdx].height;
+            float aspect = texW / texH;
+
+            float pw, ph;
+            if (aspect > paintMaxW / paintMaxH) {
+                pw = paintMaxW;
+                ph = pw / aspect;
+            } else {
+                ph = paintMaxH;
+                pw = ph * aspect;
+            }
+
+            Texture2D tTex = titleTextures[texIdx];
+            float tW = titleWorldW[texIdx];
+            float tH = titleWorldH[texIdx];
+
+            // Right face (x+)
+            if (!mapFilled(x + 1, z) && wallPaintingCount < MAX_WALL_PAINTINGS) {
+                wallPaintings[wallPaintingCount++] = (WallPainting){
+                    .center = {cx + H + offset, 0, cz},
+                    .right = {0, 0, 1},
+                    .up = {0, 1, 0},
+                    .width = pw, .height = ph,
+                    .textureIndex = texIdx,
+                    .titleTexture = tTex, .titleWidth = tW, .titleHeight = tH,
+                };
+            }
+            // Left face (x-)
+            if (!mapFilled(x - 1, z) && wallPaintingCount < MAX_WALL_PAINTINGS) {
+                wallPaintings[wallPaintingCount++] = (WallPainting){
+                    .center = {cx - H - offset, 0, cz},
+                    .right = {0, 0, -1},
+                    .up = {0, 1, 0},
+                    .width = pw, .height = ph,
+                    .textureIndex = texIdx,
+                    .titleTexture = tTex, .titleWidth = tW, .titleHeight = tH,
+                };
+            }
+            // Front face (z+)
+            if (!mapFilled(x, z + 1) && wallPaintingCount < MAX_WALL_PAINTINGS) {
+                wallPaintings[wallPaintingCount++] = (WallPainting){
+                    .center = {cx, 0, cz + H + offset},
+                    .right = {-1, 0, 0},
+                    .up = {0, 1, 0},
+                    .width = pw, .height = ph,
+                    .textureIndex = texIdx,
+                    .titleTexture = tTex, .titleWidth = tW, .titleHeight = tH,
+                };
+            }
+            // Back face (z-)
+            if (!mapFilled(x, z - 1) && wallPaintingCount < MAX_WALL_PAINTINGS) {
+                wallPaintings[wallPaintingCount++] = (WallPainting){
+                    .center = {cx, 0, cz - H - offset},
+                    .right = {1, 0, 0},
+                    .up = {0, 1, 0},
+                    .width = pw, .height = ph,
+                    .textureIndex = texIdx,
+                    .titleTexture = tTex, .titleWidth = tW, .titleHeight = tH,
+                };
             }
         }
     }

@@ -49,17 +49,19 @@ void clamp_movement(Vector3 next_pos) {
 }
 
 void move() {
+    // Mouse lock
+    if (!mouseLocked) {
+        return;
+    }
+
     float dt = GetFrameTime();
     float moveSpeed = 10.0f * dt;
     float mouseSensitivity = 0.003f;
 
-    // Mouse look
-    if (mouseLocked)
-    {
-        Vector2 mouseDelta = GetMouseDelta();
-        state.yaw -= mouseDelta.x * mouseSensitivity;
-        state.pitch -= mouseDelta.y * mouseSensitivity;
-    }
+    
+    Vector2 mouseDelta = GetMouseDelta();
+    state.yaw -= mouseDelta.x * mouseSensitivity;
+    state.pitch -= mouseDelta.y * mouseSensitivity;
 
     // Clamp pitch to avoid flipping
     if (state.pitch > 1.5f)
@@ -84,23 +86,19 @@ void move() {
     Vector3 next_pos = {state.camera.position.x, state.camera.position.y, state.camera.position.z};
 
     // WASD movement
-    if (IsKeyDown(KEY_W))
-    {
+    if (IsKeyDown(KEY_W)) {
         next_pos.x += forward.x * moveSpeed;
         next_pos.z += forward.z * moveSpeed;
     }
-    if (IsKeyDown(KEY_S))
-    {
+    if (IsKeyDown(KEY_S)) {
         next_pos.x -= forward.x * moveSpeed;
         next_pos.z -= forward.z * moveSpeed;
     }
-    if (IsKeyDown(KEY_A))
-    {
+    if (IsKeyDown(KEY_A)) {
         next_pos.x += right.x * moveSpeed;
         next_pos.z += right.z * moveSpeed;
     }
-    if (IsKeyDown(KEY_D))
-    {
+    if (IsKeyDown(KEY_D)) {
         next_pos.x -= right.x * moveSpeed;
         next_pos.z -= right.z * moveSpeed;
     }
@@ -126,13 +124,13 @@ int main(void) {
         .camera = {0},
     };
 
-    state.camera.position = (Vector3){16.0f, 0.0f, 16.0f};
+    state.camera.position = PLAYER_LOCATION;
     state.camera.up = (Vector3){0.0f, 1.0f, 0.0f};
     state.camera.fovy = 45.0f;
     state.camera.projection = CAMERA_PERSPECTIVE;
 
     // Initialize yaw/pitch looking toward the origin
-    state.yaw = atan2f(0.0f - 16.0f, 0.0f - 16.0f);
+    state.yaw = atan2f(0.0f, 0.0f);
     state.pitch = 0.0f;
     state.camera.target = (Vector3){
         state.camera.position.x + cosf(state.pitch) * sinf(state.yaw),
@@ -141,6 +139,7 @@ int main(void) {
     };
 
     GenerateMapModels();
+    LoadWallTextures();
 
     // Main game loop
     while (!WindowShouldClose()) {
