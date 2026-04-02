@@ -1,9 +1,9 @@
 <script>
-    export let children, topbar, id;
+    export let children, topbar, id, onclose = () => {};
 </script>
 
 <el-dialog class="absolute /*This won't affect it, but flex ignores it*/">
-    <dialog id="{id}-dialog" aria-labelledby="{id}-dialog-title" class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent">
+    <dialog id="{id}-dialog" aria-labelledby="{id}-dialog-title" class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent" onclose={onclose} oncancel={onclose}>
     <el-dialog-backdrop class="fixed inset-0 bg-gray-900/50 data-closed:opacity-0"></el-dialog-backdrop>
 
         <div tabindex="-1" class="flex min-h-full justify-center p-4 text-center focus:outline-none items-center sm:p-0">

@@ -5,6 +5,9 @@
   export let jsUrl;
   export let wasmUrl = "";
   export let assetsUrl = ""; // URL to assets.json manifest, defaults to basePath + "assets.json"
+  export let onGameEvent: ((type: number, data: number) => void) | undefined = undefined;
+  export function unlock() { unfocus(); }
+  export function lock() { focus(); }
 
   let container: HTMLDivElement;
   let canvas: HTMLCanvasElement;
@@ -154,6 +157,11 @@
     }
   }
 
+  function handleGameEvent(ev: Event) {
+    const detail = (ev as CustomEvent).detail;
+    if (onGameEvent) onGameEvent(detail.type, detail.data);
+  }
+
   function handleOverlayClick() {
     focus();
   }
@@ -220,6 +228,7 @@
     window.addEventListener("keydown", handleKeyDown, true);
     window.addEventListener("click", handleWindowClick);
     document.addEventListener("pointerlockchange", handlePointerLockChange);
+    canvas.addEventListener("game-event", handleGameEvent);
 
     cleanupListeners = () => {
       window.removeEventListener("resize", resizeToFit);
@@ -229,6 +238,7 @@
         "pointerlockchange",
         handlePointerLockChange,
       );
+      canvas.removeEventListener("game-event", handleGameEvent);
     };
 
     // Remove stale game script from a previous mount before loading fresh

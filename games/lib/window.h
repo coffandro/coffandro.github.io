@@ -24,4 +24,6 @@ const char* inttostr(int n);
 
 void sys_update();
 
+void emit_game_event(int type, int data);
+
 #endif

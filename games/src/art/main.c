@@ -111,6 +111,56 @@ void move() {
         state.camera.position.y + sinf(state.pitch),
         state.camera.position.z + cosf(state.pitch) * cosf(state.yaw),
     };
+
+    // Raycast (DDA on XZ grid)
+    float ray_dx = sinf(state.yaw);
+    float ray_dz = cosf(state.yaw);
+
+    // Player position in grid space (tile boundaries at integers)
+    float pos_gx = state.camera.position.x / CUBE_SIZE + 0.5f;
+    float pos_gz = state.camera.position.z / CUBE_SIZE + 0.5f;
+
+    int map_x = (int)floorf(pos_gx);
+    int map_z = (int)floorf(pos_gz);
+
+    int step_x = (ray_dx >= 0) ? 1 : -1;
+    int step_z = (ray_dz >= 0) ? 1 : -1;
+
+    float delta_dist_x = (ray_dx == 0) ? 1e30f : fabsf(1.0f / ray_dx);
+    float delta_dist_z = (ray_dz == 0) ? 1e30f : fabsf(1.0f / ray_dz);
+
+    float side_dist_x = (ray_dx < 0)
+        ? (pos_gx - map_x) * delta_dist_x
+        : (map_x + 1.0f - pos_gx) * delta_dist_x;
+    float side_dist_z = (ray_dz < 0)
+        ? (pos_gz - map_z) * delta_dist_z
+        : (map_z + 1.0f - pos_gz) * delta_dist_z;
+
+    int hit = 0;
+    float dist = 1e30f;
+
+    for (int i = 0; i < MAP_SIZE * 2; i++) {
+        if (side_dist_x < side_dist_z) {
+            dist = side_dist_x;
+            side_dist_x += delta_dist_x;
+            map_x += step_x;
+        } else {
+            dist = side_dist_z;
+            side_dist_z += delta_dist_z;
+            map_z += step_z;
+        }
+
+        if (map_x < 0 || map_x >= MAP_SIZE || map_z < 0 || map_z >= MAP_SIZE)
+            break;
+
+        if (MAPDATA[map_z * MAP_SIZE + map_x] != 0) {
+            hit = MAPDATA[map_z * MAP_SIZE + map_x];
+            break;
+        }
+    }
+
+    state.target_id = hit;
+    state.target_dist = dist * CUBE_SIZE;
 }
 
 int main(void) {
@@ -140,6 +190,9 @@ int main(void) {
 
     GenerateMapModels();
     LoadWallTextures();
+    Cursors cursors = LoadCursorTextures();
+
+    bool mouseDown;
 
     // Main game loop
     while (!WindowShouldClose()) {
@@ -147,12 +200,26 @@ int main(void) {
 
         move();
 
+        mouseDown = IsMouseButtonDown(0);
+        
+        if (IsMouseButtonPressed(0) && state.target_id > 1) {
+            emit_game_event(0, (int)state.target_id); // Minus three to discard air, wall and guide
+        }
+
         BeginDrawing();
         ClearBackground(COL_BG);
 
-        BeginMode3D(state.camera);
-        draw();
-        EndMode3D();
+            BeginMode3D(state.camera);
+                draw();
+            EndMode3D();
+
+            if (mouseDown) {
+                DrawCursor(cursors.clicked);
+            } else if (state.target_dist < TARGET_THRESHOLD && state.target_id > 1) {
+                DrawCursor(cursors.hover);
+            } else {
+                DrawCursor(cursors.regular);
+            }
         EndDrawing();
     }
 

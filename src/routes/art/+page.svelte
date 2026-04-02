@@ -1,6 +1,7 @@
 <script lang="ts">
     import ArtPiece from "$lib/components/art/art-piece.svelte";
     import GameEmbed from "$lib/components/game-embed.svelte";
+    import Modal from "$lib/components/modal.svelte";
     import { onMount } from "svelte";
 
     type ArtPiece = {
@@ -33,6 +34,7 @@
 
     let showGame: boolean = $state(false);
     let mounted = false;
+    let gameEmbed: GameEmbed;
 
     onMount(() => {
         const saved = localStorage.getItem("artShowGame");
@@ -71,19 +73,60 @@
         class="border-3 p-0 grow flex rounded-xl min-h-0 overflow-hidden"
         class:hidden={!showGame}
     >
-        <GameEmbed jsUrl="/art/game/index.js" />
+        <GameEmbed
+            bind:this={gameEmbed}
+            jsUrl="/art/game/index.js"
+            onGameEvent={(_type, data) => {
+                const piece = pieces[data - 3];
+                if (!piece) return;
+                const dialog = document.getElementById(`${piece.title}-dialog`);
+                if (dialog instanceof HTMLDialogElement) {
+                    gameEmbed.unlock();
+                    dialog.showModal();
+                }
+            }}
+        />
     </div>
-    {#if !showGame}
-        <div
-            class="grid grid-cols-2 md:grid-cols-3 w-full gap-4 border-3 border-text p-2 rounded-xl"
-            class:hidden={showGame}
+
+    <div
+        class="grid grid-cols-2 md:grid-cols-3 w-full gap-4 border-3 border-text p-2 rounded-xl"
+        class:hidden={showGame}
+    >
+        {#each pieces as piece}
+            <ArtPiece
+                title={piece.title}
+                imagePath="/pieces/{piece.imageFile}"
+            />
+        {/each}
+    </div>
+
+    {#each pieces as piece}
+        {#snippet topbar()}
+            <h3 id="dialog-title" class="font-semibold text-xl">
+                {piece.title}
+            </h3>
+            <button
+                type="button"
+                command="close"
+                commandfor="{piece.title}-dialog"
+                class="flex flex-col content-center justify-center rounded-md text-sm font-semibold border border-text hover:bg-hover cursor-pointer ml-3 p-3 w-auto"
+                >Close</button
+            >
+        {/snippet}
+
+        <Modal
+            {topbar}
+            id={piece.title}
+            onclose={() => {
+                if (showGame) gameEmbed.lock();
+            }}
         >
-            {#each pieces as piece}
-                <ArtPiece
-                    title={piece.title}
-                    imagePath="/pieces/{piece.imageFile}"
+            <div class="flex justify-center">
+                <img
+                    src="/pieces/{piece.imageFile}"
+                    class="rounded-lg max-h-[80vh]"
                 />
-            {/each}
-        </div>
-    {/if}
+            </div>
+        </Modal>
+    {/each}
 </div>

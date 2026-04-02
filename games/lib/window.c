@@ -1,4 +1,5 @@
 #include "window.h"
+#include <emscripten.h>
 
 int screenWidth = default_width;
 int screenHeight = default_height;
@@ -37,4 +38,13 @@ const char* inttostr(int n) {
 void sys_update() {
     SetWindowSize(screenWidth, screenHeight);
     mousePos = GetMousePosition();
+}
+
+void emit_game_event(int type, int data) {
+    EM_ASM({
+        Module.canvas.dispatchEvent(new CustomEvent('game-event', {
+            detail: { type: $0, data: $1 },
+            bubbles: true
+        }));
+    }, type, data);
 }
