@@ -2,7 +2,7 @@
 
 int MAPDATA[MAP_SIZE * MAP_SIZE] = {
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1,
+    1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1,
     1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1,
     1, 0, 1, 0, 1, 2, 1, 0, 0, 0, 1,
     1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1,
@@ -273,7 +273,10 @@ void GenerateMapModels() {
 
 void LoadWallTextures() {
     for (int i = 0; i < WALL_TEXTURE_FILE_COUNT; i++) {
-        wallTextures[i] = LoadTexture(wallTextureFiles[i]);
+        Image img = LoadImage(wallTextureFiles[i]);
+        ImageFlipHorizontal(&img);
+        wallTextures[i] = LoadTextureFromImage(img);
+        UnloadImage(img);
         if (wallTextures[i].id != 0) wallTextureCount = i + 1;
     }
 
