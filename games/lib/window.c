@@ -4,6 +4,7 @@ int screenWidth = default_width;
 int screenHeight = default_height;
 
 Vector2 mousePos;
+bool mouseLocked = false;
 
 void on_dimension_update(int w, int h);
 
@@ -11,6 +12,16 @@ void set_dimensions(int w, int h) {
     screenWidth = w;
     screenHeight = h;
     on_dimension_update(w, h);
+}
+
+void cursor_lock() {
+    DisableCursor();
+    mouseLocked = true;
+}
+
+void cursor_unlock() {
+    EnableCursor();
+    mouseLocked = false;
 }
 
 const char* inttostr(int n) {

@@ -2,11 +2,11 @@
 #include "raylib.h"
 
 typedef struct {
-    Texture2D framebuf;
-} State;
+    int width, height;
 
-void createFramebuf(State *state, int w, int h) {
-    free(&state->framebuf);
-}
+    Camera3D camera;
+    float yaw;
+    float pitch;
+} State;
 
 extern State state;

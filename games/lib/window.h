@@ -13,8 +13,12 @@ extern int screenWidth;
 extern int screenHeight;
 
 extern Vector2 mousePos;
+extern bool mouseLocked;
 
 void set_dimensions(int w, int h);
+
+void cursor_lock();
+void cursor_unlock();
 
 const char* inttostr(int n);
 

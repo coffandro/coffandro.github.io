@@ -6,23 +6,41 @@
   export let wasmUrl = "";
   export let assetsUrl = ""; // URL to assets.json manifest, defaults to basePath + "assets.json"
 
-  let container;
-  let canvas;
-  let setDimensions;
+  let container: HTMLDivElement;
+  let canvas: HTMLCanvasElement;
+  let setDimensions: (w: number, h: number) => void;
+  let cursorLock: () => void;
+  let cursorUnlock: () => void;
+  let clickedInCanvas = false;
+  let gameScript: HTMLScriptElement | null = null;
+  let crashed = false;
 
   const canvasId = `raylib-canvas-${Math.random().toString(36).slice(2)}`;
 
-  function loadScript(src) {
+  function isScriptLoaded(src: string): boolean {
+    if (!browser) return false;
+    const resolved = new URL(src, location.href).href;
+    return [...document.scripts].some(s => s.src === resolved);
+  }
+
+  function loadScript(src: string): Promise<HTMLScriptElement> {
     return new Promise((resolve, reject) => {
-      if (!browser) return resolve();
+      if (!browser) return resolve(null as any);
 
       const s = document.createElement("script");
       s.src = src;
       s.async = true;
-      s.onload = resolve;
+      s.onload = () => resolve(s);
       s.onerror = reject;
       document.body.appendChild(s);
     });
+  }
+
+  function removeScriptBySrc(src: string) {
+    const resolved = new URL(src, location.href).href;
+    for (const s of [...document.scripts]) {
+      if (s.src === resolved) s.remove();
+    }
   }
 
   function dirname(path) {
@@ -96,23 +114,68 @@
 
     const w = container.clientWidth;
     const h = container.clientHeight;
-    //canvas.style.width = `${w}px`;
-    //canvas.style.height = `${h}px`;
     setDimensions(w, h);
   }
+
+  function focus() {
+    clickedInCanvas = true;
+    if (cursorLock) cursorLock();
+  }
+
+  function unfocus() {
+    clickedInCanvas = false;
+    if (cursorUnlock) cursorUnlock();
+  }
+
+  function handlePointerLockChange() {
+    if (document.pointerLockElement !== canvas) {
+      clickedInCanvas = false;
+    }
+  }
+
+  function handleKeyDown(ev: KeyboardEvent) {
+    if (clickedInCanvas) {
+      if (
+        ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(
+          ev.code,
+        )
+      ) {
+        ev.preventDefault();
+      }
+    }
+    if (ev.code === "Escape" && clickedInCanvas) {
+      unfocus();
+    }
+  }
+
+  function handleWindowClick(ev: MouseEvent) {
+    if (clickedInCanvas && !container.contains(ev.target as Node)) {
+      unfocus();
+    }
+  }
+
+  function handleOverlayClick() {
+    focus();
+  }
+
+  let cleanupListeners: (() => void) | undefined;
 
   onMount(async () => {
     if (!browser) return;
     if (!jsUrl) return;
 
     const basePath = dirname(jsUrl);
-    const manifestUrl = assetsUrl || (basePath + "assets.json");
+    const manifestUrl = assetsUrl || basePath + "assets.json";
 
     // Fetch asset manifest before initializing module
     const manifest = await fetchAssetManifest(manifestUrl);
 
     globalThis.Module = {
       canvas,
+
+      onAbort() {
+        crashed = true;
+      },
 
       locateFile: (path) => {
         if (wasmUrl && path.endsWith(".wasm")) return wasmUrl;
@@ -121,40 +184,73 @@
 
       // preRun uses addRunDependency to block main() until assets load
       preRun: [
-        function() {
+        function () {
           if (manifest && manifest.files && manifest.files.length > 0) {
-            Module.addRunDependency('assets');
-            loadAssetsIntoFS(basePath, manifest).then(() => {
-              Module.removeRunDependency('assets');
-            }).catch((e) => {
-              console.error('Failed to load assets:', e);
-              Module.removeRunDependency('assets');
-            });
+            Module.addRunDependency("assets");
+            loadAssetsIntoFS(basePath, manifest)
+              .then(() => {
+                Module.removeRunDependency("assets");
+              })
+              .catch((e) => {
+                console.error("Failed to load assets:", e);
+                Module.removeRunDependency("assets");
+              });
           }
-        }
+        },
       ],
 
       onRuntimeInitialized() {
-        setDimensions = Module.cwrap(
-          "set_dimensions",
-          "void",
-          ["number", "number"]
-        );
+        setDimensions = Module.cwrap("set_dimensions", "void", [
+          "number",
+          "number",
+        ]);
+        cursorLock = Module.cwrap("cursor_lock", "void", []);
+        cursorUnlock = Module.cwrap("cursor_unlock", "void", []);
         resizeToFit();
-      }
+      },
     };
 
-    await loadScript(
-      "https://cdn.jsdelivr.net/gh/eligrey/FileSaver.js/dist/FileSaver.min.js"
-    );
+    const fileSaverUrl = "https://cdn.jsdelivr.net/gh/eligrey/FileSaver.js/dist/FileSaver.min.js";
+    if (!isScriptLoaded(fileSaverUrl)) {
+      await loadScript(fileSaverUrl);
+    }
 
-    window.addEventListener('resize', resizeToFit);
+    window.addEventListener("resize", resizeToFit);
+    // Capture phase so we get Escape before emscripten's handlers
+    window.addEventListener("keydown", handleKeyDown, true);
+    window.addEventListener("click", handleWindowClick);
+    document.addEventListener("pointerlockchange", handlePointerLockChange);
 
-    await loadScript(jsUrl);
+    cleanupListeners = () => {
+      window.removeEventListener("resize", resizeToFit);
+      window.removeEventListener("keydown", handleKeyDown, true);
+      window.removeEventListener("click", handleWindowClick);
+      document.removeEventListener(
+        "pointerlockchange",
+        handlePointerLockChange,
+      );
+    };
+
+    // Remove stale game script from a previous mount before loading fresh
+    removeScriptBySrc(jsUrl);
+    gameScript = await loadScript(jsUrl);
   });
 
   onDestroy(() => {
-    if (browser) delete globalThis.Module;
+    if (browser) {
+      // Try to stop the emscripten main loop before tearing down
+      const mod = (globalThis as Record<string, any>).Module;
+      if (mod) {
+        try { mod.pauseMainLoop?.(); } catch {}
+        try { mod.abort?.(); } catch {}
+      }
+      delete (globalThis as Record<string, unknown>).Module;
+      if (gameScript) {
+        gameScript.remove();
+        gameScript = null;
+      }
+      if (cleanupListeners) cleanupListeners();
+    }
   });
 </script>
 
@@ -165,10 +261,20 @@
   <canvas
     id={canvasId}
     bind:this={canvas}
-    class="emscripten w-full h-full min-h-0 min-w-0 m-0"
+    class="emscripten w-full h-full min-h-0 min-w-0 m-0 cursor-default"
     tabindex="-1"
     on:contextmenu|preventDefault
   />
+  {#if crashed}
+    <div class="overlay crash-overlay">
+      <p>The game crashed. Please reload the page.</p>
+      <button on:click={() => location.reload()}>Reload</button>
+    </div>
+  {:else if !clickedInCanvas}
+    <button class="overlay" on:click|stopPropagation={handleOverlayClick}>
+      Click to play
+    </button>
+  {/if}
 </div>
 
 <style>
@@ -176,5 +282,32 @@
     display: block;
     background: black;
     image-rendering: pixelated;
+  }
+  .overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 1.25rem;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+  }
+  .crash-overlay {
+    flex-direction: column;
+    gap: 0.75rem;
+    background: rgba(0, 0, 0, 0.7);
+    cursor: default;
+  }
+  .crash-overlay button {
+    padding: 0.5rem 1rem;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    border-radius: 0.25rem;
   }
 </style>

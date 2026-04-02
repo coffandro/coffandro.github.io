@@ -3987,34 +3987,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
     };
 
 
-  var maybeCStringToJsString = (cString) => {
-      // "cString > 2" checks if the input is a number, and isn't of the special
-      // values we accept here, EMSCRIPTEN_EVENT_TARGET_* (which map to 0, 1, 2).
-      // In other words, if cString > 2 then it's a pointer to a valid place in
-      // memory, and points to a C string.
-      return cString > 2 ? UTF8ToString(cString) : cString;
-    };
-  
-  /** @type {Object} */
-  var specialHTMLTargets = [0, globalThis.document ?? 0, globalThis.window ?? 0];
-  var findEventTarget = (target) => {
-      target = maybeCStringToJsString(target);
-      var domElement = specialHTMLTargets[target] || globalThis.document?.querySelector(target);
-      return domElement;
-    };
-  
-  var getBoundingClientRect = (e) => specialHTMLTargets.indexOf(e) < 0 ? e.getBoundingClientRect() : {'left':0,'top':0};
-  var _emscripten_get_element_css_size = (target, width, height) => {
-      target = findEventTarget(target);
-      if (!target) return -4;
-  
-      var rect = getBoundingClientRect(target);
-      HEAPF64[((width)>>3)] = rect.width;
-      HEAPF64[((height)>>3)] = rect.height;
-  
-      return 0;
-    };
-
   var onExits = [];
   var addOnExit = (cb) => onExits.push(cb);
   var JSEvents = {
@@ -4152,6 +4124,56 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
          ;
       },
   };
+  
+  var requestPointerLock = (target) => {
+      if (target.requestPointerLock) {
+        target.requestPointerLock();
+      } else {
+        // document.body is known to accept pointer lock, so use that to differentiate if the user passed a bad element,
+        // or if the whole browser just doesn't support the feature.
+        if (document.body.requestPointerLock) {
+          return -3;
+        }
+        return -1;
+      }
+      return 0;
+    };
+  var _emscripten_exit_pointerlock = () => {
+      // Make sure no queued up calls will fire after this.
+      JSEvents.removeDeferredCalls(requestPointerLock);
+      if (!document.exitPointerLock) return -1;
+      document.exitPointerLock();
+      return 0;
+    };
+
+  var maybeCStringToJsString = (cString) => {
+      // "cString > 2" checks if the input is a number, and isn't of the special
+      // values we accept here, EMSCRIPTEN_EVENT_TARGET_* (which map to 0, 1, 2).
+      // In other words, if cString > 2 then it's a pointer to a valid place in
+      // memory, and points to a C string.
+      return cString > 2 ? UTF8ToString(cString) : cString;
+    };
+  
+  /** @type {Object} */
+  var specialHTMLTargets = [0, globalThis.document ?? 0, globalThis.window ?? 0];
+  var findEventTarget = (target) => {
+      target = maybeCStringToJsString(target);
+      var domElement = specialHTMLTargets[target] || globalThis.document?.querySelector(target);
+      return domElement;
+    };
+  
+  var getBoundingClientRect = (e) => specialHTMLTargets.indexOf(e) < 0 ? e.getBoundingClientRect() : {'left':0,'top':0};
+  var _emscripten_get_element_css_size = (target, width, height) => {
+      target = findEventTarget(target);
+      if (!target) return -4;
+  
+      var rect = getBoundingClientRect(target);
+      HEAPF64[((width)>>3)] = rect.width;
+      HEAPF64[((height)>>3)] = rect.height;
+  
+      return 0;
+    };
+
   
   var fillGamepadEventData = (eventStruct, e) => {
       HEAPF64[((eventStruct)>>3)] = e.timestamp;
@@ -6036,6 +6058,28 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _emscripten_glViewport = (x0, x1, x2, x3) => GLctx.viewport(x0, x1, x2, x3);
 
+  
+  
+  var _emscripten_request_pointerlock = (target, deferUntilInEventHandler) => {
+      target = findEventTarget(target);
+      if (!target) return -4;
+      if (!target.requestPointerLock) {
+        return -1;
+      }
+  
+      // Queue this function call if we're not currently in an event handler and
+      // the user saw it appropriate to do so.
+      if (!JSEvents.canPerformEventHandlerRequests()) {
+        if (deferUntilInEventHandler) {
+          JSEvents.deferCall(requestPointerLock, 2 /* priority below fullscreen */, [target]);
+          return 1;
+        }
+        return -2;
+      }
+  
+      return requestPointerLock(target);
+    };
+
   var getHeapMax = () =>
       // Stay one Wasm page short of 4GB: while e.g. Chrome is able to allocate
       // full 4GB Wasm memories, the size will wrap back to 0 bytes in Wasm side
@@ -6571,7 +6615,7 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       checkStackCookie();
       if (e instanceof WebAssembly.RuntimeError) {
         if (_emscripten_stack_get_current() <= 0) {
-          err('Stack overflow detected.  You can try increasing -sSTACK_SIZE (currently set to 65536)');
+          err('Stack overflow detected.  You can try increasing -sSTACK_SIZE (currently set to 2097152)');
         }
       }
       quit_(1, e);
@@ -7311,6 +7355,8 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _glGetUniformLocation = _emscripten_glGetUniformLocation;
 
+  var _glLineWidth = _emscripten_glLineWidth;
+
   var _glLinkProgram = _emscripten_glLinkProgram;
 
   var _glPixelStorei = _emscripten_glPixelStorei;
@@ -7323,13 +7369,37 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _glTexParameteri = _emscripten_glTexParameteri;
 
+  var _glUniform1fv = _emscripten_glUniform1fv;
+
   var _glUniform1i = _emscripten_glUniform1i;
 
+  var _glUniform1iv = _emscripten_glUniform1iv;
+
+  var _glUniform2fv = _emscripten_glUniform2fv;
+
+  var _glUniform2iv = _emscripten_glUniform2iv;
+
+  var _glUniform3fv = _emscripten_glUniform3fv;
+
+  var _glUniform3iv = _emscripten_glUniform3iv;
+
   var _glUniform4f = _emscripten_glUniform4f;
+
+  var _glUniform4fv = _emscripten_glUniform4fv;
+
+  var _glUniform4iv = _emscripten_glUniform4iv;
 
   var _glUniformMatrix4fv = _emscripten_glUniformMatrix4fv;
 
   var _glUseProgram = _emscripten_glUseProgram;
+
+  var _glVertexAttrib1fv = _emscripten_glVertexAttrib1fv;
+
+  var _glVertexAttrib2fv = _emscripten_glVertexAttrib2fv;
+
+  var _glVertexAttrib3fv = _emscripten_glVertexAttrib3fv;
+
+  var _glVertexAttrib4fv = _emscripten_glVertexAttrib4fv;
 
   var _glVertexAttribPointer = _emscripten_glVertexAttribPointer;
 
@@ -8828,6 +8898,8 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       return prevcbfun;
     };
 
+  var _glfwSetCursorPos = (winid, x, y) => GLFW.setCursorPos(winid, x, y);
+
   var _glfwSetCursorPosCallback = (winid, cbfun) => GLFW.setCursorPosCallback(winid, cbfun);
 
   var _glfwSetDropCallback = (winid, cbfun) => GLFW.setDropCallback(winid, cbfun);
@@ -9446,7 +9518,6 @@ if (Module['wasmBinary']) wasmBinary = Module['wasmBinary'];
   'softFullscreenResizeWebGLRenderTarget',
   'doRequestFullscreen',
   'registerPointerlockErrorEventCallback',
-  'requestPointerLock',
   'registerBeforeUnloadEventCallback',
   'fillBatteryEventData',
   'registerBatteryEventCallback',
@@ -9589,6 +9660,7 @@ missingLibrarySymbols.forEach(missingLibrarySymbol)
   'restoreOldWindowedStyle',
   'fillPointerlockChangeEventData',
   'registerPointerlockChangeEventCallback',
+  'requestPointerLock',
   'fillVisibilityChangeEventData',
   'registerVisibilityChangeEventCallback',
   'registerTouchEventCallback',
@@ -9800,61 +9872,63 @@ function checkIncomingModuleAPI() {
   ignoredModuleProp('fetchSettings');
 }
 var ASM_CONSTS = {
-  89445: () => { if (document.fullscreenElement) return 1; },  
- 89491: () => { return Module.canvas.width; },  
- 89523: () => { return parseInt(Module.canvas.style.width); },  
- 89571: () => { document.exitFullscreen(); },  
- 89598: () => { setTimeout(function(){ Module.requestFullscreen(false, false); }, 100); },  
- 89670: () => { if (document.fullscreenElement) return 1; },  
- 89716: () => { return Module.canvas.width; },  
- 89748: () => { return screen.width; },  
- 89773: () => { document.exitFullscreen(); },  
- 89800: () => { setTimeout(function() { Module.requestFullscreen(false, true); setTimeout(function() { canvas.style.width="unset"; }, 100); }, 100); },  
- 89933: () => { return window.innerWidth; },  
- 89959: () => { return window.innerHeight; },  
- 89986: () => { if (document.fullscreenElement) return 1; },  
- 90032: () => { return Module.canvas.width; },  
- 90064: () => { return parseInt(Module.canvas.style.width); },  
- 90112: () => { if (document.fullscreenElement) return 1; },  
- 90158: () => { return Module.canvas.width; },  
- 90190: () => { return screen.width; },  
- 90215: () => { return window.innerWidth; },  
- 90241: () => { return window.innerHeight; },  
- 90268: () => { if (document.fullscreenElement) return 1; },  
- 90314: () => { return Module.canvas.width; },  
- 90346: () => { return screen.width; },  
- 90371: () => { document.exitFullscreen(); },  
- 90398: () => { if (document.fullscreenElement) return 1; },  
- 90444: () => { return Module.canvas.width; },  
- 90476: () => { return parseInt(Module.canvas.style.width); },  
- 90524: () => { document.exitFullscreen(); },  
- 90551: ($0) => { Module.canvas.style.opacity = $0; },  
- 90589: () => { return screen.width; },  
- 90614: () => { return screen.height; },  
- 90640: () => { return window.screenX; },  
- 90667: () => { return window.screenY; },  
- 90694: () => { return window.devicePixelRatio; },  
- 90730: ($0) => { navigator.clipboard.writeText(UTF8ToString($0)); },  
- 90783: ($0) => { Module.canvas.style.cursor = UTF8ToString($0); },  
- 90834: () => { Module.canvas.style.cursor = 'none'; },  
- 90871: ($0, $1, $2, $3) => { try { navigator.getGamepads()[$0].vibrationActuator.playEffect('dual-rumble', { startDelay: 0, duration: $3, weakMagnitude: $1, strongMagnitude: $2 }); } catch (e) { try { navigator.getGamepads()[$0].hapticActuators[0].pulse($2, $3); } catch (e) { } } },  
- 91127: ($0) => { Module.canvas.style.cursor = UTF8ToString($0); },  
- 91178: () => { if (document.pointerLockElement) return 1; },  
- 91225: () => { if (document.fullscreenElement) return 1; },  
- 91271: () => { return window.innerWidth; },  
- 91297: () => { return window.innerHeight; }
+  2124725: () => { if (document.fullscreenElement) return 1; },  
+ 2124771: () => { return Module.canvas.width; },  
+ 2124803: () => { return parseInt(Module.canvas.style.width); },  
+ 2124851: () => { document.exitFullscreen(); },  
+ 2124878: () => { setTimeout(function(){ Module.requestFullscreen(false, false); }, 100); },  
+ 2124950: () => { if (document.fullscreenElement) return 1; },  
+ 2124996: () => { return Module.canvas.width; },  
+ 2125028: () => { return screen.width; },  
+ 2125053: () => { document.exitFullscreen(); },  
+ 2125080: () => { setTimeout(function() { Module.requestFullscreen(false, true); setTimeout(function() { canvas.style.width="unset"; }, 100); }, 100); },  
+ 2125213: () => { return window.innerWidth; },  
+ 2125239: () => { return window.innerHeight; },  
+ 2125266: () => { if (document.fullscreenElement) return 1; },  
+ 2125312: () => { return Module.canvas.width; },  
+ 2125344: () => { return parseInt(Module.canvas.style.width); },  
+ 2125392: () => { if (document.fullscreenElement) return 1; },  
+ 2125438: () => { return Module.canvas.width; },  
+ 2125470: () => { return screen.width; },  
+ 2125495: () => { return window.innerWidth; },  
+ 2125521: () => { return window.innerHeight; },  
+ 2125548: () => { if (document.fullscreenElement) return 1; },  
+ 2125594: () => { return Module.canvas.width; },  
+ 2125626: () => { return screen.width; },  
+ 2125651: () => { document.exitFullscreen(); },  
+ 2125678: () => { if (document.fullscreenElement) return 1; },  
+ 2125724: () => { return Module.canvas.width; },  
+ 2125756: () => { return parseInt(Module.canvas.style.width); },  
+ 2125804: () => { document.exitFullscreen(); },  
+ 2125831: ($0) => { Module.canvas.style.opacity = $0; },  
+ 2125869: () => { return screen.width; },  
+ 2125894: () => { return screen.height; },  
+ 2125920: () => { return window.screenX; },  
+ 2125947: () => { return window.screenY; },  
+ 2125974: () => { return window.devicePixelRatio; },  
+ 2126010: ($0) => { navigator.clipboard.writeText(UTF8ToString($0)); },  
+ 2126063: ($0) => { Module.canvas.style.cursor = UTF8ToString($0); },  
+ 2126114: () => { Module.canvas.style.cursor = 'none'; },  
+ 2126151: ($0, $1, $2, $3) => { try { navigator.getGamepads()[$0].vibrationActuator.playEffect('dual-rumble', { startDelay: 0, duration: $3, weakMagnitude: $1, strongMagnitude: $2 }); } catch (e) { try { navigator.getGamepads()[$0].hapticActuators[0].pulse($2, $3); } catch (e) { } } },  
+ 2126407: ($0) => { Module.canvas.style.cursor = UTF8ToString($0); },  
+ 2126458: () => { if (document.pointerLockElement) return 1; },  
+ 2126505: () => { if (document.fullscreenElement) return 1; },  
+ 2126551: () => { return window.innerWidth; },  
+ 2126577: () => { return window.innerHeight; }
 };
 function SetCanvasIdJs(out,outSize) { var canvasId = "#" + Module.canvas.id; stringToUTF8(canvasId, out, outSize); }
 
 // Imports from the Wasm binary.
 var _set_dimensions = Module['_set_dimensions'] = makeInvalidEarlyAccess('_set_dimensions');
+var _cursor_lock = Module['_cursor_lock'] = makeInvalidEarlyAccess('_cursor_lock');
+var _cursor_unlock = Module['_cursor_unlock'] = makeInvalidEarlyAccess('_cursor_unlock');
 var _malloc = Module['_malloc'] = makeInvalidEarlyAccess('_malloc');
 var _main = Module['_main'] = makeInvalidEarlyAccess('_main');
-var _fflush = makeInvalidEarlyAccess('_fflush');
 var _free = Module['_free'] = makeInvalidEarlyAccess('_free');
+var _fflush = makeInvalidEarlyAccess('_fflush');
+var _strerror = makeInvalidEarlyAccess('_strerror');
 var _emscripten_stack_get_end = makeInvalidEarlyAccess('_emscripten_stack_get_end');
 var _emscripten_stack_get_base = makeInvalidEarlyAccess('_emscripten_stack_get_base');
-var _strerror = makeInvalidEarlyAccess('_strerror');
 var _emscripten_stack_init = makeInvalidEarlyAccess('_emscripten_stack_init');
 var _emscripten_stack_get_free = makeInvalidEarlyAccess('_emscripten_stack_get_free');
 var __emscripten_stack_restore = makeInvalidEarlyAccess('__emscripten_stack_restore');
@@ -9897,13 +9971,15 @@ var wasmMemory = makeInvalidEarlyAccess('wasmMemory');
 
 function assignWasmExports(wasmExports) {
   assert(typeof wasmExports['set_dimensions'] != 'undefined', 'missing Wasm export: set_dimensions');
+  assert(typeof wasmExports['cursor_lock'] != 'undefined', 'missing Wasm export: cursor_lock');
+  assert(typeof wasmExports['cursor_unlock'] != 'undefined', 'missing Wasm export: cursor_unlock');
   assert(typeof wasmExports['malloc'] != 'undefined', 'missing Wasm export: malloc');
   assert(typeof wasmExports['main'] != 'undefined', 'missing Wasm export: main');
-  assert(typeof wasmExports['fflush'] != 'undefined', 'missing Wasm export: fflush');
   assert(typeof wasmExports['free'] != 'undefined', 'missing Wasm export: free');
+  assert(typeof wasmExports['fflush'] != 'undefined', 'missing Wasm export: fflush');
+  assert(typeof wasmExports['strerror'] != 'undefined', 'missing Wasm export: strerror');
   assert(typeof wasmExports['emscripten_stack_get_end'] != 'undefined', 'missing Wasm export: emscripten_stack_get_end');
   assert(typeof wasmExports['emscripten_stack_get_base'] != 'undefined', 'missing Wasm export: emscripten_stack_get_base');
-  assert(typeof wasmExports['strerror'] != 'undefined', 'missing Wasm export: strerror');
   assert(typeof wasmExports['emscripten_stack_init'] != 'undefined', 'missing Wasm export: emscripten_stack_init');
   assert(typeof wasmExports['emscripten_stack_get_free'] != 'undefined', 'missing Wasm export: emscripten_stack_get_free');
   assert(typeof wasmExports['_emscripten_stack_restore'] != 'undefined', 'missing Wasm export: _emscripten_stack_restore');
@@ -9943,13 +10019,15 @@ function assignWasmExports(wasmExports) {
   assert(typeof wasmExports['memory'] != 'undefined', 'missing Wasm export: memory');
   assert(typeof wasmExports['__indirect_function_table'] != 'undefined', 'missing Wasm export: __indirect_function_table');
   _set_dimensions = Module['_set_dimensions'] = createExportWrapper('set_dimensions', 2);
+  _cursor_lock = Module['_cursor_lock'] = createExportWrapper('cursor_lock', 0);
+  _cursor_unlock = Module['_cursor_unlock'] = createExportWrapper('cursor_unlock', 0);
   _malloc = Module['_malloc'] = createExportWrapper('malloc', 1);
   _main = Module['_main'] = createExportWrapper('main', 2);
-  _fflush = createExportWrapper('fflush', 1);
   _free = Module['_free'] = createExportWrapper('free', 1);
+  _fflush = createExportWrapper('fflush', 1);
+  _strerror = createExportWrapper('strerror', 1);
   _emscripten_stack_get_end = wasmExports['emscripten_stack_get_end'];
   _emscripten_stack_get_base = wasmExports['emscripten_stack_get_base'];
-  _strerror = createExportWrapper('strerror', 1);
   _emscripten_stack_init = wasmExports['emscripten_stack_init'];
   _emscripten_stack_get_free = wasmExports['emscripten_stack_get_free'];
   __emscripten_stack_restore = wasmExports['_emscripten_stack_restore'];
@@ -10015,6 +10093,8 @@ var wasmImports = {
   emscripten_asm_const_int: _emscripten_asm_const_int,
   /** @export */
   emscripten_date_now: _emscripten_date_now,
+  /** @export */
+  emscripten_exit_pointerlock: _emscripten_exit_pointerlock,
   /** @export */
   emscripten_get_element_css_size: _emscripten_get_element_css_size,
   /** @export */
@@ -10352,6 +10432,8 @@ var wasmImports = {
   /** @export */
   emscripten_glViewport: _emscripten_glViewport,
   /** @export */
+  emscripten_request_pointerlock: _emscripten_request_pointerlock,
+  /** @export */
   emscripten_resize_heap: _emscripten_resize_heap,
   /** @export */
   emscripten_sample_gamepad_data: _emscripten_sample_gamepad_data,
@@ -10478,6 +10560,8 @@ var wasmImports = {
   /** @export */
   glGetUniformLocation: _glGetUniformLocation,
   /** @export */
+  glLineWidth: _glLineWidth,
+  /** @export */
   glLinkProgram: _glLinkProgram,
   /** @export */
   glPixelStorei: _glPixelStorei,
@@ -10490,13 +10574,37 @@ var wasmImports = {
   /** @export */
   glTexParameteri: _glTexParameteri,
   /** @export */
+  glUniform1fv: _glUniform1fv,
+  /** @export */
   glUniform1i: _glUniform1i,
   /** @export */
+  glUniform1iv: _glUniform1iv,
+  /** @export */
+  glUniform2fv: _glUniform2fv,
+  /** @export */
+  glUniform2iv: _glUniform2iv,
+  /** @export */
+  glUniform3fv: _glUniform3fv,
+  /** @export */
+  glUniform3iv: _glUniform3iv,
+  /** @export */
   glUniform4f: _glUniform4f,
+  /** @export */
+  glUniform4fv: _glUniform4fv,
+  /** @export */
+  glUniform4iv: _glUniform4iv,
   /** @export */
   glUniformMatrix4fv: _glUniformMatrix4fv,
   /** @export */
   glUseProgram: _glUseProgram,
+  /** @export */
+  glVertexAttrib1fv: _glVertexAttrib1fv,
+  /** @export */
+  glVertexAttrib2fv: _glVertexAttrib2fv,
+  /** @export */
+  glVertexAttrib3fv: _glVertexAttrib3fv,
+  /** @export */
+  glVertexAttrib4fv: _glVertexAttrib4fv,
   /** @export */
   glVertexAttribPointer: _glVertexAttribPointer,
   /** @export */
@@ -10521,6 +10629,8 @@ var wasmImports = {
   glfwSetCharCallback: _glfwSetCharCallback,
   /** @export */
   glfwSetCursorEnterCallback: _glfwSetCursorEnterCallback,
+  /** @export */
+  glfwSetCursorPos: _glfwSetCursorPos,
   /** @export */
   glfwSetCursorPosCallback: _glfwSetCursorPosCallback,
   /** @export */
