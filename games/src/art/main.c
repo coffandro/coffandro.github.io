@@ -203,7 +203,7 @@ int main(void) {
         mouseDown = IsMouseButtonDown(0);
         
         if (IsMouseButtonPressed(0) && state.target_id > 1) {
-            emit_game_event(0, (int)state.target_id); // Minus three to discard air, wall and guide
+            emit_game_event(0, (int)state.target_id); // The currently targetted wall
         }
 
         BeginDrawing();
