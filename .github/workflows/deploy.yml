@@ -56,8 +56,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Download Pages artifact
-        uses: actions/download-pages-artifact@v1
+      - name: Print Folder Tree
+        uses: jaywcjlove/github-action-folder-tree@main
+        with:
+          path: /
 
       - name: Deploy
         id: deployment
