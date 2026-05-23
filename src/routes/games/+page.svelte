@@ -7,7 +7,8 @@
             title: "Fallout: London",
             desc: "A game sized overhaul mod for Fallout 4 with a new story, new weapons, London-centric items and a vast recreation of the ruined city to explore.",
             link_path: "https://fallout4london.com/",
-            youtupe_path: "https://www.youtube.com/embed/rahBCfRdVac?si=NiOcjyH3Qe23b9u3",
+            youtupe_path:
+                "https://www.youtube.com/embed/rahBCfRdVac?si=NiOcjyH3Qe23b9u3",
             logo_path: "/games/fallout_london.png",
         },
         {
@@ -15,7 +16,8 @@
             desc: "An award winning game built for a coop arcade experience as a school project. In this game you and a friend fight who gets to control the forest using projectile carrots, fists and powerups",
             link_path: "https://coffandro.itch.io/fightforforest",
             source_path: "https://github.com/coffandro/ArcadeGame",
-            youtupe_path: "https://www.youtube.com/embed/vzFcYm8tkD4?si=xy6S1VtoEHaTeDiH",
+            youtupe_path:
+                "https://www.youtube.com/embed/vzFcYm8tkD4?si=xy6S1VtoEHaTeDiH",
             logo_path: "/games/fight_for_forest.png",
             itch_path: "https://itch.io/embed-upload/12607860?color=ecc8c3",
         },
@@ -31,7 +33,8 @@
             title: "KATastrofe",
             desc: `In collaboration with Save the child I helped develop a board game to promote child safety on the internet.`,
             link_path: "https://katastrofespil.github.io/",
-            source_path: "https://github.com/KatastrofeSpil/KatastrofeSpil.github.io",
+            source_path:
+                "https://github.com/KatastrofeSpil/KatastrofeSpil.github.io",
             logo_path: "/games/katastrofe.svg",
         },
         {
@@ -101,7 +104,7 @@
             desc: `Krimi is a little experiment I made to test out a dialogue system about waking up after night out`,
             link_path: "https://coffandro.itch.io/krimi",
             source_path: "https://github.com/coffandro/Krimi",
-            logo_path: "/games/krimi.png"
+            logo_path: "/games/krimi.png",
         },
         {
             title: "Wizards",
@@ -122,7 +125,7 @@
             desc: `The rought prototype of a game originating from my dreams where you shoot gnomes trying to take your castle`,
             link_path: "https://coffandro.itch.io/gnomes",
             source_path: "https://github.com/coffandro/Gnomes",
-            logo_path: "/games/gnomes.png"
+            logo_path: "/games/gnomes.png",
         },
     ];
 </script>
@@ -134,14 +137,18 @@
 <div class="w-full flex flex-col mb-5">
     <div class="mb-2">
         <h1 class="text-3xl">Games!</h1>
-        <p>These are the games which I have either made on my own or worked on, the list is ever expanding, sorted based upon which games I'm the most proud of, not success or date of publishing.</p>
+        <p>
+            These are the games which I have either made on my own or worked on,
+            the list is ever expanding, sorted based upon which games I'm the
+            most proud of, not success or date of publishing.
+        </p>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-4 border-3 border-text p-2 rounded-xl">
+    <div
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-4 border-3 border-text p-2 rounded-xl"
+    >
         {#each games as game}
-            <GamePiece
-                {game}
-            />
+            <GamePiece {game} />
         {/each}
     </div>
 </div>
