@@ -28,6 +28,8 @@ build-games-game: generate-assets-game
 		--shell-file include/raylib/src/minshell.html \
 		$(SYS)
 
+	sed -i '/event\.target\.setCapture()/d' $(GAMES_GAME_PATH)index.js
+
 generate-assets-art:
 	mkdir -p $(ART_GAME_PATH)assets
 	node scripts/generate-assets-manifest.js $(ART_GAME_PATH)
@@ -40,6 +42,8 @@ build-203-game:
 		--shell-file include/raylib/src/minshell.html \
 		$(SYS)
 
+	sed -i '/event\.target\.setCapture()/d' $(203_GAME_PATH)index.js
+
 build-art-game: generate-assets-art
 	mkdir -p $(ART_GAME_PATH)
 
@@ -47,5 +51,7 @@ build-art-game: generate-assets-art
 		$(DEFAULT_ARGS) \
 		--shell-file include/raylib/src/minshell.html \
 		$(SYS)
+
+	sed -i '/event\.target\.setCapture()/d' $(ART_GAME_PATH)index.js
 
 build-all-games: build-art-game build-203-game build-games-game

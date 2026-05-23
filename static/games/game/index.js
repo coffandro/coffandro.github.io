@@ -8072,7 +8072,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         if (status == 1) { // GLFW_PRESS
           GLFW.active.buttons |= (1 << eventButton);
           try {
-            event.target.setCapture();
           } catch (e) {}
         } else {  // GLFW_RELEASE
           GLFW.active.buttons &= ~(1 << eventButton);
