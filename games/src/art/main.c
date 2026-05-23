@@ -11,10 +11,25 @@
 
 State state;
 
+static float move_dx = 0.0f;
+static float move_dy = 0.0f;
+static float look_dx = 0.0f;
+static float look_dy = 0.0f;
+
 void on_dimension_update(int w, int h) {
     printf("%d, %d\n", w, h);
     state.width = w;
     state.height = h;
+}
+
+void on_movement(float dx, float dy) {
+    move_dx = dx;
+    move_dy = dy;
+}
+
+void on_look(float dx, float dy) {
+    look_dx = dx;
+    look_dy = dy;
 }
 
 #define PLAYER_RADIUS 0.8f
@@ -59,9 +74,13 @@ void move() {
     float mouseSensitivity = 0.003f;
 
     
-    Vector2 mouseDelta = GetMouseDelta();
-    state.yaw -= mouseDelta.x * mouseSensitivity;
-    state.pitch -= mouseDelta.y * mouseSensitivity;
+    if (!isTouchMode) {
+        Vector2 mouseDelta = GetMouseDelta();
+        state.yaw -= mouseDelta.x * mouseSensitivity;
+        state.pitch -= mouseDelta.y * mouseSensitivity;
+    }
+    state.yaw -= look_dx * 5.0f * dt;
+    state.pitch += look_dy * 5.0f * dt;
 
     // Clamp pitch to avoid flipping
     if (state.pitch > 1.5f)
@@ -85,23 +104,8 @@ void move() {
     Vector3 right = {forward.z, 0.0f, -forward.x};
     Vector3 next_pos = {state.camera.position.x, state.camera.position.y, state.camera.position.z};
 
-    // WASD movement
-    if (IsKeyDown(KEY_W)) {
-        next_pos.x += forward.x * moveSpeed;
-        next_pos.z += forward.z * moveSpeed;
-    }
-    if (IsKeyDown(KEY_S)) {
-        next_pos.x -= forward.x * moveSpeed;
-        next_pos.z -= forward.z * moveSpeed;
-    }
-    if (IsKeyDown(KEY_A)) {
-        next_pos.x += right.x * moveSpeed;
-        next_pos.z += right.z * moveSpeed;
-    }
-    if (IsKeyDown(KEY_D)) {
-        next_pos.x -= right.x * moveSpeed;
-        next_pos.z -= right.z * moveSpeed;
-    }
+    next_pos.x += (forward.x * move_dy - right.x * move_dx) * moveSpeed;
+    next_pos.z += (forward.z * move_dy - right.z * move_dx) * moveSpeed;
 
     clamp_movement(next_pos);
 
@@ -220,6 +224,7 @@ int main(void) {
             } else {
                 DrawCursor(cursors.regular);
             }
+            draw_overlay();
         EndDrawing();
     }
 

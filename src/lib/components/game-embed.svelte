@@ -21,6 +21,10 @@
 
   const canvasId = `raylib-canvas-${Math.random().toString(36).slice(2)}`;
 
+  const isTouchDevice = browser && (
+    "ontouchstart" in window || (navigator.maxTouchPoints ?? 0) > 0
+  );
+
   function isScriptLoaded(src: string): boolean {
     if (!browser) return false;
     const resolved = new URL(src, location.href).href;
@@ -132,6 +136,11 @@
   }
 
   function handlePointerLockChange() {
+    // Mobile browsers fire pointerlockchange on every touch-end, which would
+    // bounce the user back to "Click to play". The C side keeps mouseLocked
+    // true regardless, so we just ignore lock-loss on touch devices and let
+    // a tap outside the canvas drive unfocus instead.
+    if (isTouchDevice) return;
     if (document.pointerLockElement !== canvas) {
       clickedInCanvas = false;
     }
@@ -215,6 +224,8 @@
         ]);
         cursorLock = Module.cwrap("cursor_lock", "void", []);
         cursorUnlock = Module.cwrap("cursor_unlock", "void", []);
+        const setTouchMode = Module.cwrap("set_touch_mode", "void", ["number"]);
+        setTouchMode(isTouchDevice ? 1 : 0);
         resizeToFit();
         loading = false;
       },

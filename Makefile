@@ -2,7 +2,7 @@ DEF_FLAGS=-Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -Wunused-result -
 INCLUDES=-Iinclude -Iinclude/raylib/src -Igames/lib
 LINKING=-Linclude -lraylib
 RAYLIB_ARGS=-sUSE_GLFW=3 -sASYNCIFY -sALLOW_MEMORY_GROWTH=1 -sSTACK_SIZE=2097152
-SYS=include/libraylib.a -DPLATFORM_WEB -s 'EXPORTED_FUNCTIONS=["_free","_malloc","_set_dimensions", "_cursor_lock", "_cursor_unlock", "_main"]' -s EXPORTED_RUNTIME_METHODS=["ccall","cwrap","FS","addRunDependency","removeRunDependency"]
+SYS=include/libraylib.a -DPLATFORM_WEB -s 'EXPORTED_FUNCTIONS=["_free","_malloc","_set_dimensions", "_cursor_lock", "_cursor_unlock", "_set_touch_mode", "_main"]' -s EXPORTED_RUNTIME_METHODS=["ccall","cwrap","FS","addRunDependency","removeRunDependency"]
 
 DEFAULT_ARGS=$(INCLUDES) $(LINKING) $(RAYLIB_ARGS)
 
@@ -47,3 +47,5 @@ build-art-game: generate-assets-art
 		$(DEFAULT_ARGS) \
 		--shell-file include/raylib/src/minshell.html \
 		$(SYS)
+
+build-all-games: build-art-game build-203-game build-games-game

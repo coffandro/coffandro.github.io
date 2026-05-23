@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host",
 		"build": "node scripts/generate-assets-manifest.js && vite build",
 		"build:assets": "node scripts/generate-assets-manifest.js",
 		"preview": "vite preview",

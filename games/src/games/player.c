@@ -12,6 +12,8 @@ void init_player() {
 }
 
 void update_player() {
+    if (!mouseLocked) return;
+
     Vector2 mousePos = GetMousePosition();
 
     Vector2 to_mouse = Vector2Subtract(mousePos, pos);

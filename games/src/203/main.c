@@ -19,15 +19,31 @@
 
 #define MOVE_SPEED        6.0f
 #define MOUSE_SENSITIVITY 0.003f
+#define LOOK_STICK_SPEED  5.0f   // radians/sec at full deflection
 #define PITCH_LIMIT       1.5f
 
 #define MODEL_SCALE 1.25f
 
 State state;
 
+static float move_dx = 0.0f;   // +1 = strafe right (D / Right / stick-right)
+static float move_dy = 0.0f;   // +1 = forward    (W / Up    / stick-up)
+static float look_dx = 0.0f;   // +1 = turn right
+static float look_dy = 0.0f;   // +1 = look up
+
 void on_dimension_update(int w, int h) {
     state.width = w;
     state.height = h;
+}
+
+void on_movement(float dx, float dy) {
+    move_dx = dx;
+    move_dy = dy;
+}
+
+void on_look(float dx, float dy) {
+    look_dx = dx;
+    look_dy = dy;
 }
 
 static float clampf(float v, float lo, float hi) {
@@ -50,9 +66,13 @@ static void move(void) {
     float dt = GetFrameTime();
     float step = MOVE_SPEED * dt;
 
-    Vector2 mouseDelta = GetMouseDelta();
-    state.yaw   -= mouseDelta.x * MOUSE_SENSITIVITY;
-    state.pitch -= mouseDelta.y * MOUSE_SENSITIVITY;
+    if (!isTouchMode) {
+        Vector2 mouseDelta = GetMouseDelta();
+        state.yaw   -= mouseDelta.x * MOUSE_SENSITIVITY;
+        state.pitch -= mouseDelta.y * MOUSE_SENSITIVITY;
+    }
+    state.yaw   -= look_dx * LOOK_STICK_SPEED * dt;
+    state.pitch += look_dy * LOOK_STICK_SPEED * dt;
     state.pitch = clampf(state.pitch, -PITCH_LIMIT, PITCH_LIMIT);
 
     // Horizontal forward / right (ignore pitch so movement stays on ground plane).
@@ -60,10 +80,8 @@ static void move(void) {
     Vector3 right   = { forward.z,       0.0f, -forward.x };
 
     Vector3 next = state.camera.position;
-    if (IsKeyDown(KEY_W)) { next.x += forward.x * step; next.z += forward.z * step; }
-    if (IsKeyDown(KEY_S)) { next.x -= forward.x * step; next.z -= forward.z * step; }
-    if (IsKeyDown(KEY_A)) { next.x += right.x   * step; next.z += right.z   * step; }
-    if (IsKeyDown(KEY_D)) { next.x -= right.x   * step; next.z -= right.z   * step; }
+    next.x += (forward.x * move_dy - right.x * move_dx) * step;
+    next.z += (forward.z * move_dy - right.z * move_dx) * step;
 
     next.x = clampf(next.x, WORLD_MIN_X + PLAYER_RADIUS, WORLD_MAX_X - PLAYER_RADIUS);
     next.z = clampf(next.z, WORLD_MIN_Z + PLAYER_RADIUS, WORLD_MAX_Z - PLAYER_RADIUS);
@@ -131,6 +149,7 @@ int main(void) {
             BeginMode3D(state.camera);
                 DrawModel(world, (Vector3){ 0.0f, 0.0f, 0.0f }, MODEL_SCALE, WHITE);
             EndMode3D();
+            draw_overlay();
         EndDrawing();
     }
 
