@@ -8,6 +8,7 @@ DEFAULT_ARGS=$(INCLUDES) $(LINKING) $(RAYLIB_ARGS)
 
 GAMES_GAME_PATH="static/games/game/"
 ART_GAME_PATH="static/art/game/"
+203_GAME_PATH="static/203/game/"
 
 build-libs:
 	./raylib.sh
@@ -30,6 +31,14 @@ build-games-game: generate-assets-game
 generate-assets-art:
 	mkdir -p $(ART_GAME_PATH)assets
 	node scripts/generate-assets-manifest.js $(ART_GAME_PATH)
+
+build-203-game:
+	mkdir -p $(203_GAME_PATH)
+
+	emcc -o $(203_GAME_PATH)index.html games/lib/*.c games/src/203/*.c \
+		$(DEFAULT_ARGS) \
+		--shell-file include/raylib/src/minshell.html \
+		$(SYS)
 
 build-art-game: generate-assets-art
 	mkdir -p $(ART_GAME_PATH)
