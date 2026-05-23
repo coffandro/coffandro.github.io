@@ -17,6 +17,7 @@
   let clickedInCanvas = false;
   let gameScript: HTMLScriptElement | null = null;
   let crashed = false;
+  let loading = true;
 
   const canvasId = `raylib-canvas-${Math.random().toString(36).slice(2)}`;
 
@@ -215,6 +216,7 @@
         cursorLock = Module.cwrap("cursor_lock", "void", []);
         cursorUnlock = Module.cwrap("cursor_unlock", "void", []);
         resizeToFit();
+        loading = false;
       },
     };
 
@@ -280,6 +282,11 @@
       <p>The game crashed. Please reload the page.</p>
       <button on:click={() => location.reload()}>Reload</button>
     </div>
+  {:else if loading}
+    <div class="overlay loading-overlay">
+      <span class="spinner" aria-hidden="true"></span>
+      <span>Loading…</span>
+    </div>
   {:else if !clickedInCanvas}
     <button class="overlay" on:click|stopPropagation={handleOverlayClick}>
       Click to play
@@ -319,5 +326,23 @@
     color: white;
     cursor: pointer;
     border-radius: 0.25rem;
+  }
+  .loading-overlay {
+    flex-direction: column;
+    gap: 0.75rem;
+    background: rgba(0, 0, 0, 0.55);
+    cursor: default;
+    pointer-events: auto;
+  }
+  .spinner {
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid rgba(255, 255, 255, 0.25);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
   }
 </style>

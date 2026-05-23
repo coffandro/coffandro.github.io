@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-    <title>Art</title>
+    <title>203 page</title>
 </svelte:head>
 
 <div class="grow flex flex-col gap-2 min-h-0 mb-2">
@@ -11,7 +11,7 @@
         <h1 class="text-3xl">203 Redesign!</h1>
         <p>
             Below sits my mockup made in blender for how we on KMG should build
-            up the room.
+            up the 203 cozy/studio room.
         </p>
         <p>THIS IS MOSTLY CONCEPT! I'm very flexible on this</p>
     </div>
