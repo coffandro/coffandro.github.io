@@ -35,6 +35,20 @@
             logo_path: "/sites/ofd.png",
         },
         {
+            title: "Open Filament Database API ",
+            desc: "As a part of my role under SimplyPrint I've helped to further the 3D printing space, one of these projects lead me to help develop the Open Filament Database and it's accompanying website(s).",
+            link_path: "https://kbh-gamedesign-forening.github.io/",
+            source_path: "https://api.openfilamentdatabase.org/",
+            logo_path: "/sites/ofd.png",
+        },
+        {
+            title: "Team FOLON Website ",
+            desc: "As a favor for Team FOLON. I helped to create their website to show off their brand, work and gather future investments.",
+            link_path: "https://kbh-gamedesign-forening.github.io/",
+            source_path: "https://api.openfilamentdatabase.org/",
+            logo_path: "/sites/ofd.png",
+        },
+        {
             title: "Copenhagens GameDesign Forenings website",
             desc: "I helped to recreate Copenhagens GameDesign Association in 2025, rebuilding it and creating it's website to faciliate file sharing internally and communicating it's goals.",
             link_path: "https://kbh-gamedesign-forening.github.io/",
